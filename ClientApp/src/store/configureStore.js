@@ -1,8 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
-import * as Counter from './Counter';
-import * as WeatherForecasts from './WeatherForecasts';
 import CommentsReducer from '../reducers/CommentsReducer';
 import ConnectionReducer from '../reducers/ConnectionReducer';
 import UserReducer from '../reducers/UserReducer';
