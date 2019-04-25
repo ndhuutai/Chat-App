@@ -6,7 +6,7 @@ export const setConnection = (connection) => ({
     connection
 })
 
-export const startSetConnection = (connection, randomName) => {
+export const startSetConnection = (connection, randomName, avatarURL) => {
     return (dispatch, getState) => {
         //start(open) the connection before setting in redux store
         connection.start().then(() => {
@@ -15,13 +15,17 @@ export const startSetConnection = (connection, randomName) => {
             dispatch(setConnection(connection));
 
             //attach on listeners here so they stay alive in callstack
-            getState().client.connection.on("ReceiveMessage", (user, message) => {
-                dispatch(addComment(message, user));
+
+            //when receiving transferred message from server
+            getState().client.connection.on("ReceiveMessage", (user, message, avatarURL) => {
+                dispatch(addComment(message, user, avatarURL));
             })
 
             getState().client.connection.on('ServerMessage', (connectionId, text) => {
                 dispatch(addComment(`${text} ${randomName}!`));
-                dispatch(addUser(connectionId,randomName))
+                //save user related data to redux store
+                //have it persist for the client's life
+                dispatch(addUser(connectionId, randomName, avatarURL))
             })
 
             getState().client.connection.on('ServerToGroup', userName => {

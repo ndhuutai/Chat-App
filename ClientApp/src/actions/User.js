@@ -1,5 +1,6 @@
-export const addUser = (connectionId, userName) => ({
+export const addUser = (connectionId, userName , avatarURL) => ({
     type: 'ADD_USER',
     connectionId,
-    userName
+    userName,
+    avatarURL
 })

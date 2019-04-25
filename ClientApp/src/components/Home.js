@@ -8,6 +8,8 @@ import CommentContainer from "./CommentContainer";
 import { addComment, sendToHub } from '../actions/Comment';
 import { startSetConnection } from '../actions/Connection';
 
+import { generate_avatar } from 'cartoon-avatar';
+
 
 //initializations
 const randomName = uniqueNamesGenerator();
@@ -16,12 +18,12 @@ class Home extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.sendToHub(e.target.input.value, this.props.user.userName);
+        this.props.sendToHub(e.target.input.value, this.props.user.userName, this.props.user.avatarURL);
         e.target.input.value = ''
     }
 
     componentDidMount() {
-        this.props.startSetConnection(new signalR.HubConnectionBuilder().withUrl('/chatHub').build(), uniqueNamesGenerator());
+        this.props.startSetConnection(new signalR.HubConnectionBuilder().withUrl('/chatHub').build(), uniqueNamesGenerator(),generate_avatar());
     }
 
     render() {

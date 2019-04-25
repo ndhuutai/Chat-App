@@ -9,6 +9,7 @@ export default (state = defaultState, action) => {
         return {
             ...state,
             userName: action.userName,
+            avatarURL: action. avatarURL,
             connectionId: action.connectionId
         }
         default: 

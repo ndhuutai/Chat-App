@@ -8,6 +8,7 @@ export default (state = defaultState, action) => {
                 {
                     text: action.text,
                     user: action.user,
+                    avatarURL: action.avatarURL,
                     createdAt: action.createdAt
                 }
             ]
