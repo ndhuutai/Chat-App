@@ -8,7 +8,7 @@ var randomAvatar = require('random-avatar')
 const CommentContainer = (props) => (
     <Comment>
           <Comment.Content>
-            <Comment.Author as='a'>Matt</Comment.Author>
+            <Comment.Author as='a'>{props.user}</Comment.Author>
             <Comment.Metadata>
               <div>{moment(props.createdAt).fromNow()}</div>
             </Comment.Metadata>

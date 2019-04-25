@@ -7,6 +7,7 @@ export default (state = defaultState, action) => {
                 ...state,
                 {
                     text: action.text,
+                    user: action.user,
                     createdAt: action.createdAt
                 }
             ]

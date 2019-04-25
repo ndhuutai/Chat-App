@@ -16,7 +16,7 @@ class Home extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.sendToHub(e.target.input.value);
+        this.props.sendToHub(e.target.input.value, this.props.user.userName);
         e.target.input.value = ''
     }
 
@@ -60,6 +60,7 @@ class Home extends React.Component {
 const mapStateToProps = (state) => {
     return {
         comments: state.comments,
+        user: state.user,
         client: state.client
     }
 }

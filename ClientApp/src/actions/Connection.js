@@ -15,8 +15,8 @@ export const startSetConnection = (connection, randomName) => {
             dispatch(setConnection(connection));
 
             //attach on listeners here so they stay alive in callstack
-            getState().client.connection.on("ReceiveMessage", (message) => {
-                dispatch(addComment(message));
+            getState().client.connection.on("ReceiveMessage", (user, message) => {
+                dispatch(addComment(message, user));
             })
 
             getState().client.connection.on('ServerMessage', (connectionId, text) => {

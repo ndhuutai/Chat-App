@@ -2,16 +2,16 @@ import moment from 'moment';
 
 
 
-export const addComment = (text, user) => ({
+export const addComment = (text, user = 'Admin') => ({
     type: 'ADD_COMMENT',
     text,
     user,
     createdAt: moment().valueOf()
 })
 
-export const sendToHub = (text) => {
+export const sendToHub = (text, userName) => {
     return async (dispatch, getState) => {
-        getState().client.connection.invoke('SendMessage', 'test', text)
+        getState().client.connection.invoke('SendMessage', userName, text)
     }
 }
 
