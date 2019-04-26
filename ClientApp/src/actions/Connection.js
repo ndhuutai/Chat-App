@@ -6,29 +6,43 @@ export const setConnection = (connection) => ({
     connection
 })
 
-export const startSetConnection = (connection, randomName, avatarURL) => {
-    return (dispatch, getState) => {
+export const startSetConnection = (connection, randomName, avatarURL, group) => {
+    return (dispatch) => {
         //start(open) the connection before setting in redux store
         connection.start().then(() => {
             
             //set connection in redux store
             dispatch(setConnection(connection));
+            
+            //add user to group right away
+            connection.invoke('AddToGroup', group, randomName);
+
 
             //attach on listeners here so they stay alive in callstack
 
             //when receiving transferred message from server
-            getState().client.connection.on("MessageToGroup", (user, message, avatarURL) => {
+            connection.on("MessageToGroup", (user, message, avatarURL) => {
                 dispatch(addComment(message, user, avatarURL));
             })
 
-            getState().client.connection.on('ServerMessage', (connectionId, text) => {
-                dispatch(addComment(`${text} ${randomName}!`));
+            connection.on('ServerMessageOnConnected', (connectionId) => {
+                // dispatch(addComment(`${text} ${randomName}!`));
                 //save user related data to redux store
                 //have it persist for the client's life
-                dispatch(addUser(connectionId, randomName, avatarURL))
+                dispatch(addUser(connectionId, randomName, avatarURL,group))
+
             })
 
-            getState().client.connection.on('ServerToGroup', userName => {
+            connection.on('ServerMessageOnConnectedToGroup', text => {
+                dispatch(addComment(`${text}`));
+
+            })
+
+            connection.on('ServerMessageOnDisconnected', text => {
+                dispatch(addComment(`${text}!`));
+            })
+
+            connection.on('ServerToGroup', userName => {
                 dispatch(addComment(`${userName} has joined the group!`));
             })
         })
@@ -47,14 +61,14 @@ export const setGroup = (group) => ({
     group
 })
 
-export const sendToHub = (text, userName, avatarURL) => {
-    return async (dispatch, getState) => {
-        getState().client.connection.invoke('SendMessage',text, userName, avatarURL)
+export const sendToHub = (text, userName, avatarURL, group) => {
+    return (dispatch, getState) => {
+        getState().client.connection.invoke('SendMessageToGroup',text, userName, avatarURL, group)
     }
 }
 
-export const sendToHubGroup = (text) => {
+export const sendToHubGroup = (group, text) => {
     return (dispatch, getState) => {
-        getState.client.connection.invoke('SendGroupMessage', 'testGroup', text);
+        getState.client.connection.invoke('SendGroupMessage', group, text);
     }
 }

@@ -1,6 +1,5 @@
 const defaultState = {
-    connection: undefined,
-    group: ''
+    connection: undefined
 }
 
 export default (state = defaultState, action) => {
@@ -9,11 +8,6 @@ export default (state = defaultState, action) => {
         return {
             ...state,
             connection: action.connection
-        }
-        case 'SET_GROUP':
-        return {
-            ...state,
-            group: action.group
         }
         default:
         return state;

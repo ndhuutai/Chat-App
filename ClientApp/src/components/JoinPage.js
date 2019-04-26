@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import {NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
+import { setGender, setGroup } from '../actions/User';
+import { wipeComments } from '../actions/Comment';
 
 
 const options = [
@@ -14,16 +16,21 @@ const options = [
 
 class JoinPage extends React.Component {
 
+    onClick = (e) => {
+        if(this.props.comments.length > 0) {
+            this.props.wipeComments();
+        }
+    }
     onSubmit = (e) => {
         e.preventDefault();
     }
 
     onRoomChange = (e) => {
-        console.log(e.target.value);
+        this.props.setGroup(e.target.value);
     }
 
     onGenderChange = (e) => {
-        console.log(e.target.value);
+        this.props.setGender(e.target.value);
     }
     render() {
         return (
@@ -46,7 +53,7 @@ class JoinPage extends React.Component {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column stretched>
-                                <Button>
+                                <Button onClick={this.onClick}>
                                     <NavLink tag={Link} className="text-dark" to="/chat">Join</NavLink>
                                 </Button>
                             </Grid.Column>
@@ -58,7 +65,13 @@ class JoinPage extends React.Component {
     }
 }
 
+const mapStateToProps = state => ({
+    user: state.user,
+    comments: state.comments
+})
 const mapDispatchToProps = dispatch => bindActionCreators({
-
+    wipeComments,
+    setGender,
+    setGroup
 },dispatch);
-export default connect()(JoinPage);
+export default connect(mapStateToProps,mapDispatchToProps)(JoinPage);

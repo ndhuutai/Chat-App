@@ -12,6 +12,8 @@ export default (state = defaultState, action) => {
                     createdAt: action.createdAt
                 }
             ]
+        case 'WIPE_COMMENTS':
+            return [];
         default:
             return state;
     }

@@ -1,4 +1,4 @@
-export const addUser = (connectionId, userName , avatarURL , group, gender) => ({
+export const addUser = (connectionId, userName , avatarURL , group ='', gender) => ({
     type: 'ADD_USER',
     connectionId,
     userName,
