@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Message, Form, Grid, Comment } from "semantic-ui-react";
+import { Message, Form, Grid, Comment, Button } from "semantic-ui-react";
 import { bindActionCreators } from 'redux';
 import * as signalR from '@aspnet/signalr';
 import { uniqueNamesGenerator } from 'unique-names-generator';
@@ -14,15 +14,22 @@ import { generate_avatar } from 'cartoon-avatar';
 //initializations
 const randomName = uniqueNamesGenerator();
 
-class Home extends React.Component {
+class Chat extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.sendToHub(e.target.input.value, this.props.user.userName, this.props.user.avatarURL);
+        if(e.target.input.value.trim() !== '') {
+            this.props.sendToHub(e.target.input.value, this.props.user.userName, this.props.user.avatarURL);
+        }
         e.target.input.value = ''
     }
 
     componentDidMount() {
+        //send a request to get chat from database then populate the redux store
+
+        if(this.props.client.connection) {
+            return;
+        }
         this.props.startSetConnection(new signalR.HubConnectionBuilder().withUrl('/chatHub').build(), uniqueNamesGenerator(),generate_avatar());
     }
 
@@ -44,12 +51,12 @@ class Home extends React.Component {
 
                 <Form onSubmit={this.onSubmit} autoComplete='off'>
                     <Grid columns={2} stackable>
-                        <Grid.Row divided={true} verticalAlign='middle'>
-                            <Grid.Column width={14}>
+                        <Grid.Row divided={true} stretched>
+                            <Grid.Column width={13}>
                                 <Form.Input name='input' placeholder='Enter your message here' />
                             </Grid.Column>
-                            <Grid.Column width={1}>
-                                <Form.Button>Send Message</Form.Button>
+                            <Grid.Column width={3}>
+                                <Button>Send Message</Button>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
@@ -67,6 +74,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ sendToHub, addComment, startSetConnection }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ 
+    sendToHub, 
+    addComment, 
+    startSetConnection 
+}, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);

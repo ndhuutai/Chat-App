@@ -17,7 +17,7 @@ export const startSetConnection = (connection, randomName, avatarURL) => {
             //attach on listeners here so they stay alive in callstack
 
             //when receiving transferred message from server
-            getState().client.connection.on("ReceiveMessage", (user, message, avatarURL) => {
+            getState().client.connection.on("MessageToGroup", (user, message, avatarURL) => {
                 dispatch(addComment(message, user, avatarURL));
             })
 
@@ -46,3 +46,15 @@ export const setGroup = (group) => ({
     type: 'SET_GROUP',
     group
 })
+
+export const sendToHub = (text, userName, avatarURL) => {
+    return async (dispatch, getState) => {
+        getState().client.connection.invoke('SendMessage',text, userName, avatarURL)
+    }
+}
+
+export const sendToHubGroup = (text) => {
+    return (dispatch, getState) => {
+        getState.client.connection.invoke('SendGroupMessage', 'testGroup', text);
+    }
+}
