@@ -4,7 +4,7 @@ import { addUser } from './User';
 export const setConnection = (connection) => ({
     type: 'SET_CONNECTION',
     connection
-})
+});
 
 export const startSetConnection = (connection, randomName, avatarURL, group) => {
     return (dispatch) => {
@@ -23,7 +23,7 @@ export const startSetConnection = (connection, randomName, avatarURL, group) => 
             //when receiving transferred message from server
             connection.on("MessageToGroup", (user, message, avatarURL) => {
                 dispatch(addComment(message, user, avatarURL));
-            })
+            });
 
             connection.on('ServerMessageOnConnected', (connectionId) => {
                 // dispatch(addComment(`${text} ${randomName}!`));
@@ -31,44 +31,38 @@ export const startSetConnection = (connection, randomName, avatarURL, group) => 
                 //have it persist for the client's life
                 dispatch(addUser(connectionId, randomName, avatarURL,group))
 
-            })
+            });
 
             connection.on('ServerMessageOnConnectedToGroup', text => {
                 dispatch(addComment(`${text}`));
 
-            })
+            });
 
             connection.on('ServerMessageOnDisconnected', text => {
                 dispatch(addComment(`${text}!`));
-            })
+            });
 
             connection.on('ServerToGroup', userName => {
                 dispatch(addComment(`${userName} has joined the group!`));
             })
         })
     }
-}
+};
 
 //call server to add user to group
 export const addToGroup = (groupName,userName) => {
     return (dispatch, getState) => {
         getState().client.connection.invoke('AddToGroup', groupName, userName);
     }
-}
+};
 
 export const setGroup = (group) => ({
     type: 'SET_GROUP',
     group
-})
+});
 
 export const sendToHub = (text, userName, avatarURL, group) => {
     return (dispatch, getState) => {
         getState().client.connection.invoke('SendMessageToGroup',text, userName, avatarURL, group)
     }
-}
-
-export const sendToHubGroup = (group, text) => {
-    return (dispatch, getState) => {
-        getState.client.connection.invoke('SendGroupMessage', group, text);
-    }
-}
+};
