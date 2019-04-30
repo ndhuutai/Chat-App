@@ -13,6 +13,8 @@ namespace Chat_App.Models
         {
 
         }
+        
+        
 
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }

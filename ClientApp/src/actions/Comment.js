@@ -1,16 +1,13 @@
-import moment from 'moment';
 
-
-
-export const addComment = (text, user = 'ADMIN', avatarURL) => ({
+export const addComment = (text, user = 'ADMIN', avatarURL, createdAt) => ({
     type: 'ADD_COMMENT',
     text,
     user,
     avatarURL,
-    createdAt: moment().valueOf()
-})
+    createdAt
+});
 
 export const wipeComments = () => ({
     type: 'WIPE_COMMENTS',
-})
+});
 

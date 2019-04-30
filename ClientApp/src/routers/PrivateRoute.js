@@ -18,7 +18,7 @@ const PrivateRoute = ({isAuthenticated, component: Component}) => (
 );
 
 const mapStateToProps = state => ({
-	isAuthenticated: user.uid
+	isAuthenticated: user.uid //this is for firebase auth
 });
 
 export default (mapStateToProps)(PrivateRoute);

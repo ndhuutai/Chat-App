@@ -14,7 +14,10 @@ namespace Chat_App.Models
         public long Id { get; set; }
         [Required]
         public string UserName { get; set; }
-        public IEnumerable<Comment> Comments { get; set; }
-        public byte CommentId { get; set; }
+
+        public String ConnectionId { get; set; }
+        public String AvatarUrl { get; set; }
+        public String Group { get; set; }
+        public String Gender { get; set; }
     }
 }

@@ -11,7 +11,7 @@ import {wipeComments} from '../actions/Comment';
 const options = [
 	{key: 'm', text: 'Male', value: 'male'},
 	{key: 'f', text: 'Female', value: 'female'}
-]
+];
 
 
 class JoinPage extends React.Component {
@@ -30,7 +30,7 @@ class JoinPage extends React.Component {
 	};
 
 	onGenderChange = (e) => {
-		this.props.setGender(e.target.value);
+		this.props.setGender(e.target.innerText);
 	};
 
 	render() {

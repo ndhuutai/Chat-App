@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Chat_App.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,13 +10,21 @@ using Microsoft.AspNetCore.Mvc;
 namespace Chat_App.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class CommentsController : ControllerBase
     {
+        private readonly IDataRepository<Comment> _commentRepository;
+
+        public CommentsController(IDataRepository<Comment> commentRepository)
+        {
+            _commentRepository = commentRepository;
+        }
+
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            IEnumerable<Comment> comments = _commentRepository.GetAll();
+            return Ok(comments);
         }
 
         // GET api/<controller>/5
@@ -27,8 +36,15 @@ namespace Chat_App.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public async Task<IActionResult> Post([FromBody]Comment comment)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _commentRepository.Add(comment);
+            return Accepted();
         }
 
         // PUT api/<controller>/5

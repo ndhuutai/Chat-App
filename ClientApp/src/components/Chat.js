@@ -24,7 +24,7 @@ class Chat extends React.Component {
 	};
 
 	componentDidMount() {
-		//send a request to get chat from database then populate the redux store
+		//send a request to get chat from database for a specific group then populate the redux store
 
 		//wipe comments when user connect to a different room
 
@@ -37,14 +37,19 @@ class Chat extends React.Component {
 		if (this.props.client.connection) {
 			return;
 		}
-		this.props.startSetConnection(new signalR.HubConnectionBuilder().withUrl('/chatHub').build(), uniqueNamesGenerator(), generate_avatar(this.props.user.gender), this.props.user.group);
+		this.props.startSetConnection(new signalR.HubConnectionBuilder().withUrl('/chatHub').build(),
+			uniqueNamesGenerator(),
+			generate_avatar(this.props.user.gender?{gender: this.props.user.gender}: ''),
+			this.props.user.group || 'default',
+			this.props.user.gender || 'not specified');
 	}
 
 	render() {
 		return (
 			<Container>
 				{/*todo: change this to reflect room name instead of general message*/}
-				<h1>Welcome to the Chat Application!</h1>
+				{this.props.user.group === 'default'?<h1>Public chat room</h1>: <h1>Group name: {this.props.user.group}</h1> }
+
 				{this.props.comments.length < 1 ? <Message info>
 					<Message.Header>Seeing nothing?</Message.Header>
 					<p>Be the first to send message!</p>
@@ -53,8 +58,7 @@ class Chat extends React.Component {
 				<Row>
 					<Col xs='3'>
 						<ListGroup>
-							<ListGroupItem disabled tag="a" href="#">PLACE HOLDER FOR USER LIST / fixing
-								routes</ListGroupItem>
+							<ListGroupItem disabled tag="a" href="#">PLACE HOLDER FOR USER LIST FEATURE</ListGroupItem>
 							<ListGroupItem tag="a" href="#">Dapibus ac facilisis in</ListGroupItem>
 							<ListGroupItem tag="a" href="#">Morbi leo risus</ListGroupItem>
 							<ListGroupItem tag="a" href="#">Porta ac consectetur ac</ListGroupItem>
@@ -95,7 +99,7 @@ const mapStateToProps = (state) => {
 		user: state.user,
 		client: state.client
 	}
-}
+};
 
 const mapDispatchToProps = dispatch => bindActionCreators({
 	startSetConnection,

@@ -10,12 +10,13 @@ namespace Chat_App.Models
     {
         public long Id { get; set; }
         [Required]
-        public string CommentText { get; set; }
+        public string Text { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; }
 
-        public User User { get; set; }
-        [Required]
+        public String AvatarUrl { get; set; }
         public long UserId { get; set; }
+
+        public User User { get; set; }
     }
 }

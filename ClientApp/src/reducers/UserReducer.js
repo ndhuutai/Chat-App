@@ -3,8 +3,9 @@ const defaultState = {
     connectionId: '',
     avatarURL: '',
     group: '',
-    gender: ''
-}
+    gender: '',
+    uid:''
+};
 
 export default (state = defaultState, action) => {
     switch(action.type) {
@@ -12,21 +13,27 @@ export default (state = defaultState, action) => {
         return {
             ...state,
             userName: action.userName,
-            avatarURL: action. avatarURL,
+            avatarURL: action.avatarURL,
             connectionId: action.connectionId,
             group: action.group,
-            gender: action.gender
-        }
+            gender: action.gender,
+            uid: action.uid
+        };
         case 'SET_GROUP':
         return {
             ...state,
             group: action.group
-        }
+        };
         case 'SET_GENDER':
         return {
             ...state,
             gender: action.gender
-        }
+        };
+        case 'SET_UID':
+            return {
+                ...state,
+                uid: action.uid
+            };
         default: 
         return state;
     }

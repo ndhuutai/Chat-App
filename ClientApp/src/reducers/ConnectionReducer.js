@@ -8,7 +8,7 @@ export default (state = defaultState, action) => {
         return {
             ...state,
             connection: action.connection
-        }
+        };
         default:
         return state;
     }

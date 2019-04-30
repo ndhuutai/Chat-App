@@ -1,13 +1,16 @@
+import axios from 'axios';
+import moment from 'moment'
 import { addComment } from './Comment';
-import { addUser } from './User';
+import { addUser, setUID } from './User';
+
 
 export const setConnection = (connection) => ({
     type: 'SET_CONNECTION',
     connection
 });
 
-export const startSetConnection = (connection, randomName, avatarURL, group) => {
-    return (dispatch) => {
+export const startSetConnection = (connection, randomName, avatarURL, group, gender) => {
+    return (dispatch, getState) => {
         //start(open) the connection before setting in redux store
         connection.start().then(() => {
             
@@ -17,20 +20,46 @@ export const startSetConnection = (connection, randomName, avatarURL, group) => 
             //add user to group right away
             connection.invoke('AddToGroup', group, randomName);
 
-
             //attach on listeners here so they stay alive in callstack
 
             //when receiving transferred message from server
-            connection.on("MessageToGroup", (user, message, avatarURL) => {
-                dispatch(addComment(message, user, avatarURL));
+            connection.on("MessageToGroup", (userName, message, avatarURL) => {
+
+                //todo: add comment to database with uid from user to associate
+                axios.post('/api/comments', {
+                    Text: message,
+                    CreatedAt: moment().utc(),
+                    AvatarUrl: avatarURL,
+                    UserId: getState().user.uid
+                }).then(response => {
+                    console.log(response);
+                }).catch(err => {
+                    console.log(err)
+                });
+
+                dispatch(addComment(message, userName, avatarURL));
             });
 
+            //when user connect to a group
             connection.on('ServerMessageOnConnected', (connectionId) => {
+                let userId = undefined;
+                console.log(gender);
+                //todo:add user to database using axios calling web api
+                axios.post('/api/users', {
+                    UserName: randomName,
+                    AvatarUrl: avatarURL,
+                    ConnectionId: connectionId,
+                    Gender: gender,
+                    Group: group
+                }).then(response => {
+                    userId = response.data.id;
+                    dispatch(addUser(userId, connectionId, randomName, avatarURL,group, gender))
+                }).catch(err => {
+                    console.log(err)
+                });
                 // dispatch(addComment(`${text} ${randomName}!`));
                 //save user related data to redux store
                 //have it persist for the client's life
-                dispatch(addUser(connectionId, randomName, avatarURL,group))
-
             });
 
             connection.on('ServerMessageOnConnectedToGroup', text => {

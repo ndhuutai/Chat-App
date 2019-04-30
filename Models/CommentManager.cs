@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chat_App.Models
 {
@@ -16,7 +17,7 @@ namespace Chat_App.Models
 
         public IEnumerable<Comment> GetAll()
         {
-            return _repositoryContext.Comments.ToList();
+            return _repositoryContext.Comments.Include("User").ToList();
         }
 
         public Comment Get(long id)
@@ -33,8 +34,8 @@ namespace Chat_App.Models
 
         public void Update(Comment commentInDb, Comment comment)
         {
-            commentInDb.CommentText = comment.CommentText;
-            commentInDb.CreatedAt = DateTime.Now;
+            commentInDb.Text = comment.Text;
+            commentInDb.CreatedAt = comment.CreatedAt;
         }
 
         public void Delete(Comment comment)
