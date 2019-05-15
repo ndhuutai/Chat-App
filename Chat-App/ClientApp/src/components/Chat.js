@@ -33,7 +33,7 @@ class Chat extends React.Component {
 		if (this.props.client.connection !== undefined) {
 			this.props.addToGroup(this.props.user.group, this.props.user.userName);
 		}
-		//if there's already an established connection, move on
+		//if there's already an established connection, no need to set up again.
 		if (this.props.client.connection) {
 			return;
 		}
@@ -47,7 +47,7 @@ class Chat extends React.Component {
 	render() {
 		return (
 			<Container>
-				{/*todo: change this to reflect room name instead of general message*/}
+				{//group's name}
 				{this.props.user.group === 'default'?<h1>Public chat room</h1>: <h1>Group name: {this.props.user.group}</h1> }
 
 				{this.props.comments.length < 1 ? <Message info>
