@@ -1,7 +1,7 @@
 import axios from 'axios';
 import moment from 'moment'
 import { addComment } from './Comment';
-import { addUser, setUID } from './User';
+import { addUser, setUID, setConnectionId } from './User';
 
 
 export const setConnection = (connection) => ({
@@ -24,16 +24,16 @@ export const startSetConnection = (connection, randomName, avatarURL, group, gen
             connection.on("MessageToGroup", (userName, message, avatarURL) => {
 
                 //todo: add comment to database with uid from user to associate
-                axios.post('/api/comments', {
-                    Text: message,
-                    CreatedAt: moment().utc(),
-                    AvatarUrl: avatarURL,
-                    UserId: getState().user.uid
-                }).then(response => {
-                    console.log(response);
-                }).catch(err => {
-                    console.log(err)
-                });
+                // axios.post('/api/comments', {
+                //     Text: message,
+                //     CreatedAt: moment().utc(),
+                //     AvatarUrl: avatarURL,
+                //     UserId: getState().user.uid
+                // }).then(response => {
+                //     console.log(response);
+                // }).catch(err => {
+                //     console.log(err)
+                // });
 
                 dispatch(addComment(message, userName, avatarURL));
             });
@@ -55,12 +55,12 @@ export const startSetConnection = (connection, randomName, avatarURL, group, gen
                 // }).catch(err => {
                 //     console.log(err)
                 // });
+                setConnectionId(connectionId);
 
-                dispatch(addUser(connectionId, randomName, avatarURL,group, gender))
             });
 
             connection.on('OnAddedToDb', id => {
-                console.log("added to db");
+                dispatch(addUser(id, '', randomName, avatarURL,group, gender))
             }) ;
 
             connection.on('ServerMessageOnConnectedToGroup', text => {
@@ -80,9 +80,9 @@ export const startSetConnection = (connection, randomName, avatarURL, group, gen
 };
 
 //call server to add user to group
-export const addToGroup = (groupName,userName) => {
+export const addToGroup = (groupName,id) => {
     return (dispatch, getState) => {
-        getState().client.connection.invoke('AddToGroup', groupName, userName);
+        getState().client.connection.invoke('AddToGroup', groupName, id);
     }
 };
 

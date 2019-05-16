@@ -31,7 +31,7 @@ class Chat extends React.Component {
 		//if the connection is already set up, and user change room, only add the user to the new group
 		//and going through startSetConnection is not adding user to the new group
 		if (this.props.client.connection !== undefined) {
-			this.props.addToGroup(this.props.user.group, this.props.user.userName, this.props.user.avatarURL, this.props.gender);
+			this.props.addToGroup(this.props.user.group, this.props.user.uid);
 		}
 		//if there's already an established connection, no need to set up again.
 		if (this.props.client.connection) {
