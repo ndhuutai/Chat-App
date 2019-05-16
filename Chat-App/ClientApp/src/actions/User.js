@@ -1,11 +1,10 @@
-export const addUser = (uid, connectionId, userName , avatarURL, group, gender) => ({
+export const addUser = (connectionId, userName , avatarURL, group, gender) => ({
     type: 'ADD_USER',
     connectionId,
     userName,
     avatarURL,
     group,
-    gender,
-    uid
+    gender
 });
 
 export const setGroup = (group) => ({
