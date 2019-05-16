@@ -2,7 +2,6 @@ import axios from 'axios';
 import moment from 'moment'
 import { addComment } from './Comment';
 import { addUser, setUID } from './User';
-import { connect } from 'net';
 
 
 export const setConnection = (connection) => ({
