@@ -21,8 +21,6 @@ export const startSetConnection = (connection, randomName, avatarURL, group, gen
             //add user to group right away
             connection.invoke('AddUserToDb', group, randomName, avatarURL, gender);
 
-            //attach on listeners here so they stay alive in callstack
-
             //when receiving transferred message from server
             connection.on("MessageToGroup", (userName, message, avatarURL) => {
 

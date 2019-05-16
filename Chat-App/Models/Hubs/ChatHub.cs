@@ -9,12 +9,21 @@ namespace Chat_App.Models.Hubs
 {
     public class ChatHub : Hub
     {
-        public async Task SendMessageToGroup(string message, string userName, string avatarUrl, string group)
+        private readonly IDataRepository<Comment> _commentRepository;
+        private readonly IDataRepository<User> _userRepository;
+
+        public ChatHub(IDataRepository<Comment> commentRepository, IDataRepository<User> userRepository)
+        {
+            this._commentRepository = commentRepository;
+            this._userRepository = userRepository;
+        }
+
+        public async Task SendMessageToGroup(string message, string userName, string avatarUrl, string group, DateTime createdAt)
         {
             await Clients
                 .Group(group)
                 .SendAsync("MessageToGroup", userName,  message, avatarUrl);
-            
+            // once sent, save message to comment's db
         }
 
         public override async Task OnConnectedAsync()
@@ -29,11 +38,21 @@ namespace Chat_App.Models.Hubs
             await base.OnDisconnectedAsync(exception);
         }
 
-        public async Task AddToGroup(string groupName, string userName)
+        public async Task AddUserToDb(string groupName, string userName, string avatarUrl, string gender)
         {
+            var id = _userRepository.Add(new User(groupName, userName, Context.ConnectionId, avatarUrl, gender));
+            await Clients.Caller.SendAsync("OnAddedToDb", id);
+        }
+
+        public async Task AddToGroup(string groupName, long id)
+        {
+            var userInDb = _userRepository.Get(id);
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
-            await Clients.Caller.SendAsync("ServerMessageOnConnectedToGroup", $"Welcome to the group {userName}!");
-            await Clients.OthersInGroup(groupName).SendAsync("ServerToGroup", userName);
+            await Clients.Caller.SendAsync("ServerMessageOnConnectedToGroup", $"Welcome to the group {userInDb.UserName}!");
+            await Clients.OthersInGroup(groupName).SendAsync("ServerToGroup", userInDb.UserName);
+
+            var updatedUser = new User(groupName,userInDb.UserName,userInDb.ConnectionId,userInDb.AvatarUrl,userInDb.Gender);
+            _userRepository.Update(userInDb, updatedUser);
         }
     }
 }

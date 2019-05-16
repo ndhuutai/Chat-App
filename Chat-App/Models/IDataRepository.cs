@@ -9,7 +9,7 @@ namespace Chat_App.Models
     {
         IEnumerable<TEntity> GetAll();
         TEntity Get(long id);
-        void Add(TEntity entity);
+        long Add(TEntity entity);
         void Update(TEntity dbEntity, TEntity entity);
         void Delete(TEntity entity);
     }

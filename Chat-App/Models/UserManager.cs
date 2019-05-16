@@ -25,15 +25,17 @@ namespace Chat_App.Models
             return _repositoryContext.Users.FirstOrDefault(user => user.Id == id);
         }
 
-        public void Add(User user)
+        public long Add(User user)
         {
             _repositoryContext.Users.Add(user);
             _repositoryContext.SaveChanges();
+            return user.Id;
         }
 
         public void Update(User userInDB, User user)
         {
-            userInDB.UserName = user.UserName;
+            userInDB.GroupName = user.GroupName;
+           
             _repositoryContext.SaveChanges();
         }
 

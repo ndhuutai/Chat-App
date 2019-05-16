@@ -10,6 +10,14 @@ namespace Chat_App.Models
 {
     public class User
     {
+        public User(string groupName, string userName,string connectionId, string avatarUrl, string gender)
+        {
+            GroupName = groupName;
+            UserName = userName;
+            ConnectionId = connectionId;
+            AvatarUrl = avatarUrl;
+            Gender = gender;
+        }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
         [Required]
@@ -17,7 +25,7 @@ namespace Chat_App.Models
 
         public String ConnectionId { get; set; }
         public String AvatarUrl { get; set; }
-        public String Group { get; set; }
+        public String GroupName { get; set; }
         public String Gender { get; set; }
     }
 }

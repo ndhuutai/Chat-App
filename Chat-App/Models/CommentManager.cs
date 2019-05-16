@@ -26,10 +26,12 @@ namespace Chat_App.Models
                 .FirstOrDefault(comment => comment.Id == id);
         }
 
-        public void Add(Comment comment)
+        public long Add(Comment comment)
         {
             _repositoryContext.Comments.Add(comment);
             _repositoryContext.SaveChanges();
+
+            return comment.Id;
         }
 
         public void Update(Comment commentInDb, Comment comment)
