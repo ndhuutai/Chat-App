@@ -44,7 +44,7 @@ namespace Chat_App.Models.Hubs
             await Clients.Caller.SendAsync("OnAddedToDb", id);
         }
 
-        public async Task AddToGroup(string groupName, long id)
+        public async Task AddToGroup(string groupName, long id, string gender)
         {
             var userInDb = _userRepository.Get(id);
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
