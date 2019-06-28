@@ -16,7 +16,6 @@ namespace Chat_App.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
         }
 
         public DbSet<User> Users { get; set; }

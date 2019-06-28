@@ -19,7 +19,7 @@ namespace Chat_App.Models
             Gender = gender;
         }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
+        public int Id { get; set; }
         [Required]
         public string UserName { get; set; }
 
