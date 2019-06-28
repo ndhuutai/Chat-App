@@ -27,5 +27,7 @@ namespace Chat_App.Models
         public String AvatarUrl { get; set; }
         public String GroupName { get; set; }
         public String Gender { get; set; }
+        
+        public List<UserGroup> UserGroups { get; set; }
     }
 }

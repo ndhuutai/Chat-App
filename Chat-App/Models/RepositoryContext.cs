@@ -16,6 +16,11 @@ namespace Chat_App.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<UserGroup>()
+                .HasKey(ug => new {ug.GroupId, ug.UserId});
+
+            modelBuilder.Entity<UserGroup>()
+                .HasOne(ug => ug.Group);
         }
 
         public DbSet<User> Users { get; set; }
