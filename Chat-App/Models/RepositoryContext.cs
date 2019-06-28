@@ -20,7 +20,14 @@ namespace Chat_App.Models
                 .HasKey(ug => new {ug.GroupId, ug.UserId});
 
             modelBuilder.Entity<UserGroup>()
-                .HasOne(ug => ug.Group);
+                .HasOne(ug => ug.Group)
+                .WithMany(g => g.UserGroups)
+                .HasForeignKey(ug => ug.GroupId);
+
+            modelBuilder.Entity<UserGroup>()
+                .HasOne(ug => ug.User)
+                .WithMany(u => u.UserGroups)
+                .HasForeignKey(ug => ug.UserId);
         }
 
         public DbSet<User> Users { get; set; }
