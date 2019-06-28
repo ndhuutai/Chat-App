@@ -25,7 +25,7 @@ namespace Chat_App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<RepositoryContext>(opts => opts.UseMySQL(Configuration["ConnectionString:ChatDB"]));
+            services.AddDbContext<RepositoryContext>(opts => opts.UseMySql(Configuration["ConnectionString:ChatDB"]));
             services.AddScoped<IDataRepository<Comment>, CommentManager>();
             services.AddScoped<IDataRepository<User>, UserManager>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
