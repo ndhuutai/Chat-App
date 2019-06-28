@@ -32,16 +32,17 @@ namespace Chat_App.Models
             return user.Id;
         }
 
-        public void Update(User userInDB, User user)
+        public void Update(User userInDb, User user)
         {
-            userInDB.GroupName = user.GroupName;
-            userInDB.Gender = user.Gender;
+            userInDb.GroupName = user.GroupName;
+            userInDb.Gender = user.Gender;
             _repositoryContext.SaveChanges();
         }
 
         public void Delete(User user)
         {
             _repositoryContext.Remove(user);
+            _repositoryContext.SaveChanges();
         }
 
     }

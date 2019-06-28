@@ -38,9 +38,10 @@ namespace Chat_App.Models.Hubs
             await base.OnDisconnectedAsync(exception);
         }
 
-        public async Task AddUserToDb(string groupName, string userName, string avatarUrl, string gender)
+        public async Task AddUserToDb(User newUser)
         {
-            var id = _userRepository.Add(new User(groupName, userName, Context.ConnectionId, avatarUrl, gender));
+            newUser.ConnectionId = Context.ConnectionId;
+            var id = _userRepository.Add(newUser);
             await Clients.Caller.SendAsync("OnAddedToDb", id);
         }
 

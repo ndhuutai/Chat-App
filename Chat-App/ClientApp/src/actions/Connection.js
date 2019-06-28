@@ -93,6 +93,6 @@ export const setGroup = (group) => ({
 
 export const sendToHub = (text, userName, avatarURL, group) => {
     return (dispatch, getState) => {
-        getState().client.connection.invoke('SendMessageToGroup',text, userName, avatarURL, group, moment().utc())
+        getState().client.connection.invoke('SendMessageToGroup',text, userName, avatarURL, group,moment().utc())
     }
 };

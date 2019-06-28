@@ -34,10 +34,10 @@ namespace Chat_App.Models
             return comment.Id;
         }
 
-        public void Update(Comment commentInDb, Comment comment)
+        public void Update(Comment userInDb, Comment comment)
         {
-            commentInDb.Text = comment.Text;
-            commentInDb.CreatedAt = comment.CreatedAt;
+            userInDb.Text = comment.Text;
+            userInDb.CreatedAt = comment.CreatedAt;
         }
 
         public void Delete(Comment comment)
