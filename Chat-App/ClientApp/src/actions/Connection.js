@@ -9,7 +9,7 @@ export const setConnection = (connection) => ({
     connection
 });
 
-export const startSetConnection = (connection, randomName, avatarURL, group, gender) => {
+export const startSetConnection = (connection, userName, avatarURL, group, gender) => {
     return (dispatch, getState) => {
         //start(open) the connection before setting in redux store
         connection.start().then(() => {
@@ -18,7 +18,7 @@ export const startSetConnection = (connection, randomName, avatarURL, group, gen
             dispatch(setConnection(connection));
             
             //add user to group right away
-            connection.invoke('AddUserToDb', {group, randomName, avatarURL, gender});
+            connection.invoke('AddUserToDb', {group, userName, avatarURL, gender});
 
             //when receiving transferred message from server
             connection.on("MessageToGroup", (userName, message, avatarURL) => {
@@ -33,7 +33,7 @@ export const startSetConnection = (connection, randomName, avatarURL, group, gen
             });
 
             connection.on('OnAddedToDb', id => {
-                dispatch(addUser(id, '', randomName, avatarURL,group, gender))
+                dispatch(addUser(id, '', userName, avatarURL,group, gender))
             }) ;
 
             connection.on('ServerMessageOnConnectedToGroup', text => {
@@ -55,7 +55,7 @@ export const startSetConnection = (connection, randomName, avatarURL, group, gen
 //call server to add user to group
 export const addToGroup = (groupName,id) => {
     return (dispatch, getState) => {
-        getState().client.connection.invoke('AddToGroup', groupName, id);
+        getState().client.connection.invoke('AddToGroup', groupName, id, getState().user.gender);
     }
 };
 
