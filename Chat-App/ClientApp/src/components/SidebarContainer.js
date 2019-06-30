@@ -1,29 +1,29 @@
 import React from 'react';
-import { Button, Header, Icon, Image, Menu, Segment, Sidebar, Divider, Container } from 'semantic-ui-react';
+import {Button, Header, Icon, Image, Menu, Segment, Sidebar, Divider, Container} from 'semantic-ui-react';
 
 export default class SideBarContainer extends React.Component {
     state = {
         visible: false
     }
-    handleHideClick = () => this.setState({ visible: false })
-    handleShowClick = () => this.setState({ visible: true })
-    handleSidebarHide = () => this.setState({ visible: false })
+    handleHideClick = () => this.setState({visible: false})
+    handleShowClick = () => this.setState({visible: true})
+    handleSidebarHide = () => this.setState({visible: false})
 
 
     render() {
-        const { visible } = this.state;
+        const {visible} = this.state;
 
         return (
             <div>
 
-            <Button.Group>
-          <Button disabled={visible} onClick={this.handleShowClick}>
-            Show sidebar
-          </Button>
-          <Button disabled={!visible} onClick={this.handleHideClick}>
-            Hide sidebar
-          </Button>
-        </Button.Group>
+                <Button.Group>
+                    <Button disabled={visible} onClick={this.handleShowClick}>
+                        Show sidebar
+                    </Button>
+                    <Button disabled={!visible} onClick={this.handleHideClick}>
+                        Hide sidebar
+                    </Button>
+                </Button.Group>
                 <Sidebar.Pushable as={Container}>
                     <Sidebar
                         as={Menu}
@@ -36,15 +36,15 @@ export default class SideBarContainer extends React.Component {
                         width='thin'
                     >
                         <Menu.Item as='a'>
-                            <Icon name='home' />
+                            <Icon name='home'/>
                             Home
                         </Menu.Item>
                         <Menu.Item as='a'>
-                            <Icon name='gamepad' />
+                            <Icon name='gamepad'/>
                             Games
                         </Menu.Item>
                         <Menu.Item as='a'>
-                            <Icon name='camera' />
+                            <Icon name='camera'/>
                             Channels
                         </Menu.Item>
                     </Sidebar>

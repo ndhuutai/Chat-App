@@ -2,16 +2,15 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Message, Form, Grid, Comment, Button} from 'semantic-ui-react';
 import {Col, Container, ListGroup, ListGroupItem, Row} from 'reactstrap';
-
 import {bindActionCreators} from 'redux';
 import * as signalR from '@aspnet/signalr';
 import {uniqueNamesGenerator} from 'unique-names-generator';
-import CommentContainer from './CommentContainer';
 import {addComment, wipeComments} from '../actions/Comment';
 import {startSetConnection, sendToHub, addToGroup} from '../actions/Connection';
-
 import {generate_avatar} from 'cartoon-avatar';
-
+import UserList from './UserList'
+import CommentList from './CommentList'
+import CommentForm from './CommentForm'
 
 class Chat extends React.Component {
 
@@ -20,7 +19,7 @@ class Chat extends React.Component {
 		if (e.target.input.value.trim() !== '') {
 			this.props.sendToHub(e.target.input.value, this.props.user.userName, this.props.user.avatarURL, this.props.user.group);
 		}
-		e.target.input.value = ''
+		e.target.input.value = '';
 	};
 
 	componentDidMount() {
@@ -56,35 +55,11 @@ class Chat extends React.Component {
 
 				<Row>
 					<Col xs='3'>
-						<ListGroup>
-							<ListGroupItem disabled tag="a" href="#">PLACE HOLDER FOR USER LIST FEATURE</ListGroupItem>
-							<ListGroupItem tag="a" href="#">Dapibus ac facilisis in</ListGroupItem>
-							<ListGroupItem tag="a" href="#">Morbi leo risus</ListGroupItem>
-							<ListGroupItem tag="a" href="#">Porta ac consectetur ac</ListGroupItem>
-							<ListGroupItem tag="a" href="#">Vestibulum at eros</ListGroupItem>
-						</ListGroup>
+						<UserList/>
 					</Col>
 					<Col xs='9'>
-						<Comment.Group>
-
-							{this.props.comments.map((comment, index) => (
-								<CommentContainer key={index} {...comment}/>
-							))}
-						</Comment.Group>
-
-
-						<Form onSubmit={this.onSubmit} autoComplete='off'>
-							<Grid columns={3} stackable>
-								<Grid.Row divided={true} stretched>
-									<Grid.Column width={13}>
-										<Form.Input name='input' placeholder='Enter your message here'/>
-									</Grid.Column>
-									<Grid.Column width={3}>
-										<Button>Send Message</Button>
-									</Grid.Column>
-								</Grid.Row>
-							</Grid>
-						</Form>
+						<CommentList comments={this.props.comments}/>
+						<CommentForm onSubmit={this.onSubmit}/>
 					</Col>
 				</Row>
 			</Container>
