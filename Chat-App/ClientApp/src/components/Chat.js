@@ -16,37 +16,43 @@ class Chat extends React.Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
+		const {user} = this.props;
 		if (e.target.input.value.trim() !== '') {
-			this.props.sendToHub(e.target.input.value, this.props.user.userName, this.props.user.avatarURL, this.props.user.group);
+			this.props.sendToHub(e.target.input.value, user.userName, user.avatarURL, user.groupName);
 		}
 		e.target.input.value = '';
 	};
 
 	componentDidMount() {
-		//send a request to get chat from database for a specific group then populate the redux store
+		
+		const {user, client} = this.props;
+		//send a request to get chat from database for a specific groupName then populate the redux store
 
 		//wipe comments when user connect to a different room
 		console.log('im in here checking');
-		//if the connection is already set up, and user change room, only add the user to the new group
-		//and going through startSetConnection is not adding user to the new group
+		//if the connection is already set up, and user change room, only add the user to the new groupName
+		//and going through startSetConnection is not adding user to the new groupName
 		if (this.props.client.connection !== undefined) {
-			this.props.addToGroup(this.props.user.group, this.props.user.uid, this.props.user.gender);
+			this.props.addToGroup(user.groupName, user.uid, user.gender);
 		}
 		//if there's already an established connection, no need to set up again.
-		if (this.props.client.connection) {
+		if (client.connection) {
 			return;
 		}
 		this.props.startSetConnection(new signalR.HubConnectionBuilder().withUrl('/chatHub').build(),
 			uniqueNamesGenerator(),
-			generate_avatar(this.props.user.gender?{gender: this.props.user.gender}: ''),
-			this.props.user.group || 'default',
-			this.props.user.gender || 'not specified');
+			generate_avatar(user.gender?{gender: user.gender}: ''),
+			user.groupName || 'default',
+			user.gender || 'not specified');
 	}
 
 	render() {
+		
+		const {user} = this.props;
+		
 		return (
 			<Container>
-				{this.props.user.group === 'default'?<h1>Public chat room</h1>: <h1>Group name: {this.props.user.group}</h1> }
+				{user.groupName === 'default'?<h1>Public chat room</h1>: <h1>Group name: {user.groupName}</h1> }
 
 				{this.props.comments.length < 1 ? <Message info>
 					<Message.Header>Seeing nothing?</Message.Header>
