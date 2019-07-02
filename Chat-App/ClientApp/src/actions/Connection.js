@@ -18,7 +18,7 @@ export const startSetConnection = (connection, userName, avatarURL, group, gende
             dispatch(setConnection(connection));
             
             //add user to group right away
-            connection.invoke('AddUserToDb', {group, userName, avatarURL, gender});
+            connection.invoke('AddUserToDb', {groupName: group, userName, avatarURL, gender});
 
             //when receiving transferred message from server
             connection.on("MessageToGroup", (userName, message, avatarURL) => {
@@ -28,7 +28,7 @@ export const startSetConnection = (connection, userName, avatarURL, group, gende
 
             //when user connect to a group
             connection.on('ServerMessageOnConnected', (connectionId) => {
-                
+                console.log('im called here');
                 setConnectionId(connectionId);
             });
 

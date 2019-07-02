@@ -42,6 +42,8 @@ namespace Chat_App.Models.Hubs
         {
             newUser.ConnectionId = Context.ConnectionId;
             var id = _userRepository.Add(newUser);
+            
+            await AddToGroup(newUser.GroupName, id, newUser.Gender);
             await Clients.Caller.SendAsync("OnAddedToDb", id);
         }
 

@@ -10,6 +10,7 @@ import RegisterPage from './components/RegisterPage';
 
 export default () => (
     <Layout>
+        {console.log('im in here')}
         {/*<Route exact path='/' component={LoginPage}/>*/}
         {/*<Route exact path='/register' component={RegisterPage}/>*/}
         <Route exact path='/' component={JoinPage} />

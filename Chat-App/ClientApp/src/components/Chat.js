@@ -26,7 +26,7 @@ class Chat extends React.Component {
 		//send a request to get chat from database for a specific group then populate the redux store
 
 		//wipe comments when user connect to a different room
-
+		console.log('im in here checking');
 		//if the connection is already set up, and user change room, only add the user to the new group
 		//and going through startSetConnection is not adding user to the new group
 		if (this.props.client.connection !== undefined) {
