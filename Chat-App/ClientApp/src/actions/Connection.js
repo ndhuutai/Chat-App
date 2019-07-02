@@ -9,8 +9,51 @@ export const setConnection = (connection) => ({
     connection
 });
 
+
+function onMessageToGroup({connection, dispatch}) {
+    connection.on("MessageToGroup", (userName, message, avatarURL) => {
+        dispatch(addComment(message, userName, avatarURL));
+    });
+}
+
+function onAddedToDb({connection, dispatch}) {
+    connection.on('OnAddedToDb', ({id, connectionId, userName, avatarUrl, groupName, gender}) => {
+        dispatch(addUser(id, connectionId, userName, avatarUrl, groupName, gender))
+    });
+}
+
+function onServerMessageOnConnectedToGroup({connection, dispatch}) {
+    connection.on('ServerMessageOnConnectedToGroup', text => {
+        dispatch(addComment(`${text}`));
+    });
+}
+
+function onServerMessageOnDisconnected({connection, dispatch}) {
+    connection.on('ServerMessageOnDisconnected', text => {
+        dispatch(addComment(`${text}!`));
+    });
+}
+
+function onServerToGroup({connection, dispatch}) {
+    connection.on('ServerToGroup', userName => {
+        dispatch(addComment(`${userName} has joined the group!`));
+    });
+}
+
 export const startSetConnection = (connection, userName, avatarURL, groupName, gender) => {
+    
     return (dispatch, getState) => {
+        
+        const eventListeners = composeListeners(
+            onMessageToGroup,
+            onAddedToDb,
+            onServerMessageOnConnectedToGroup,
+            onServerMessageOnDisconnected,
+            onServerToGroup
+        );
+        
+        eventListeners({connection, dispatch});
+        
         //start(open) the connection before setting in redux store
         connection.start().then(() => {
             
@@ -19,36 +62,8 @@ export const startSetConnection = (connection, userName, avatarURL, groupName, g
             
             //add user to groupName right away
             connection.invoke('AddUserToDb', {groupName, userName, avatarURL, gender});
-
-            //when receiving transferred message from server
-            connection.on("MessageToGroup", (userName, message, avatarURL) => {
-
-                dispatch(addComment(message, userName, avatarURL));
-            });
-
-            //when user connect to a groupName
-            connection.on('ServerMessageOnConnected', (connectionId) => {
-                console.log('im called here');
-                setConnectionId(connectionId);
-            });
-
-            connection.on('OnAddedToDb', id => {
-                dispatch(addUser(id, '', userName, avatarURL, groupName, gender))
-            }) ;
-
-            connection.on('ServerMessageOnConnectedToGroup', text => {
-                dispatch(addComment(`${text}`));
-
-            });
-
-            connection.on('ServerMessageOnDisconnected', text => {
-                dispatch(addComment(`${text}!`));
-            });
-
-            connection.on('ServerToGroup', userName => {
-                dispatch(addComment(`${userName} has joined the group!`));
-            })
-        })
+            
+        }).catch(error => console.log(error));
     }
 };
 
@@ -69,3 +84,10 @@ export const sendToHub = (text, userName, avatarURL, groupName) => {
         getState().client.connection.invoke('SendMessageToGroup',text, userName, avatarURL, groupName,moment().utc())
     }
 };
+
+const composeListeners = (...functions) => 
+    (arg) =>
+        functions.reduce((composed, f) => {
+            f(composed);
+            return composed;
+        }, arg);
