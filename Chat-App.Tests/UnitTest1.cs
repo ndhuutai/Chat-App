@@ -28,8 +28,7 @@ namespace Tests
                 AvatarUrl = "myavatarurl.com",
                 CreatedAt = DateTime.Now,
                 Id = 1,
-                Text = "my test comment",
-                UserId = 1
+                Text = "my test comment"
             };
 
             commentManager.Add(comment);

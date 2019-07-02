@@ -16,7 +16,6 @@ namespace Chat_App.Models
         public DateTime CreatedAt { get; set; }
 
         public string AvatarUrl { get; set; }
-        public long UserId { get; set; }
 
         public User User { get; set; }
 
