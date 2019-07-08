@@ -54,12 +54,9 @@ export const startSetConnection = (connection, userName, avatarURL, groupName, g
         
         eventListeners({connection, dispatch});
         
-        //start(open) the connection before setting in redux store
         connection.start().then(() => {
             
-            //set connection in redux store
             dispatch(setConnection(connection));
-            
             //add user to groupName right away
             connection.invoke('AddUserToDb', {groupName, userName, avatarURL, gender});
             
@@ -70,7 +67,7 @@ export const startSetConnection = (connection, userName, avatarURL, groupName, g
 //call server to add user to groupName
 export const addToGroup = (groupName,id) => {
     return (dispatch, getState) => {
-        getState().client.connection.invoke('AddToGroup', groupName, id, getState().user.gender);
+        getState().client.connection.invoke('AddToGroup', groupName, id, getState().user.gender); //user state
     }
 };
 
@@ -81,7 +78,7 @@ export const setGroup = (groupName) => ({
 
 export const sendToHub = (text, userName, avatarURL, groupName) => {
     return (dispatch, getState) => {
-        getState().client.connection.invoke('SendMessageToGroup',text, userName, avatarURL, groupName,moment().utc())
+        getState().client.connection.invoke('SendMessageToGroup',text, userName, avatarURL, groupName,moment().utc()) // user state + comment text
     }
 };
 

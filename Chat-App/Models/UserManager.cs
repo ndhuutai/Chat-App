@@ -44,6 +44,11 @@ namespace Chat_App.Models
             _repositoryContext.Remove(user);
             _repositoryContext.SaveChanges();
         }
+        
+        public void AddUserToGroup(User user, Group group)
+        {
+            
+        }
 
     }
 }
