@@ -21,6 +21,11 @@ namespace Chat_App.Models
             return _repositoryContext.Groups.FirstOrDefault(group => group.Id == id);
         }
 
+        public Group FindByName(string groupName)
+        {
+            return _repositoryContext.Groups.FirstOrDefault(group => group.Name == groupName);
+        }
+
         public long Add(Group entity)
         {
             var groupInDb = _repositoryContext.Groups.FirstOrDefault(group => group.Id == entity.Id);

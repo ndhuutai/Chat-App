@@ -28,6 +28,7 @@ namespace Chat_App
             services.AddDbContext<RepositoryContext>(opts => opts.UseMySql(Configuration["ConnectionString:ChatDB"]));
             services.AddScoped<IDataRepository<Comment>, CommentManager>();
             services.AddScoped<IDataRepository<User>, UserManager>();
+            services.AddScoped<IDataRepository<Group>, GroupManager>();
             services.AddScoped<IDataRepository<UserGroup>, UserGroupManager>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

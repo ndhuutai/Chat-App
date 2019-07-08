@@ -13,6 +13,7 @@ namespace Chat_App.Models
         {
             _repositoryContext = repositoryContext;
         }
+
         public IEnumerable<UserGroup> GetAll()
         {
             return _repositoryContext.UserGroups.ToList();
@@ -21,6 +22,23 @@ namespace Chat_App.Models
         public UserGroup Get(long id)
         {
             throw new NotImplementedException();
+        }
+
+        public UserGroup Find(int userId, int groupId)
+        {
+            var returnUg = new UserGroup();
+            try
+            {
+                 returnUg =
+                    _repositoryContext.UserGroups.FirstOrDefault(ug => ug.UserId == userId && ug.GroupId == groupId);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            var test = new UserGroup();
+            return returnUg;
         }
 
         public long Add(UserGroup entity)
@@ -33,10 +51,8 @@ namespace Chat_App.Models
             {
                 return 0;
             }
-            var userGroupInDb = _repositoryContext.UserGroups.Add(new UserGroup());
-            userGroupInDb.Entity.UserId = userInDb.Id;
-            userGroupInDb.Entity.GroupId = groupInDb.Id;
-            
+
+            _repositoryContext.UserGroups.Add(entity);
             return _repositoryContext.SaveChanges();
         }
 

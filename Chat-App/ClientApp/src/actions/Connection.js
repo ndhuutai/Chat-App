@@ -54,20 +54,21 @@ export const startSetConnection = (connection, userName, avatarURL, groupName, g
         
         eventListeners({connection, dispatch});
         
+        
         connection.start().then(() => {
-            
             dispatch(setConnection(connection));
             //add user to groupName right away
             connection.invoke('AddUserToDb', {groupName, userName, avatarURL, gender});
-            
+
         }).catch(error => console.log(error));
+
     }
 };
 
 //call server to add user to groupName
-export const addToGroup = (groupName,id) => {
+export const addToGroup = (groupName, id) => {
     return (dispatch, getState) => {
-        getState().client.connection.invoke('AddToGroup', groupName, id, getState().user.gender); //user state
+        getState().client.connection.invoke('AddToGroup', {groupName, userId: id, gender: getState().user.gender}); //user state
     }
 };
 
