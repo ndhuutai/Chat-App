@@ -38,7 +38,10 @@ class Chat extends React.Component {
 		if (client.connection) {
 			return;
 		}
-		this.props.startSetConnection(new signalR.HubConnectionBuilder().withUrl('/chatHub').build(),
+		this.props.startSetConnection(new signalR.HubConnectionBuilder()
+				.withUrl('/chatHub')
+				.configureLogging(signalR.LogLevel.Information)
+				.build(),
 			uniqueNamesGenerator(),
 			generate_avatar(user.gender?{gender: user.gender}: ''),
 			user.groupName || 'default',

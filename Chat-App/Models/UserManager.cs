@@ -34,7 +34,6 @@ namespace Chat_App.Models
 
         public void Update(User userInDb, User user)
         {
-            userInDb.GroupName = user.GroupName;
             userInDb.Gender = user.Gender;
             _repositoryContext.SaveChanges();
         }
