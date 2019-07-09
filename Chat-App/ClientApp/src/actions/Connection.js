@@ -17,8 +17,9 @@ function onMessageToGroup({connection, dispatch}) {
 }
 
 function onAddedToDb({connection, dispatch}) {
-    connection.on('OnAddedToDb', ({id, connectionId, userName, avatarUrl, groupName, gender}) => {
-        dispatch(addUser(id, connectionId, userName, avatarUrl, groupName, gender))
+    connection.on('OnAddedToDb', ({id, connectionId, userName, avatarUrl, groupName = 'default', gender}) => {
+        dispatch(addUser(id, connectionId, userName, avatarUrl, groupName, gender));
+        dispatch(addToGroup(groupName, id))
     });
 }
 
@@ -40,7 +41,7 @@ function onServerToGroup({connection, dispatch}) {
     });
 }
 
-export const startSetConnection = (connection, userName, avatarURL, groupName, gender) => {
+export const startSetConnection = (connection, userName, avatarURL, gender) => {
     
     return (dispatch, getState) => {
         
@@ -58,7 +59,7 @@ export const startSetConnection = (connection, userName, avatarURL, groupName, g
         connection.start().then(() => {
             dispatch(setConnection(connection));
             //add user to groupName right away
-            connection.invoke('AddUserToDb', {groupName, userName, avatarURL, gender});
+            connection.invoke('AddUserToDb', { userName, avatarURL, gender});
 
         }).catch(error => console.log(error));
 

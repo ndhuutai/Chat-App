@@ -44,8 +44,8 @@ class Chat extends React.Component {
 				.build(),
 			uniqueNamesGenerator(),
 			generate_avatar(user.gender?{gender: user.gender}: ''),
-			user.groupName || 'default',
 			user.gender || 'not specified');
+		
 	}
 
 	render() {
