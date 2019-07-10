@@ -24,7 +24,6 @@ namespace Chat_App.Controllers
         {
             var userGroups = ((UserGroupManager) _userGroupsRepository).GetUsersInGroup(id);
             var users = userGroups.Select(userGroup => _usersRepository.Get(userGroup.UserId)).ToList();
-
             return users;
         }
 

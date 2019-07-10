@@ -1,4 +1,5 @@
 const initialState = {
+    id: '',
     name: '',
     users: []
 };
@@ -6,11 +7,21 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_GROUP':
+        case 'SET_GROUP_ID':
             return {
                 ...state,
-                name: action.group
+                id: action.id
             };
+        case 'SET_GROUP_NAME':
+            return {
+                ...state,
+                name: action.groupName
+            };
+        case 'SET_USERS':
+            return {
+                ...state,
+                users: action.users
+            }
         case 'ADD_USER':
             return {
                 ...state,

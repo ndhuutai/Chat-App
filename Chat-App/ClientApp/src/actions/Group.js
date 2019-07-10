@@ -1,9 +1,15 @@
 import axios from 'axios';
+
 const url = '/api/usergroups/group';
 
+export const setGroupId = (id) => ({
+    type: 'SET_GROUP_ID',
+    id
+});
 
-export const setGroup = (groupName) => ({
-    type: 'SET_GROUP',
+
+export const setGroupName = (groupName) => ({
+    type: 'SET_GROUP_NAME',
     groupName
 });
 
@@ -23,14 +29,10 @@ export const removeUserFromGroup = (user) => ({
 });
 
 
-export const startSetGroup = ({id})  => {
+export const startSetGroup = ({id}) => {
     return async (dispatch, getState) => {
-        const { data } = await axios.get(url, {
-            params: {
-                id
-            }
-        });
-        
-        dispatch(setGroup())
+        const {data} = await axios.get(`${url}/${id}`);
+        console.log(data);
+        dispatch(setUsersInGroup(data));
     }
 };

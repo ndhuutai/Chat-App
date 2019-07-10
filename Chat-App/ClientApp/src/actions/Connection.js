@@ -1,7 +1,7 @@
-import axios from 'axios';
 import moment from 'moment'
-import { addComment } from './Comment';
-import { addUser, setUID, setConnectionId } from './User';
+import {addComment} from './Comment';
+import {addUser} from './User';
+import {setGroupName, setGroupId, startSetGroup} from "./Group";
 
 
 export const setConnection = (connection) => ({
@@ -9,13 +9,14 @@ export const setConnection = (connection) => ({
     connection
 });
 
-
+//when a new message is sent to the current group
 function onMessageToGroup({connection, dispatch}) {
     connection.on("MessageToGroup", (userName, message, avatarURL) => {
         dispatch(addComment(message, userName, avatarURL));
     });
 }
 
+//when user has been added to db
 function onAddedToDb({connection, dispatch}) {
     connection.on('OnAddedToDb', ({id, connectionId, userName, avatarUrl, groupName = 'default', gender}) => {
         dispatch(addUser(id, connectionId, userName, avatarUrl, groupName, gender));
@@ -23,6 +24,7 @@ function onAddedToDb({connection, dispatch}) {
     });
 }
 
+//server message from admin to the calling user when user connects to group
 function onServerMessageOnConnectedToGroup({connection, dispatch}) {
     connection.on('ServerMessageOnConnectedToGroup', text => {
         dispatch(addComment(`${text}`));
@@ -35,31 +37,42 @@ function onServerMessageOnDisconnected({connection, dispatch}) {
     });
 }
 
+//server notification to group when new user connects
 function onServerToGroup({connection, dispatch}) {
     connection.on('ServerToGroup', userName => {
         dispatch(addComment(`${userName} has joined the group!`));
     });
 }
 
+//when user connected to a group, data is sent back from server containing group info
+function onServerDataOnConnectedToGroup({connection, dispatch}) {
+    connection.on('ServerDataOnConnectedToGroup', ({id, name}) => {
+        dispatch(setGroupId(id));
+        dispatch(setGroupName(name));
+        dispatch(startSetGroup({id}));
+    })
+}
+
 export const startSetConnection = (connection, userName, avatarURL, gender) => {
-    
+
     return (dispatch, getState) => {
-        
+
         const eventListeners = composeListeners(
             onMessageToGroup,
             onAddedToDb,
             onServerMessageOnConnectedToGroup,
             onServerMessageOnDisconnected,
-            onServerToGroup
+            onServerToGroup,
+            onServerDataOnConnectedToGroup
         );
-        
+
         eventListeners({connection, dispatch});
-        
-        
+
+
         connection.start().then(() => {
             dispatch(setConnection(connection));
             //add user to groupName right away
-            connection.invoke('AddUserToDb', { userName, avatarURL, gender});
+            connection.invoke('AddUserToDb', {userName, avatarURL, gender});
 
         }).catch(error => console.log(error));
 
@@ -73,18 +86,13 @@ export const addToGroup = (groupName, id) => {
     }
 };
 
-export const setGroup = (groupName) => ({
-    type: 'SET_GROUP',
-    groupName
-});
-
 export const sendToHub = (text, userName, avatarURL, groupName) => {
     return (dispatch, getState) => {
-        getState().client.connection.invoke('SendMessageToGroup',text, userName, avatarURL, groupName,moment().utc()) // user state + comment text
+        getState().client.connection.invoke('SendMessageToGroup', text, userName, avatarURL, groupName, moment().utc()) // user state + comment text
     }
 };
 
-const composeListeners = (...functions) => 
+const composeListeners = (...functions) =>
     (arg) =>
         functions.reduce((composed, f) => {
             f(composed);

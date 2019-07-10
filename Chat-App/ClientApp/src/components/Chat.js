@@ -7,6 +7,8 @@ import * as signalR from '@aspnet/signalr';
 import {uniqueNamesGenerator} from 'unique-names-generator';
 import {addComment, wipeComments} from '../actions/Comment';
 import {startSetConnection, sendToHub, addToGroup} from '../actions/Connection';
+import {startSetGroup} from "../actions/Group";
+
 import {generate_avatar} from 'cartoon-avatar';
 import UserList from './UserList'
 import CommentList from './CommentList'
@@ -45,7 +47,6 @@ class Chat extends React.Component {
 			uniqueNamesGenerator(),
 			generate_avatar(user.gender?{gender: user.gender}: ''),
 			user.gender || 'not specified');
-		
 	}
 
 	render() {
@@ -89,6 +90,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 	sendToHub,
 	addComment,
 	wipeComments,
+	startSetGroup
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);
