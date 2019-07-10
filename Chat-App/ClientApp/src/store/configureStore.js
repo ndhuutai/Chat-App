@@ -4,12 +4,14 @@ import { routerReducer, routerMiddleware } from 'react-router-redux';
 import CommentsReducer from '../reducers/CommentsReducer';
 import ConnectionReducer from '../reducers/ConnectionReducer';
 import UserReducer from '../reducers/UserReducer';
+import GroupReducer from '../reducers/GroupReducer';
 
 export default function configureStore (history, initialState) {
   const reducers = {
     comments: CommentsReducer,
     client: ConnectionReducer,
-    user: UserReducer
+    user: UserReducer,
+    group: GroupReducer
   };
 
   const middleware = [
