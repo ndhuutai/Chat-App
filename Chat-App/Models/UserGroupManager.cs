@@ -24,6 +24,16 @@ namespace Chat_App.Models
             throw new NotImplementedException();
         }
 
+        public IEnumerable<UserGroup> GetUsersInGroup(int groupId)
+        {
+            return _repositoryContext.UserGroups.Where(userGroup => userGroup.GroupId == groupId);
+        }
+
+        public IEnumerable<UserGroup> GetGroupsOfUser(int userId)
+        {
+            return _repositoryContext.UserGroups.Where(userGroup => userGroup.UserId == userId);
+        }
+
         public UserGroup Find(int userId, int groupId)
         {
             var returnUg = new UserGroup();
