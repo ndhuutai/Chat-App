@@ -64,7 +64,7 @@ class Chat extends React.Component {
 
 				<Row>
 					<Col xs='3'>
-						<UserList/>
+						<UserList users={this.props.group.users}/>
 					</Col>
 					<Col xs='9'>
 						<CommentList comments={this.props.comments}/>
@@ -80,7 +80,8 @@ const mapStateToProps = (state) => {
 	return {
 		comments: state.comments,
 		user: state.user,
-		client: state.client
+		client: state.client,
+		group: state.group
 	}
 };
 

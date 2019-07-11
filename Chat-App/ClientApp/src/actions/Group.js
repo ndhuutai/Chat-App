@@ -19,7 +19,7 @@ export const setUsersInGroup = (users) => ({
 });
 
 export const addUserToGroup = (user) => ({
-    type: 'ADD_USER',
+    type: 'ADD_USER_TO_GROUP',
     user
 });
 
@@ -32,7 +32,6 @@ export const removeUserFromGroup = (user) => ({
 export const startSetGroup = ({id}) => {
     return async (dispatch, getState) => {
         const {data} = await axios.get(`${url}/${id}`);
-        console.log(data);
         dispatch(setUsersInGroup(data));
     }
 };

@@ -1,7 +1,7 @@
 const initialState = {
     id: '',
     name: '',
-    users: []
+    users: ''
 };
 
 
@@ -21,8 +21,8 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 users: action.users
-            }
-        case 'ADD_USER':
+            };
+        case 'ADD_USER_TO_GROUP':
             return {
                 ...state,
                 users: [...state.users, action.user]
