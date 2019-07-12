@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Route } from 'react-router';
-import { Route } from "react-router-dom";
+import {Route} from "react-router-dom";
 import Layout from './components/Layout';
 import Chat from './components/Chat'
 import JoinPage from './components/JoinPage'
@@ -13,7 +13,7 @@ export default () => (
         {console.log('im in here')}
         {/*<Route exact path='/' component={LoginPage}/>*/}
         {/*<Route exact path='/register' component={RegisterPage}/>*/}
-        <Route exact path='/' component={JoinPage} />
-        <Route exact path='/chat' component={Chat} />
+        <Route exact path='/' component={JoinPage}/>
+        <Route path='/chat' component={Chat}/>
     </Layout>
 );
