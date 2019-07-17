@@ -24,13 +24,23 @@ namespace Chat_App.Models.Hubs
             _groupRepository = groupRepository;
         }
 
-        public async Task SendMessageToGroup(string message, string userName, string avatarUrl, string group,
-            DateTime createdAt)
+        public async Task SendMessageToGroup(MessageToGroupRequest request)
         {
             await Clients
-                .Group(group)
-                .SendAsync("MessageToGroup", userName, message, avatarUrl);
+                .Group(request.GroupName)
+                .SendAsync("MessageToGroup", request.UserName, request.Text, request.AvatarUrl);
+
+            var groupInDb = (_groupRepository as GroupManager)?.FindByName(request.GroupName);
+            var userInDb = _userRepository.Get(request.UserId);
             // once sent, save message to comment's db
+            _commentRepository.Add(new Comment
+            {
+                AvatarUrl = request.AvatarUrl,
+                CreatedAt = request.CreatedAt,
+                Group = groupInDb,
+                Text = request.Text,
+                User = userInDb
+            });
         }
 
         public override async Task OnConnectedAsync()
@@ -58,14 +68,14 @@ namespace Chat_App.Models.Hubs
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, req.GroupName);
             var userInDb = _userRepository.Get(req.UserId);
-            var groupInDb = ((GroupManager)_groupRepository).FindByName(req.GroupName);
+            var groupInDb = ((GroupManager) _groupRepository).FindByName(req.GroupName);
 
             if (groupInDb == null)
             {
                 var newGroupId = _groupRepository.Add(new Group {Name = req.GroupName});
                 groupInDb = _groupRepository.Get(newGroupId);
             }
-            
+
             var userGroupInDb = ((UserGroupManager) _userGroupRepository).Find(userInDb.Id, groupInDb.Id);
             if (userGroupInDb == null)
             {

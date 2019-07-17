@@ -22,15 +22,15 @@ namespace Chat_App.Controllers
         [HttpGet("group/{id}")]
         public IEnumerable<User> GetAllUsersInGroup(int id)
         {
-            var userGroups = ((UserGroupManager) _userGroupsRepository).GetUsersInGroup(id);
-            var users = userGroups.Select(userGroup => _usersRepository.Get(userGroup.UserId)).ToList();
+            var userGroups = (_userGroupsRepository as UserGroupManager)?.GetUsersInGroup(id);
+            var users = userGroups?.Select(userGroup => _usersRepository.Get(userGroup.UserId)).ToList();
             return users;
         }
 
         [HttpGet("user/{id}")]
         public IEnumerable<UserGroup> GetAllGroupsOfUser(int id)
         {
-            return ((UserGroupManager) _userGroupsRepository).GetGroupsOfUser(id);
+            return (_userGroupsRepository as UserGroupManager)?.GetGroupsOfUser(id);
         }
     }
 }

@@ -88,7 +88,14 @@ export const addToGroup = (groupName, id) => {
 
 export const sendToHub = (text, userName, avatarURL, groupName) => {
     return (dispatch, getState) => {
-        getState().client.connection.invoke('SendMessageToGroup', text, userName, avatarURL, groupName, moment().utc()) // user state + comment text
+        getState().client.connection.invoke('SendMessageToGroup', {
+            id: getState().user.id,
+            text,
+            userName,
+            avatarURL,
+            groupName,
+            createdAt: moment().utc()
+        }) // user state + comment text
     }
 };
 
