@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 import {Message, Form, Grid, Comment, Button} from 'semantic-ui-react';
 import {Col, Container, ListGroup, ListGroupItem, Row} from 'reactstrap';
@@ -60,7 +60,7 @@ class Chat extends React.Component {
         const {group} = this.props;
 
         return (
-            <Container>
+            <Fragment>
                 {group.name === 'default' ? <h1>Public chat room</h1> : <h1>Group name: {group.name}</h1>}
 
                 {this.props.comments.length < 1 ? <Message info>
@@ -68,16 +68,16 @@ class Chat extends React.Component {
                     <p>Be the first to send message!</p>
                 </Message> : ''}
 
-                <Row>
-                    <Col xs='3'>
+                <div className='row'>
+                    <div className='col-md-4'>
                         <UserList users={this.props.group.users} onClick={this.onUserClick}/>
-                    </Col>
-                    <Col xs='9'>
+                    </div>
+                    <div className='col-md-8'>
                         <CommentList comments={this.props.comments}/>
                         <CommentForm onSubmit={this.onSubmit}/>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </Fragment>
         )
     }
 }

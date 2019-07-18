@@ -68,7 +68,7 @@ namespace Chat_App.Models.Hubs
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, req.GroupName);
             var userInDb = _userRepository.Get(req.UserId);
-            var groupInDb = ((GroupManager) _groupRepository).FindByName(req.GroupName);
+            var groupInDb = (_groupRepository as GroupManager)?.FindByName(req.GroupName);
 
             if (groupInDb == null)
             {
@@ -76,7 +76,7 @@ namespace Chat_App.Models.Hubs
                 groupInDb = _groupRepository.Get(newGroupId);
             }
 
-            var userGroupInDb = ((UserGroupManager) _userGroupRepository).Find(userInDb.Id, groupInDb.Id);
+            var userGroupInDb = (_userGroupRepository as UserGroupManager)?.Find(userInDb.Id, groupInDb.Id);
             if (userGroupInDb == null)
             {
                 var newUserGroup = new UserGroup

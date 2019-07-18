@@ -1,5 +1,4 @@
 import React from 'react';
-import {ListGroup, ListGroupItem} from "reactstrap";
 import {Link} from "react-router-dom";
 
 
@@ -11,18 +10,18 @@ export default (props) => {
     };
 
     return (
-        <ListGroup>
+        <ul>
             {props.users.length > 0 ? props.users.map((user, index) => (
-                <ListGroupItem key={index}>
+                <li key={index} className="list-group-item d-none d-sm-none d-md-block">
                     <Link to={
                         {
                             pathname: '/chat'
                         }}
                           onClick={onLinkClick}
-                    >{user.userName} </Link>
-                </ListGroupItem>
+                    >{user.userName}</Link>
+                </li>
             )) : 'Loading'}
-        </ListGroup>
+        </ul>
     )
 }
     
