@@ -3,9 +3,9 @@ import CommentContainer from "./Comment";
 import {Comment} from "semantic-ui-react";
 
 export default (props) => (
-    <Comment.Group>
+    <ul className='list-unstyled'>
         {props.comments.map((comment, index) => (
             <CommentContainer key={index} {...comment}/>
         ))}
-    </Comment.Group>
+    </ul>
 )

@@ -32,6 +32,7 @@ namespace Chat_App.Models.Hubs
 
             var groupInDb = (_groupRepository as GroupManager)?.FindByName(request.GroupName);
             var userInDb = _userRepository.Get(request.UserId);
+            
             // once sent, save message to comment's db
             _commentRepository.Add(new Comment
             {
@@ -67,6 +68,7 @@ namespace Chat_App.Models.Hubs
         public async Task AddToGroup(AddUserToGroupRequest req)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, req.GroupName);
+
             var userInDb = _userRepository.Get(req.UserId);
             var groupInDb = (_groupRepository as GroupManager)?.FindByName(req.GroupName);
 
@@ -76,6 +78,7 @@ namespace Chat_App.Models.Hubs
                 groupInDb = _groupRepository.Get(newGroupId);
             }
 
+            //check if there's an existing connection between user and group that's in db.
             var userGroupInDb = (_userGroupRepository as UserGroupManager)?.Find(userInDb.Id, groupInDb.Id);
             if (userGroupInDb == null)
             {
