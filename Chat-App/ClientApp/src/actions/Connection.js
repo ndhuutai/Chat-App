@@ -89,7 +89,7 @@ export const addToGroup = (groupName, id) => {
 export const sendToHub = (text, userName, avatarURL, groupName) => {
     return (dispatch, getState) => {
         getState().client.connection.invoke('SendMessageToGroup', {
-            id: getState().user.id,
+            userId: getState().user.id,
             text,
             userName,
             avatarURL,

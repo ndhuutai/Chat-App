@@ -3,11 +3,11 @@ import {Button, Form, Grid} from "semantic-ui-react";
 
 export default (props) => (
     <form onSubmit={props.onSubmit}>
-        <div className='container form-group row p-1 d-flex'>
-            <div className='col-sm-9'>
+        <div className='container form-group row p-0 m-0 d-flex'>
+            <div className='col-sm-9 p-0 m-0 align-self-center'>
                 <input className='form-control' name='input' type="text" placeholder='Enter your message...'/>
             </div>
-            <div className='col-sm-3 flex-sm-fill'>
+            <div className='col-sm-3 flex-sm-fill p-0 pl-sm-1 '>
                 <button type='submit' className='btn btn-primary flex-sm-fill w-100'>Send Message</button>
             </div>
         </div>

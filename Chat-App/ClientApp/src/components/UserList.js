@@ -3,6 +3,10 @@ import {Link} from "react-router-dom";
 
 
 export default (props) => {
+    const onExpandClick = (e) => {
+        e.preventDefault();
+        props.onExpand();
+    };
 
     const onLinkClick = (e) => {
         e.preventDefault();
@@ -10,9 +14,10 @@ export default (props) => {
     };
 
     return (
-        <ul>
+        <ul className='mb-0 mr-3 p-0'>
             {props.users.length > 0 ? props.users.map((user, index) => (
-                <li key={index} className="list-group-item d-none d-sm-none d-md-block">
+                <li key={index} className="list-group-item d-none d-sm-none d-md-block"
+                >
                     <Link to={
                         {
                             pathname: '/chat'
@@ -21,6 +26,15 @@ export default (props) => {
                     >{user.userName}</Link>
                 </li>
             )) : 'Loading'}
+            {
+                props.hasMoreUsers &&
+                <li onClick={onExpandClick}
+                className='list-group-item d-none d-sm-none d-md-block'>
+                    <Link to='/chat'>
+                        ... show more
+                    </Link>
+                </li>
+            }
         </ul>
     )
 }

@@ -17,6 +17,10 @@ import CommentForm from './CommentForm'
 
 class Chat extends React.Component {
 
+    state = {
+        maxUsers: 5
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
         const {user} = this.props;
@@ -28,7 +32,16 @@ class Chat extends React.Component {
 
     onUserClick = (userNameText) => {
         this.props.wipeComments();
-        this.props.addToGroup(userNameText,this.props.user.id);
+        this.props.addToGroup(userNameText, this.props.user.id);
+    };
+
+    onExpandClick = () => {
+        this.setState(() => ({maxUsers: this.state.maxUsers + 5}))
+        //send extra user down
+    };
+
+    transformUsers = (maxUsers) => {
+        return this.props.group.users.slice(0, maxUsers);
     };
 
     componentDidMount() {
@@ -69,10 +82,13 @@ class Chat extends React.Component {
                 </Message> : ''}
 
                 <div className='row'>
-                    <div className='col-md-4'>
-                        <UserList users={this.props.group.users} onClick={this.onUserClick}/>
+                    <div className='col-md-4 p-0'>
+                        <UserList users={this.transformUsers(this.state.maxUsers)}
+                                  onClick={this.onUserClick}
+                                  onExpand={this.onExpandClick}
+                                  hasMoreUsers={this.props.group.users.length > this.state.maxUsers}/>
                     </div>
-                    <div className='col-md-8'>
+                    <div className='col-md-8 p-0'>
                         <CommentList comments={this.props.comments}/>
                         <CommentForm onSubmit={this.onSubmit}/>
                     </div>

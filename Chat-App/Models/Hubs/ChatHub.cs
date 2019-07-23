@@ -33,6 +33,7 @@ namespace Chat_App.Models.Hubs
             var groupInDb = (_groupRepository as GroupManager)?.FindByName(request.GroupName);
             var userInDb = _userRepository.Get(request.UserId);
             
+            
             // once sent, save message to comment's db
             _commentRepository.Add(new Comment
             {

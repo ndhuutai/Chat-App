@@ -27,7 +27,7 @@
     <Content Include="ClientApp\src\components\CommentList.js" />
     <Content Include="ClientApp\src\components\UserList.js" />
     <Content Include="ClientApp\src\reducers\GroupReducer.js" />
-    <Content Include="ClientApp\styles\scss\custom.scss" />
+    <Content Include="ClientApp\src\styles\partials\_Layout.scss" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
