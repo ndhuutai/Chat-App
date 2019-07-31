@@ -15,11 +15,24 @@ import UserList from './UserList'
 import CommentList from './CommentList'
 import CommentForm from './CommentForm'
 
+//testing api delete after user
+import axios from 'axios';
+import { UserManager } from "../oidc-client/config";
+
 class Chat extends React.Component {
 
     state = {
         maxUsers: 5
-    }
+    };
+    
+    callApi =  async () => {
+        let user = UserManager.getUser();
+        
+        let response = await axios.get('https://localhost:5001/identity', {
+            'Authorization' : `Bearer ${user.access_token}`
+        })
+        
+    };
 
     onSubmit = (e) => {
         e.preventDefault();
@@ -93,6 +106,7 @@ class Chat extends React.Component {
                         <CommentForm onSubmit={this.onSubmit}/>
                     </div>
                 </div>
+                {/*<button onClick={this.callApi}>Call Api here :)</button>*/}
             </Fragment>
         )
     }

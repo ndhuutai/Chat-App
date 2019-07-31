@@ -1,0 +1,144 @@
+2019-07-29 15:50:05.907 -07:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-29 15:50:06.035 -07:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-29 15:50:06.059 -07:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-29 15:50:06.061 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-29 15:50:06.063 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-29 15:50:06.064 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-29 15:50:06.065 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-29 15:50:06.066 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-29 15:51:29.465 -07:00 [DBG] Login Url: /Account/Login
+2019-07-29 15:51:29.474 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-29 15:51:29.475 -07:00 [DBG] Logout Url: /Account/Logout
+2019-07-29 15:51:29.476 -07:00 [DBG] ConsentUrl Url: /consent
+2019-07-29 15:51:29.480 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-29 15:51:29.482 -07:00 [DBG] Error Url: /home/error
+2019-07-29 15:51:29.483 -07:00 [DBG] Error Id Parameter: errorId
+2019-07-29 15:51:29.585 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-29 15:51:29.592 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-29 15:51:29.594 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-29 15:51:29.601 -07:00 [DBG] Start discovery request
+2019-07-29 16:28:41.409 -07:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:5001
+2019-07-29 16:28:41.416 -07:00 [DBG] Client list checked and origin: https://localhost:5001 is not allowed
+2019-07-29 16:28:41.416 -07:00 [WRN] CorsPolicyService did not allow origin: https://localhost:5001
+2019-07-29 16:28:41.421 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-29 16:28:41.424 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-29 16:28:41.426 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-29 16:28:41.429 -07:00 [DBG] Start discovery request
+2019-07-29 17:05:12.340 -07:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-29 17:05:12.445 -07:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-29 17:05:12.473 -07:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-29 17:05:12.475 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-29 17:05:12.476 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-29 17:05:12.477 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-29 17:05:12.478 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-29 17:05:12.479 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-29 17:26:22.558 -07:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:5001
+2019-07-29 17:26:22.575 -07:00 [DBG] Client list checked and origin: https://localhost:5001 is allowed
+2019-07-29 17:26:22.577 -07:00 [DBG] CorsPolicyService allowed origin: https://localhost:5001
+2019-07-29 17:26:22.609 -07:00 [DBG] Login Url: /Account/Login
+2019-07-29 17:26:22.610 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-07-29 17:26:22.611 -07:00 [DBG] Logout Url: /Account/Logout
+2019-07-29 17:26:22.612 -07:00 [DBG] ConsentUrl Url: /consent
+2019-07-29 17:26:22.613 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-07-29 17:26:22.614 -07:00 [DBG] Error Url: /home/error
+2019-07-29 17:26:22.615 -07:00 [DBG] Error Id Parameter: errorId
+2019-07-29 17:26:22.669 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-29 17:26:22.678 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-29 17:26:22.680 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-29 17:26:22.688 -07:00 [DBG] Start discovery request
+2019-07-29 17:26:22.873 -07:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-29 17:26:22.906 -07:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-29 17:26:22.908 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-29 17:26:22.917 -07:00 [DBG] Start authorize request
+2019-07-29 17:26:22.936 -07:00 [DBG] No user present in authorize request
+2019-07-29 17:26:22.948 -07:00 [DBG] Start authorize request protocol validation
+2019-07-29 17:26:22.987 -07:00 [DBG] client configuration validation for client chatappJS succeeded.
+2019-07-29 17:26:23.052 -07:00 [ERR] Invalid redirect_uri: http://localhost:5003/index.html
+{"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:5001/index.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"chatappJS","redirect_uri":"http://localhost:5003/index.html","response_type":"code","scope":"chatapp","state":"a7ea236a0960484b91addb298e476eaa","code_challenge":"HEUy9Ome-ERNRQETJirOvCsAiKl3DAXNFveNxWErCec","code_challenge_method":"S256"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-29 17:26:23.104 -07:00 [ERR] Request validation failed
+2019-07-29 17:26:23.105 -07:00 [INF] {"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:5001/index.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"chatappJS","redirect_uri":"http://localhost:5003/index.html","response_type":"code","scope":"chatapp","state":"a7ea236a0960484b91addb298e476eaa","code_challenge":"HEUy9Ome-ERNRQETJirOvCsAiKl3DAXNFveNxWErCec","code_challenge_method":"S256"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-29 17:28:10.720 -07:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:5001
+2019-07-29 17:28:10.722 -07:00 [DBG] Client list checked and origin: https://localhost:5001 is allowed
+2019-07-29 17:28:10.723 -07:00 [DBG] CorsPolicyService allowed origin: https://localhost:5001
+2019-07-29 17:28:10.725 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-29 17:28:10.726 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-29 17:28:10.728 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-29 17:28:10.730 -07:00 [DBG] Start discovery request
+2019-07-29 17:28:10.810 -07:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-29 17:28:10.813 -07:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-29 17:28:10.816 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-29 17:28:10.818 -07:00 [DBG] Start authorize request
+2019-07-29 17:28:10.820 -07:00 [DBG] No user present in authorize request
+2019-07-29 17:28:10.820 -07:00 [DBG] Start authorize request protocol validation
+2019-07-29 17:28:10.822 -07:00 [DBG] client configuration validation for client chatappJS succeeded.
+2019-07-29 17:28:10.823 -07:00 [ERR] Invalid redirect_uri: https://localhost:5001/
+{"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:5001/index.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"chatappJS","redirect_uri":"https://localhost:5001/","response_type":"code","scope":"chatapp","state":"2448d22c0e744d13a924f69a75b863fb","code_challenge":"j9Mvc9h4Papqae-ixgNy2IAWT_9k4EPUGdjBxFecwtE","code_challenge_method":"S256"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-29 17:28:10.836 -07:00 [ERR] Request validation failed
+2019-07-29 17:28:10.837 -07:00 [INF] {"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:5001/index.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"chatappJS","redirect_uri":"https://localhost:5001/","response_type":"code","scope":"chatapp","state":"2448d22c0e744d13a924f69a75b863fb","code_challenge":"j9Mvc9h4Papqae-ixgNy2IAWT_9k4EPUGdjBxFecwtE","code_challenge_method":"S256"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-29 17:37:01.303 -07:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:5001
+2019-07-29 17:37:01.305 -07:00 [DBG] Client list checked and origin: https://localhost:5001 is allowed
+2019-07-29 17:37:01.307 -07:00 [DBG] CorsPolicyService allowed origin: https://localhost:5001
+2019-07-29 17:37:01.308 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-07-29 17:37:01.310 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-07-29 17:37:01.312 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-07-29 17:37:01.314 -07:00 [DBG] Start discovery request
+2019-07-29 17:37:01.394 -07:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-07-29 17:37:01.396 -07:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-07-29 17:37:01.398 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-07-29 17:37:01.400 -07:00 [DBG] Start authorize request
+2019-07-29 17:37:01.403 -07:00 [DBG] No user present in authorize request
+2019-07-29 17:37:01.404 -07:00 [DBG] Start authorize request protocol validation
+2019-07-29 17:37:01.405 -07:00 [DBG] client configuration validation for client chatappJS succeeded.
+2019-07-29 17:37:01.407 -07:00 [ERR] Invalid redirect_uri: https://localhost:5001/
+{"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:5001/index.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"chatappJS","redirect_uri":"https://localhost:5001/","response_type":"code","scope":"openid profile chatapp","state":"dd7b6c22df494cb69016e80f47dd5803","code_challenge":"xlYviBdOeyUgfTUFWucIBR_Sr6RFhhiPA0ElynNcXZU","code_challenge_method":"S256"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-29 17:37:01.423 -07:00 [ERR] Request validation failed
+2019-07-29 17:37:01.425 -07:00 [INF] {"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":null,"AllowedRedirectUris":["https://localhost:5001/index.html"],"SubjectId":"anonymous","ResponseType":null,"ResponseMode":null,"GrantType":null,"RequestedScopes":"","State":null,"UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"chatappJS","redirect_uri":"https://localhost:5001/","response_type":"code","scope":"openid profile chatapp","state":"dd7b6c22df494cb69016e80f47dd5803","code_challenge":"xlYviBdOeyUgfTUFWucIBR_Sr6RFhhiPA0ElynNcXZU","code_challenge_method":"S256"},"$type":"AuthorizeRequestValidationLog"}
+2019-07-30 14:32:05.609 -07:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-30 14:32:05.766 -07:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-30 14:32:05.796 -07:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-30 14:32:05.797 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-30 14:32:05.798 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-30 14:32:05.799 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-30 14:32:05.800 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-30 14:32:05.800 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-31 11:09:28.026 -07:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-31 11:09:28.072 -07:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-31 11:09:28.080 -07:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-31 11:09:28.081 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-31 11:09:28.082 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-31 11:09:28.082 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-31 11:09:28.082 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-31 11:09:28.083 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-31 11:09:28.119 -07:00 [FTL] Unable to start Kestrel.
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5000: address already in use. ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted ---> System.Net.Sockets.SocketException: Only one usage of each socket address (protocol/network address/port) is normally permitted
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransport.BindAsync()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransport.BindAsync()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer.<>c__DisplayClass22_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(IServerAddressesFeature addresses, KestrelServerOptions serverOptions, ILogger logger, Func`2 createBinding)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+2019-07-31 11:09:53.077 -07:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-31 11:09:53.118 -07:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-31 11:09:53.126 -07:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-31 11:09:53.126 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-31 11:09:53.128 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-31 11:09:53.129 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-31 11:09:53.129 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-31 11:09:53.130 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2019-07-31 13:23:53.894 -07:00 [INF] Starting IdentityServer4 version 2.5.0.0
+2019-07-31 13:23:54.047 -07:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-07-31 13:23:54.094 -07:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2019-07-31 13:23:54.098 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2019-07-31 13:23:54.100 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2019-07-31 13:23:54.102 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2019-07-31 13:23:54.103 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2019-07-31 13:23:54.107 -07:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid

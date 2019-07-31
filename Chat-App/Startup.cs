@@ -1,9 +1,12 @@
+using System;
 using System.IO;
+using System.Reflection;
 using Chat_App.Models;
 using Chat_App.Models.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
@@ -16,8 +19,11 @@ namespace Chat_App
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IHostingEnvironment _environment;
+
+        public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
+            _environment = environment;
             Configuration = configuration;
         }
 
@@ -26,6 +32,7 @@ namespace Chat_App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddDbContext<RepositoryContext>(opts => opts.UseMySql(Configuration["ConnectionString:ChatDB"]));
             services.AddScoped<IDataRepository<Comment>, CommentManager>();
             services.AddScoped<IDataRepository<User>, UserManager>();
@@ -34,6 +41,23 @@ namespace Chat_App
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(options =>
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
+            
+
+            services.AddMvcCore()
+                .AddAuthorization()
+                .AddJsonFormatters();
+
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "http://localhost:5000";
+                    options.RequireHttpsMetadata = false;
+
+                    options.Audience = "chatapp";
+                });
+
+            
+            
             services.AddSignalR();
 
             // In production, the React files will be served from this directory
@@ -57,6 +81,8 @@ namespace Chat_App
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseSignalR(routes => { routes.MapHub<ChatHub>("/chatHub"); });
 
