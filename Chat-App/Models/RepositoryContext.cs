@@ -1,21 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Chat_App.Models
 {
-    public class RepositoryContext: DbContext
+    public class RepositoryContext: IdentityDbContext<ApplicationUser>
     {
-        public RepositoryContext(DbContextOptions options) 
+        public RepositoryContext(DbContextOptions<RepositoryContext> options) 
             : base(options)
         {
 
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            
             modelBuilder.Entity<UserGroup>()
                 .HasKey(ug => new {ug.GroupId, ug.UserId});
 

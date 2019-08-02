@@ -27,7 +27,6 @@ namespace IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            
             var migrationAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             // uncomment, if you want to add an MVC-based UI

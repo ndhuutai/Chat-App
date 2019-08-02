@@ -32,20 +32,61 @@ namespace Chat_App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
-            services.AddDbContext<RepositoryContext>(opts => opts.UseMySql(Configuration["ConnectionString:ChatDB"]));
+            var migrationAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
+
+            services.AddDbContext<RepositoryContext>(opts =>
+                opts.UseMySql(Configuration.GetConnectionString("ChatDB")));
             services.AddScoped<IDataRepository<Comment>, CommentManager>();
             services.AddScoped<IDataRepository<User>, UserManager>();
             services.AddScoped<IDataRepository<Group>, GroupManager>();
             services.AddScoped<IDataRepository<UserGroup>, UserGroupManager>();
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<RepositoryContext>()
+                .AddDefaultTokenProviders();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(options =>
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
-            
+            services.AddIdentityServer(options =>
+                    {
+                        options.Events.RaiseErrorEvents = true;
+                        options.Events.RaiseInformationEvents = true;
+                        options.Events.RaiseFailureEvents = true;
+                        options.Events.RaiseSuccessEvents = true;
+                    })
+                    .AddConfigurationStore(options =>
+                    {
+                        options.ConfigureDbContext = b =>
+                        {
+                            b.UseMySql(Configuration.GetConnectionString("ChatDB"));
+                        };
+                    })
+                    .AddOperationalStore(options =>
+                    {
+                        options.ConfigureDbContext = b =>
+                        {
+                            b.UseMySql(Configuration.GetConnectionString("ChatDB"));
+                        };
+                        options.EnableTokenCleanup = true;
+                    })
+                    .AddAspNetIdentity<ApplicationUser>()
+                ;
 
-            services.AddMvcCore()
-                .AddAuthorization()
-                .AddJsonFormatters();
+//            services.AddMvcCore()
+//                .AddAuthorization()
+//                .AddJsonFormatters();
+
+
+//            if (_environment.IsDevelopment())
+//            {
+//                builder.AddDeveloperSigningCredential();
+//            }
+//            else
+//            {
+//                throw new Exception("need to configure key material");
+//            }
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
@@ -56,8 +97,7 @@ namespace Chat_App
                     options.Audience = "chatapp";
                 });
 
-            
-            
+
             services.AddSignalR();
 
             // In production, the React files will be served from this directory
