@@ -50,28 +50,30 @@ namespace Chat_App
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddIdentityServer(options =>
+                {
+                    options.Events.RaiseErrorEvents = true;
+                    options.Events.RaiseInformationEvents = true;
+                    options.Events.RaiseFailureEvents = true;
+                    options.Events.RaiseSuccessEvents = true;
+                })
+                .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = b =>
                     {
-                        options.Events.RaiseErrorEvents = true;
-                        options.Events.RaiseInformationEvents = true;
-                        options.Events.RaiseFailureEvents = true;
-                        options.Events.RaiseSuccessEvents = true;
-                    })
-                    .AddConfigurationStore(options =>
+                        b.UseMySql(Configuration.GetConnectionString("ChatDB"),
+                            mysql => mysql.MigrationsAssembly(migrationAssembly));
+                    };
+                })
+                .AddOperationalStore(options =>
+                {
+                    options.ConfigureDbContext = b =>
                     {
-                        options.ConfigureDbContext = b =>
-                        {
-                            b.UseMySql(Configuration.GetConnectionString("ChatDB"));
-                        };
-                    })
-                    .AddOperationalStore(options =>
-                    {
-                        options.ConfigureDbContext = b =>
-                        {
-                            b.UseMySql(Configuration.GetConnectionString("ChatDB"));
-                        };
-                        options.EnableTokenCleanup = true;
-                    })
-                    .AddAspNetIdentity<ApplicationUser>()
+                        b.UseMySql(Configuration.GetConnectionString("ChatDB"),
+                            mysql => mysql.MigrationsAssembly(migrationAssembly));
+                    };
+                    options.EnableTokenCleanup = true;
+                })
+                .AddAspNetIdentity<ApplicationUser>()
                 ;
 
 //            services.AddMvcCore()
