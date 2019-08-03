@@ -9,6 +9,7 @@ using System.Security.Claims;
 using Chat_App.Models;
 using IdentityModel;
 using IdentityServer;
+using IdentityServer.Models;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.AspNetCore.Identity;

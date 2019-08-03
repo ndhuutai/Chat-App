@@ -5,11 +5,16 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.5.0" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0" />
+    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.5.1" />
+    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.5.1" />
     <PackageReference Include="IdentityServer4.EntityFramework.Storage" Version="2.5.1" />
+    <PackageReference Include="IdentityServer4.Storage" Version="2.5.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="IdentityServer4" Version="2.5.0" />
+    <PackageReference Include="IdentityServer4" Version="2.5.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
+
     <PackageReference Include="Serilog" Version="2.8.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
@@ -18,5 +23,11 @@
   
   <ItemGroup>
     <ProjectReference Include="..\Chat-App\Chat-App.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="System.Security.Claims, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.2.0\ref\netcoreapp2.2\System.Security.Claims.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

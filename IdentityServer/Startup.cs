@@ -8,6 +8,7 @@ using IdentityServer.Data;
 using IdentityServer.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,26 +17,29 @@ namespace IdentityServer
 {
     public class Startup
     {
-        public IHostingEnvironment Environment { get; }
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
 
-        public Startup(IHostingEnvironment environment, IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
-            Environment = environment;
             Configuration = configuration;
+            Environment = environment;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var migrationAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
-
             // uncomment, if you want to add an MVC-based UI
             //services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 
+            var migrationAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
+
             services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options.UseMySql(Configuration.GetConnectionString("ChatDB"));
-            });
+                options.UseMySql(Configuration.GetConnectionString("ChatDb")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             var builder = services.AddIdentityServer(options =>
                     {
@@ -82,7 +86,7 @@ namespace IdentityServer
             }
 
             // uncomment if you want to support static files
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
 
             app.UseIdentityServer();
 
