@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Chat_App.Models
 {
-    public class RepositoryContext: IdentityDbContext<ApplicationUser>
+    public class RepositoryContext: DbContext
     {
         public RepositoryContext(DbContextOptions<RepositoryContext> options) 
             : base(options)

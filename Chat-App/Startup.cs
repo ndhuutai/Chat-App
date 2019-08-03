@@ -32,9 +32,6 @@ namespace Chat_App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var migrationAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
-
-
             services.AddDbContext<RepositoryContext>(opts =>
                 opts.UseMySql(Configuration.GetConnectionString("ChatDB")));
             services.AddScoped<IDataRepository<Comment>, CommentManager>();
@@ -42,53 +39,15 @@ namespace Chat_App
             services.AddScoped<IDataRepository<Group>, GroupManager>();
             services.AddScoped<IDataRepository<UserGroup>, UserGroupManager>();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<RepositoryContext>()
-                .AddDefaultTokenProviders();
+            
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(options =>
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
-            services.AddIdentityServer(options =>
-                {
-                    options.Events.RaiseErrorEvents = true;
-                    options.Events.RaiseInformationEvents = true;
-                    options.Events.RaiseFailureEvents = true;
-                    options.Events.RaiseSuccessEvents = true;
-                })
-                .AddConfigurationStore(options =>
-                {
-                    options.ConfigureDbContext = b =>
-                    {
-                        b.UseMySql(Configuration.GetConnectionString("ChatDB"),
-                            mysql => mysql.MigrationsAssembly(migrationAssembly));
-                    };
-                })
-                .AddOperationalStore(options =>
-                {
-                    options.ConfigureDbContext = b =>
-                    {
-                        b.UseMySql(Configuration.GetConnectionString("ChatDB"),
-                            mysql => mysql.MigrationsAssembly(migrationAssembly));
-                    };
-                    options.EnableTokenCleanup = true;
-                })
-                .AddAspNetIdentity<ApplicationUser>()
-                ;
 
-//            services.AddMvcCore()
-//                .AddAuthorization()
-//                .AddJsonFormatters();
-
-
-//            if (_environment.IsDevelopment())
-//            {
-//                builder.AddDeveloperSigningCredential();
-//            }
-//            else
-//            {
-//                throw new Exception("need to configure key material");
-//            }
+            services.AddMvcCore()
+                .AddAuthorization()
+                .AddJsonFormatters();
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
