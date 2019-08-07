@@ -53,7 +53,7 @@ function onServerDataOnConnectedToGroup({connection, dispatch}) {
     })
 }
 
-export const startSetConnection = (connection, userName, avatarURL, gender) => {
+export const startSetConnection = (connection, userName, avatarURL, gender, groupName) => {
 
     return (dispatch, getState) => {
 
@@ -72,7 +72,7 @@ export const startSetConnection = (connection, userName, avatarURL, gender) => {
         connection.start().then(() => {
             dispatch(setConnection(connection));
             //add user to groupName right away
-            connection.invoke('AddUserToDb', {userName, avatarURL, gender});
+            connection.invoke('AddUserToDb', {userName, avatarURL, gender}, groupName);
 
         }).catch(error => console.log(error));
 

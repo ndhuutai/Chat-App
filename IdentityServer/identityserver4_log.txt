@@ -157,3 +157,700 @@ System.IO.IOException: Failed to bind to address http://127.0.0.1:5000: address 
 2019-08-02 15:17:22.044 -07:00 [DBG] Consent Return Url Parameter: returnUrl
 2019-08-02 15:17:22.045 -07:00 [DBG] Error Url: /home/error
 2019-08-02 15:17:22.046 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-06 17:08:28.784 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-06 17:08:29.089 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-06 17:08:29.090 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-06 17:08:29.090 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-06 17:08:29.091 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-06 17:08:29.091 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-06 17:08:29.092 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-06 17:08:29.131 -07:00 [FTL] Application startup exception
+System.InvalidOperationException: Unable to find the required services. Please add all the required services by calling 'IServiceCollection.AddMvc' inside the call to 'ConfigureServices(...)' in the application startup code.
+   at Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.VerifyMvcIsRegistered(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc(IApplicationBuilder app, Action`1 configureRoutes)
+   at Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute(IApplicationBuilder app)
+   at IdentityServer.Startup.Configure(IApplicationBuilder app) in D:\CSharpProjects\Chat-App\IdentityServer\Startup.cs:line 94
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+2019-08-06 17:11:02.723 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-06 17:11:02.951 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-06 17:11:02.952 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-06 17:11:02.953 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-06 17:11:02.954 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-06 17:11:02.956 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-06 17:11:02.957 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-06 17:11:02.994 -07:00 [FTL] Application startup exception
+System.InvalidOperationException: Unable to find the required services. Please add all the required services by calling 'IServiceCollection.AddMvc' inside the call to 'ConfigureServices(...)' in the application startup code.
+   at Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.VerifyMvcIsRegistered(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc(IApplicationBuilder app, Action`1 configureRoutes)
+   at Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute(IApplicationBuilder app)
+   at IdentityServer.Startup.Configure(IApplicationBuilder app) in D:\CSharpProjects\Chat-App\IdentityServer\Startup.cs:line 94
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+2019-08-06 17:12:33.256 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-06 17:12:33.475 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-06 17:12:33.475 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-06 17:12:33.476 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-06 17:12:33.477 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-06 17:12:33.478 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-06 17:12:33.478 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-06 17:12:33.554 -07:00 [DBG] Starting grant removal
+2019-08-06 17:12:41.948 -07:00 [DBG] Login Url: /Account/Login
+2019-08-06 17:12:41.950 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-06 17:12:41.951 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-06 17:12:41.952 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-06 17:12:41.953 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-06 17:12:41.954 -07:00 [DBG] Error Url: /home/error
+2019-08-06 17:12:41.955 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-06 17:12:42.122 -07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No service for type 'Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionaryFactory' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.AspNetCore.Mvc.Controller.get_TempData()
+   at Microsoft.AspNetCore.Mvc.Controller.View(String viewName, Object model)
+   at Microsoft.AspNetCore.Mvc.Controller.View(Object model)
+   at IdentityServer.AccountController.Login(String returnUrl) in D:\CSharpProjects\Chat-App\IdentityServer\Quickstart\Account\AccountController.cs:line 76
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\IdentityServerMiddleware.cs:line 72
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\MtlsTokenEndpointMiddleware.cs:line 60
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-08-06 17:18:22.255 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-06 17:18:22.456 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-06 17:18:22.456 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-06 17:18:22.458 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-06 17:18:22.459 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-06 17:18:22.459 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-06 17:18:22.460 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-06 17:18:22.555 -07:00 [DBG] Starting grant removal
+2019-08-06 17:18:27.766 -07:00 [DBG] Login Url: /Account/Login
+2019-08-06 17:18:27.769 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-06 17:18:27.769 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-06 17:18:27.769 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-06 17:18:27.770 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-06 17:18:27.770 -07:00 [DBG] Error Url: /home/error
+2019-08-06 17:18:27.771 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-06 17:18:58.821 -07:00 [INF] {"Username":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"0HLOQPJ2FKMDT:00000003","TimeStamp":"2019-08-07T00:18:58.0000000Z","ProcessId":38056,"LocalIpAddress":"127.0.0.1:5000","RemoteIpAddress":"127.0.0.1","$type":"UserLoginFailureEvent"}
+2019-08-06 17:19:03.446 -07:00 [INF] {"Username":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"0HLOQPJ2FKMDT:00000004","TimeStamp":"2019-08-07T00:19:03.0000000Z","ProcessId":38056,"LocalIpAddress":"127.0.0.1:5000","RemoteIpAddress":"127.0.0.1","$type":"UserLoginFailureEvent"}
+2019-08-06 17:19:40.971 -07:00 [INF] {"Username":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"0HLOQPJ2FKMDT:00000005","TimeStamp":"2019-08-07T00:19:40.0000000Z","ProcessId":38056,"LocalIpAddress":"127.0.0.1:5000","RemoteIpAddress":"127.0.0.1","$type":"UserLoginFailureEvent"}
+2019-08-06 17:28:19.377 -07:00 [INF] {"Username":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"0HLOQPJ2FKME0:00000004","TimeStamp":"2019-08-07T00:28:19.0000000Z","ProcessId":38056,"LocalIpAddress":"127.0.0.1:5000","RemoteIpAddress":"127.0.0.1","$type":"UserLoginFailureEvent"}
+2019-08-06 17:28:24.309 -07:00 [INF] {"Username":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"0HLOQPJ2FKME0:00000005","TimeStamp":"2019-08-07T00:28:24.0000000Z","ProcessId":38056,"LocalIpAddress":"127.0.0.1:5000","RemoteIpAddress":"127.0.0.1","$type":"UserLoginFailureEvent"}
+2019-08-06 17:29:50.734 -07:00 [INF] {"Username":"alice","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"0HLOQPJ2FKME0:00000006","TimeStamp":"2019-08-07T00:29:50.0000000Z","ProcessId":38056,"LocalIpAddress":"127.0.0.1:5000","RemoteIpAddress":"127.0.0.1","$type":"UserLoginFailureEvent"}
+2019-08-06 17:32:37.679 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-06 17:32:37.873 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-06 17:32:37.874 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-06 17:32:37.875 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-06 17:32:37.875 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-06 17:32:37.876 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-06 17:32:37.876 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-06 17:32:37.977 -07:00 [DBG] Starting grant removal
+2019-08-06 17:32:55.972 -07:00 [DBG] Login Url: /Account/Login
+2019-08-06 17:32:55.975 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-06 17:32:55.975 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-06 17:32:55.976 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-06 17:32:55.976 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-06 17:32:55.977 -07:00 [DBG] Error Url: /home/error
+2019-08-06 17:32:55.977 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-06 17:33:01.914 -07:00 [INF] {"Username":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"0HLOQPR57E5IG:00000002","TimeStamp":"2019-08-07T00:33:01.0000000Z","ProcessId":34148,"LocalIpAddress":"127.0.0.1:5000","RemoteIpAddress":"127.0.0.1","$type":"UserLoginFailureEvent"}
+2019-08-06 17:37:35.531 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-06 17:37:35.929 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-06 17:37:35.930 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-06 17:37:35.930 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-06 17:37:35.930 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-06 17:37:35.931 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-06 17:37:35.931 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-06 17:37:36.192 -07:00 [DBG] Starting grant removal
+2019-08-06 17:38:40.622 -07:00 [DBG] Login Url: /Account/Login
+2019-08-06 17:38:40.624 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-06 17:38:40.625 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-06 17:38:40.625 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-06 17:38:40.625 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-06 17:38:40.626 -07:00 [DBG] Error Url: /home/error
+2019-08-06 17:38:40.626 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-06 17:38:53.452 -07:00 [INF] {"Username":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Failure","EventType":"Failure","Id":1001,"Message":"invalid credentials","ActivityId":"0HLOQPUBTV0NS:00000002","TimeStamp":"2019-08-07T00:38:53.0000000Z","ProcessId":35356,"LocalIpAddress":"127.0.0.1:5000","RemoteIpAddress":"127.0.0.1","$type":"UserLoginFailureEvent"}
+2019-08-06 17:39:21.867 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-06 17:39:22.182 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-06 17:39:22.183 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-06 17:39:22.184 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-06 17:39:22.184 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-06 17:39:22.184 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-06 17:39:22.185 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-06 17:39:22.416 -07:00 [DBG] Starting grant removal
+2019-08-06 17:39:30.513 -07:00 [DBG] Login Url: /Account/Login
+2019-08-06 17:39:30.515 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-06 17:39:30.516 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-06 17:39:30.516 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-06 17:39:30.516 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-06 17:39:30.517 -07:00 [DBG] Error Url: /home/error
+2019-08-06 17:39:30.517 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-06 17:46:38.929 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-06 17:46:38.983 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-06 17:46:38.983 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-06 17:46:38.984 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-06 17:46:38.984 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-06 17:46:38.985 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-06 17:46:38.985 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-06 17:46:39.071 -07:00 [DBG] Starting grant removal
+2019-08-06 17:46:44.022 -07:00 [DBG] Login Url: /Account/Login
+2019-08-06 17:46:44.024 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-06 17:46:44.025 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-06 17:46:44.025 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-06 17:46:44.025 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-06 17:46:44.026 -07:00 [DBG] Error Url: /home/error
+2019-08-06 17:46:44.026 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-06 17:46:48.693 -07:00 [DBG] Augmenting SignInContext
+2019-08-06 17:46:48.695 -07:00 [DBG] Adding idp claim with value: local
+2019-08-06 17:46:48.695 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-06 17:46:48.696 -07:00 [DBG] Adding auth_time claim with value: 1565138808
+2019-08-06 17:46:48.709 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-06 17:46:48.733 -07:00 [INF] {"Username":"bob","Provider":null,"ProviderUserId":null,"SubjectId":"83da8742-cf16-4318-a556-80986d8b1cec","DisplayName":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOQQ2S0E05B:00000002","TimeStamp":"2019-08-07T00:46:48.0000000Z","ProcessId":4608,"LocalIpAddress":"127.0.0.1:5000","RemoteIpAddress":"127.0.0.1","$type":"UserLoginSuccessEvent"}
+2019-08-06 17:46:48.759 -07:00 [DBG] Augmenting SignInContext
+2019-08-06 17:46:48.759 -07:00 [DBG] Adding idp claim with value: local
+2019-08-06 17:46:48.760 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-06 17:46:48.761 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-06 20:24:56.603 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-06 20:24:56.656 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-06 20:24:56.658 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-06 20:24:56.660 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-06 20:24:56.660 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-06 20:24:56.662 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-06 20:24:56.663 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-06 20:24:56.765 -07:00 [DBG] Starting grant removal
+2019-08-06 20:24:59.236 -07:00 [DBG] Login Url: /Account/Login
+2019-08-06 20:24:59.239 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-06 20:24:59.239 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-06 20:24:59.240 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-06 20:24:59.240 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-06 20:24:59.241 -07:00 [DBG] Error Url: /home/error
+2019-08-06 20:24:59.241 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-06 20:25:19.057 -07:00 [DBG] Augmenting SignInContext
+2019-08-06 20:25:19.060 -07:00 [DBG] Adding idp claim with value: local
+2019-08-06 20:25:19.060 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-06 20:25:19.061 -07:00 [DBG] Adding auth_time claim with value: 1565148319
+2019-08-06 20:25:19.077 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-06 20:25:19.105 -07:00 [INF] {"Username":"bob","Provider":null,"ProviderUserId":null,"SubjectId":"83da8742-cf16-4318-a556-80986d8b1cec","DisplayName":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOQSR9P1KK7:00000002","TimeStamp":"2019-08-07T03:25:19.0000000Z","ProcessId":35924,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-08-06 20:25:19.131 -07:00 [DBG] Augmenting SignInContext
+2019-08-06 20:25:19.132 -07:00 [DBG] Adding idp claim with value: local
+2019-08-06 20:25:19.132 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-06 20:25:19.133 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-06 20:26:20.633 -07:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-08-06 20:26:20.635 -07:00 [INF] {"SubjectId":"83da8742-cf16-4318-a556-80986d8b1cec","DisplayName":"bob","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOQSR9P1KK7:00000005","TimeStamp":"2019-08-07T03:26:20.0000000Z","ProcessId":35924,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLogoutSuccessEvent"}
+2019-08-06 20:42:40.224 -07:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-08-06 20:42:40.225 -07:00 [INF] {"SubjectId":"83da8742-cf16-4318-a556-80986d8b1cec","DisplayName":"bob","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOQSR9P1KKA:00000002","TimeStamp":"2019-08-07T03:42:40.0000000Z","ProcessId":35924,"LocalIpAddress":"127.0.0.1:5000","RemoteIpAddress":"127.0.0.1","$type":"UserLogoutSuccessEvent"}
+2019-08-06 20:42:44.005 -07:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-08-06 20:42:44.007 -07:00 [INF] {"SubjectId":"83da8742-cf16-4318-a556-80986d8b1cec","DisplayName":"bob","Category":"Authentication","Name":"User Logout Success","EventType":"Success","Id":1002,"Message":null,"ActivityId":"0HLOQSR9P1KKA:00000004","TimeStamp":"2019-08-07T03:42:44.0000000Z","ProcessId":35924,"LocalIpAddress":"127.0.0.1:5000","RemoteIpAddress":"127.0.0.1","$type":"UserLogoutSuccessEvent"}
+2019-08-06 20:43:17.182 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-06 20:43:17.241 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-06 20:43:17.242 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-06 20:43:17.242 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-06 20:43:17.243 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-06 20:43:17.244 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-06 20:43:17.245 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-06 20:43:17.353 -07:00 [DBG] Starting grant removal
+2019-08-06 20:43:18.917 -07:00 [DBG] Login Url: /Account/Login
+2019-08-06 20:43:18.920 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-06 20:43:18.921 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-06 20:43:18.921 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-06 20:43:18.922 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-06 20:43:18.922 -07:00 [DBG] Error Url: /home/error
+2019-08-06 20:43:18.923 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-06 20:43:56.440 -07:00 [DBG] Augmenting SignInContext
+2019-08-06 20:43:56.443 -07:00 [DBG] Adding idp claim with value: local
+2019-08-06 20:43:56.444 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-06 20:43:56.445 -07:00 [DBG] Adding auth_time claim with value: 1565149436
+2019-08-06 20:43:56.459 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-06 20:43:56.486 -07:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"b4e24d97-e038-44e3-8972-224187b9cc1c","DisplayName":"alice","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOQT5HFUUCO:00000003","TimeStamp":"2019-08-07T03:43:56.0000000Z","ProcessId":2536,"LocalIpAddress":"127.0.0.1:5000","RemoteIpAddress":"127.0.0.1","$type":"UserLoginSuccessEvent"}
+2019-08-06 20:43:56.512 -07:00 [DBG] Augmenting SignInContext
+2019-08-06 20:43:56.512 -07:00 [DBG] Adding idp claim with value: local
+2019-08-06 20:43:56.513 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-06 20:43:56.514 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:16:46.295 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-07 13:16:46.351 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-07 13:16:46.352 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-07 13:16:46.353 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-07 13:16:46.354 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-07 13:16:46.354 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-07 13:16:46.355 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-07 13:16:46.479 -07:00 [DBG] Starting grant removal
+2019-08-07 13:21:05.299 -07:00 [DBG] Login Url: /Account/Login
+2019-08-07 13:21:05.301 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-07 13:21:05.302 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-07 13:21:05.302 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-07 13:21:05.302 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-07 13:21:05.303 -07:00 [DBG] Error Url: /home/error
+2019-08-07 13:21:05.303 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-07 13:25:32.275 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:25:32.278 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:25:32.279 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:25:32.279 -07:00 [DBG] Adding auth_time claim with value: 1565209532
+2019-08-07 13:25:32.292 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:25:32.313 -07:00 [INF] {"Username":"bob","Provider":null,"ProviderUserId":null,"SubjectId":"83da8742-cf16-4318-a556-80986d8b1cec","DisplayName":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOREJ32MVH2:00000001","TimeStamp":"2019-08-07T20:25:32.0000000Z","ProcessId":42708,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-08-07 13:25:32.335 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:25:32.335 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:25:32.336 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:25:32.337 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:37:30.201 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-08-07 13:37:30.207 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-08-07 13:37:30.208 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-08-07 13:37:30.214 -07:00 [DBG] Start discovery request
+2019-08-07 13:37:30.907 -07:00 [DBG] Found ["openid","chatapp"] as all scopes in database
+2019-08-07 13:39:51.047 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-07 13:39:51.102 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-07 13:39:51.102 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-07 13:39:51.103 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-07 13:39:51.103 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-07 13:39:51.104 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-07 13:39:51.105 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-07 13:39:51.278 -07:00 [DBG] Starting grant removal
+2019-08-07 13:41:59.619 -07:00 [DBG] Login Url: /Account/Login
+2019-08-07 13:41:59.622 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-07 13:41:59.623 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-07 13:41:59.623 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-07 13:41:59.624 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-07 13:41:59.624 -07:00 [DBG] Error Url: /home/error
+2019-08-07 13:41:59.624 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-07 13:43:39.431 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:43:39.433 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:43:39.434 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:43:39.434 -07:00 [DBG] Adding auth_time claim with value: 1565210619
+2019-08-07 13:43:39.464 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:43:39.488 -07:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"b4e24d97-e038-44e3-8972-224187b9cc1c","DisplayName":"alice","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOREUOSJ96D:00000001","TimeStamp":"2019-08-07T20:43:39.0000000Z","ProcessId":19740,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-08-07 13:43:39.514 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:43:39.515 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:43:39.516 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:43:39.517 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:44:00.420 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:44:00.421 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:44:00.421 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:44:00.421 -07:00 [DBG] Adding auth_time claim with value: 1565210640
+2019-08-07 13:44:00.422 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:44:00.427 -07:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"b4e24d97-e038-44e3-8972-224187b9cc1c","DisplayName":"alice","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOREUOSJ96I:00000002","TimeStamp":"2019-08-07T20:44:00.0000000Z","ProcessId":19740,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-08-07 13:44:00.430 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:44:00.431 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:44:00.431 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:44:00.432 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:44:00.971 -07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: invalid return URL
+   at IdentityServer.AccountController.Login(LoginInputModel model, String button) in D:\CSharpProjects\Chat-App\IdentityServer\Quickstart\Account\AccountController.cs:line 173
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\IdentityServerMiddleware.cs:line 72
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\MtlsTokenEndpointMiddleware.cs:line 60
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-08-07 13:44:18.485 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:44:18.485 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:44:18.486 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:44:18.486 -07:00 [DBG] Adding auth_time claim with value: 1565210658
+2019-08-07 13:44:18.487 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:44:18.491 -07:00 [INF] {"Username":"alice","Provider":null,"ProviderUserId":null,"SubjectId":"b4e24d97-e038-44e3-8972-224187b9cc1c","DisplayName":"alice","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOREUOSJ96I:00000004","TimeStamp":"2019-08-07T20:44:18.0000000Z","ProcessId":19740,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-08-07 13:44:18.494 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:44:18.494 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:44:18.495 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:44:18.495 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:44:18.888 -07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: invalid return URL
+   at IdentityServer.AccountController.Login(LoginInputModel model, String button) in D:\CSharpProjects\Chat-App\IdentityServer\Quickstart\Account\AccountController.cs:line 173
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\IdentityServerMiddleware.cs:line 72
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\MtlsTokenEndpointMiddleware.cs:line 60
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-08-07 13:45:16.045 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:45:16.046 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:45:16.047 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:45:16.048 -07:00 [DBG] Adding auth_time claim with value: 1565210716
+2019-08-07 13:45:16.049 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:45:46.426 -07:00 [INF] {"Username":"bob","Provider":null,"ProviderUserId":null,"SubjectId":"83da8742-cf16-4318-a556-80986d8b1cec","DisplayName":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOREUOSJ96I:00000006","TimeStamp":"2019-08-07T20:45:46.0000000Z","ProcessId":19740,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-08-07 13:47:01.895 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:47:01.896 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:47:01.897 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:47:01.898 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:48:18.349 -07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: invalid return URL
+   at IdentityServer.AccountController.Login(LoginInputModel model, String button) in D:\CSharpProjects\Chat-App\IdentityServer\Quickstart\Account\AccountController.cs:line 173
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\IdentityServerMiddleware.cs:line 72
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\MtlsTokenEndpointMiddleware.cs:line 60
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-08-07 13:51:13.019 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:51:13.020 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:51:13.020 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:51:13.020 -07:00 [DBG] Adding auth_time claim with value: 1565211073
+2019-08-07 13:51:13.021 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:51:13.026 -07:00 [INF] {"Username":"bob","Provider":null,"ProviderUserId":null,"SubjectId":"83da8742-cf16-4318-a556-80986d8b1cec","DisplayName":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOREUOSJ96I:00000008","TimeStamp":"2019-08-07T20:51:13.0000000Z","ProcessId":19740,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-08-07 13:51:13.029 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:51:13.029 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:51:13.030 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:51:13.031 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:51:13.418 -07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: invalid return URL
+   at IdentityServer.AccountController.Login(LoginInputModel model, String button) in D:\CSharpProjects\Chat-App\IdentityServer\Quickstart\Account\AccountController.cs:line 173
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\IdentityServerMiddleware.cs:line 72
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\MtlsTokenEndpointMiddleware.cs:line 60
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-08-07 13:52:42.067 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:52:42.068 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:52:42.068 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:52:42.069 -07:00 [DBG] Adding auth_time claim with value: 1565211162
+2019-08-07 13:52:42.069 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:52:42.072 -07:00 [INF] {"Username":"bob","Provider":null,"ProviderUserId":null,"SubjectId":"83da8742-cf16-4318-a556-80986d8b1cec","DisplayName":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOREUOSJ96J:00000003","TimeStamp":"2019-08-07T20:52:42.0000000Z","ProcessId":19740,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-08-07 13:52:42.074 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:52:42.075 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:52:42.075 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:52:42.076 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:52:42.451 -07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: invalid return URL
+   at IdentityServer.AccountController.Login(LoginInputModel model, String button) in D:\CSharpProjects\Chat-App\IdentityServer\Quickstart\Account\AccountController.cs:line 173
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\IdentityServerMiddleware.cs:line 72
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\MtlsTokenEndpointMiddleware.cs:line 60
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-08-07 13:54:21.972 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:54:21.973 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:54:21.973 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:54:21.974 -07:00 [DBG] Adding auth_time claim with value: 1565211261
+2019-08-07 13:54:21.974 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:54:21.978 -07:00 [INF] {"Username":"bob","Provider":null,"ProviderUserId":null,"SubjectId":"83da8742-cf16-4318-a556-80986d8b1cec","DisplayName":"bob","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HLOREUOSJ96L:00000002","TimeStamp":"2019-08-07T20:54:21.0000000Z","ProcessId":19740,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2019-08-07 13:54:21.981 -07:00 [DBG] Augmenting SignInContext
+2019-08-07 13:54:21.981 -07:00 [DBG] Adding idp claim with value: local
+2019-08-07 13:54:21.981 -07:00 [DBG] Adding amr claim with value: pwd
+2019-08-07 13:54:21.982 -07:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-08-07 13:54:22.385 -07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: invalid return URL
+   at IdentityServer.AccountController.Login(LoginInputModel model, String button) in D:\CSharpProjects\Chat-App\IdentityServer\Quickstart\Account\AccountController.cs:line 173
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\IdentityServerMiddleware.cs:line 72
+   at IdentityServer4.Hosting.MutualTlsTokenEndpointMiddleware.Invoke(HttpContext context, IAuthenticationSchemeProvider schemes) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\MtlsTokenEndpointMiddleware.cs:line 60
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at IdentityServer4.Hosting.BaseUrlMiddleware.Invoke(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\src\Hosting\BaseUrlMiddleware.cs:line 36
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-08-07 13:55:38.414 -07:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-08-07 13:55:38.426 -07:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-08-07 13:55:38.434 -07:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-08-07 13:55:38.442 -07:00 [INF] Identity.Application was not authenticated. Failure message: No principal.
+2019-08-07 13:55:38.446 -07:00 [INF] Identity.Application was not authenticated. Failure message: No principal.
+2019-08-07 14:25:51.159 -07:00 [ERR] An error occurred using the connection to database '' on server 'localhost'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 326
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 518
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 232
+   at MySql.Data.MySqlClient.MySqlConnection.Open() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 218
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+2019-08-07 14:26:45.477 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-07 14:26:45.525 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-07 14:26:45.526 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-07 14:26:45.527 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-07 14:26:45.528 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-07 14:26:45.528 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-07 14:26:45.529 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-07 14:26:45.650 -07:00 [DBG] Starting grant removal
+2019-08-07 14:27:57.500 -07:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:5001
+2019-08-07 14:27:57.565 -07:00 [DBG] Origin https://localhost:5001 is allowed: false
+2019-08-07 14:27:57.571 -07:00 [WRN] CorsPolicyService did not allow origin: https://localhost:5001
+2019-08-07 14:27:57.590 -07:00 [DBG] Login Url: /Account/Login
+2019-08-07 14:27:57.590 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-07 14:27:57.591 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-07 14:27:57.591 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-07 14:27:57.592 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-07 14:27:57.592 -07:00 [DBG] Error Url: /home/error
+2019-08-07 14:27:57.593 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-07 14:27:57.622 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-08-07 14:27:57.628 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-08-07 14:27:57.628 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-08-07 14:27:57.634 -07:00 [DBG] Start discovery request
+2019-08-07 14:27:58.243 -07:00 [DBG] Found ["openid","chatapp"] as all scopes in database
+2019-08-07 14:28:11.613 -07:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:5001
+2019-08-07 14:28:11.617 -07:00 [DBG] Origin https://localhost:5001 is allowed: false
+2019-08-07 14:28:11.617 -07:00 [WRN] CorsPolicyService did not allow origin: https://localhost:5001
+2019-08-07 14:28:11.619 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-08-07 14:28:11.620 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-08-07 14:28:11.621 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-08-07 14:28:11.622 -07:00 [DBG] Start discovery request
+2019-08-07 14:28:11.632 -07:00 [DBG] Found ["openid","chatapp"] as all scopes in database
+2019-08-07 14:30:24.473 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-07 14:30:24.523 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-07 14:30:24.523 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-07 14:30:24.524 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-07 14:30:24.525 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-07 14:30:24.526 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-07 14:30:24.527 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-07 14:30:24.608 -07:00 [DBG] Starting grant removal
+2019-08-07 14:30:46.463 -07:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:5001
+2019-08-07 14:30:46.525 -07:00 [DBG] Origin https://localhost:5001 is allowed: false
+2019-08-07 14:30:46.531 -07:00 [WRN] CorsPolicyService did not allow origin: https://localhost:5001
+2019-08-07 14:30:46.544 -07:00 [DBG] Login Url: /Account/Login
+2019-08-07 14:30:46.545 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-07 14:30:46.546 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-07 14:30:46.547 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-07 14:30:46.548 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-07 14:30:46.549 -07:00 [DBG] Error Url: /home/error
+2019-08-07 14:30:46.549 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-07 14:30:46.573 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-08-07 14:30:46.578 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-08-07 14:30:46.579 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-08-07 14:30:46.584 -07:00 [DBG] Start discovery request
+2019-08-07 14:30:47.157 -07:00 [DBG] Found ["openid","chatapp"] as all scopes in database
+2019-08-07 14:31:14.957 -07:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:5001
+2019-08-07 14:31:14.960 -07:00 [DBG] Origin https://localhost:5001 is allowed: false
+2019-08-07 14:31:14.961 -07:00 [WRN] CorsPolicyService did not allow origin: https://localhost:5001
+2019-08-07 14:31:14.963 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-08-07 14:31:14.964 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-08-07 14:31:14.965 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-08-07 14:31:14.966 -07:00 [DBG] Start discovery request
+2019-08-07 14:31:14.973 -07:00 [DBG] Found ["openid","chatapp"] as all scopes in database
+2019-08-07 15:07:50.220 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-07 15:07:50.273 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-07 15:07:50.274 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-07 15:07:50.275 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-07 15:07:50.275 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-07 15:07:50.276 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-07 15:07:50.276 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-07 15:07:50.455 -07:00 [DBG] Starting grant removal
+2019-08-07 15:10:16.720 -07:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:5001
+2019-08-07 15:10:16.775 -07:00 [DBG] Origin https://localhost:5001 is allowed: true
+2019-08-07 15:10:16.779 -07:00 [DBG] CorsPolicyService allowed origin: https://localhost:5001
+2019-08-07 15:10:16.792 -07:00 [DBG] Login Url: /Account/Login
+2019-08-07 15:10:16.792 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-07 15:10:16.793 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-07 15:10:16.794 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-07 15:10:16.795 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-07 15:10:16.796 -07:00 [DBG] Error Url: /home/error
+2019-08-07 15:10:16.796 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-07 15:10:16.810 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-08-07 15:10:16.827 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-08-07 15:10:16.828 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-08-07 15:10:16.831 -07:00 [DBG] Start discovery request
+2019-08-07 15:10:17.033 -07:00 [DBG] Found ["openid","chatapp"] as all scopes in database
+2019-08-07 15:10:17.179 -07:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-08-07 15:10:17.195 -07:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-08-07 15:10:17.196 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-08-07 15:10:17.199 -07:00 [DBG] Start authorize request
+2019-08-07 15:10:17.209 -07:00 [DBG] No user present in authorize request
+2019-08-07 15:10:17.212 -07:00 [DBG] Start authorize request protocol validation
+2019-08-07 15:10:17.341 -07:00 [DBG] chatappJS found in database: true
+2019-08-07 15:10:17.348 -07:00 [DBG] client configuration validation for client chatappJS succeeded.
+2019-08-07 15:10:17.358 -07:00 [DBG] Checking for PKCE parameters
+2019-08-07 15:10:17.396 -07:00 [DBG] Found ["openid"] identity scopes in database
+2019-08-07 15:10:17.446 -07:00 [DBG] Found ["chatapp"] API scopes in database
+2019-08-07 15:10:17.451 -07:00 [ERR] Invalid scope: profile
+2019-08-07 15:10:17.453 -07:00 [ERR] Request validation failed
+2019-08-07 15:10:17.468 -07:00 [INF] {"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":"https://localhost:5001/callback","AllowedRedirectUris":["https://localhost:5001/callback"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile chatapp","State":"2ee70f6c729042258d03a3792755a120","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"chatappJS","redirect_uri":"https://localhost:5001/callback","response_type":"code","scope":"openid profile chatapp","state":"2ee70f6c729042258d03a3792755a120","code_challenge":"wOpIGmNBzj7B9goIO8CxvVDuVP-7xnbkRvQ7OhnOoBU","code_challenge_method":"S256"},"$type":"AuthorizeRequestValidationLog"}
+2019-08-07 15:10:17.485 -07:00 [INF] {"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":"https://localhost:5001/callback","Endpoint":"Authorize","SubjectId":null,"Scopes":"openid profile chatapp","GrantType":"authorization_code","Error":"invalid_scope","ErrorDescription":"Invalid scope","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLORGG3IPAC5:00000001","TimeStamp":"2019-08-07T22:10:17.0000000Z","ProcessId":25772,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-08-07 15:36:51.028 -07:00 [ERR] An error occurred using the connection to database '' on server 'localhost'.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 326
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 518
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 232
+   at MySql.Data.MySqlClient.MySqlConnection.Open() in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlConnection.cs:line 218
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+2019-08-07 15:42:03.147 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-07 15:42:03.289 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-07 15:42:03.291 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-07 15:42:03.292 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-07 15:42:03.293 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-07 15:42:03.295 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-07 15:42:03.297 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-07 15:42:03.525 -07:00 [DBG] Starting grant removal
+2019-08-07 15:42:47.672 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-07 15:42:47.811 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-07 15:42:47.813 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-07 15:42:47.814 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-07 15:42:47.816 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-07 15:42:47.817 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-07 15:42:47.819 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-07 15:42:48.146 -07:00 [DBG] Starting grant removal
+2019-08-07 15:42:58.593 -07:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:5001
+2019-08-07 15:42:58.764 -07:00 [DBG] Origin https://localhost:5001 is allowed: true
+2019-08-07 15:42:58.772 -07:00 [DBG] CorsPolicyService allowed origin: https://localhost:5001
+2019-08-07 15:42:58.818 -07:00 [DBG] Login Url: /Account/Login
+2019-08-07 15:42:58.819 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-07 15:42:58.820 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-07 15:42:58.821 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-07 15:42:58.822 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-07 15:42:58.823 -07:00 [DBG] Error Url: /home/error
+2019-08-07 15:42:58.825 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-07 15:42:58.876 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-08-07 15:42:58.896 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-08-07 15:42:58.898 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-08-07 15:42:58.906 -07:00 [DBG] Start discovery request
+2019-08-07 15:43:00.410 -07:00 [DBG] Found ["openid","chatapp"] as all scopes in database
+2019-08-07 15:43:00.686 -07:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-08-07 15:43:00.768 -07:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-08-07 15:43:00.770 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-08-07 15:43:00.779 -07:00 [DBG] Start authorize request
+2019-08-07 15:43:00.801 -07:00 [DBG] No user present in authorize request
+2019-08-07 15:43:00.838 -07:00 [DBG] Start authorize request protocol validation
+2019-08-07 15:43:01.508 -07:00 [DBG] chatappJS found in database: true
+2019-08-07 15:43:01.522 -07:00 [DBG] client configuration validation for client chatappJS succeeded.
+2019-08-07 15:43:01.541 -07:00 [DBG] Checking for PKCE parameters
+2019-08-07 15:43:01.617 -07:00 [DBG] Found ["openid"] identity scopes in database
+2019-08-07 15:43:01.789 -07:00 [DBG] Found ["chatapp"] API scopes in database
+2019-08-07 15:43:01.797 -07:00 [ERR] Invalid scope: profile
+2019-08-07 15:43:01.801 -07:00 [ERR] Request validation failed
+2019-08-07 15:43:01.826 -07:00 [INF] {"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":"https://localhost:5001/callback","AllowedRedirectUris":["https://localhost:5001/callback"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile chatapp","State":"46c9781757d64f5eb7a5e6976f600cc7","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"chatappJS","redirect_uri":"https://localhost:5001/callback","response_type":"code","scope":"openid profile chatapp","state":"46c9781757d64f5eb7a5e6976f600cc7","code_challenge":"qXJNUpLm-79PsE9mLetNbsc_xazn1wawA-TO_oMFCzY","code_challenge_method":"S256"},"$type":"AuthorizeRequestValidationLog"}
+2019-08-07 15:43:01.862 -07:00 [INF] {"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":"https://localhost:5001/callback","Endpoint":"Authorize","SubjectId":null,"Scopes":"openid profile chatapp","GrantType":"authorization_code","Error":"invalid_scope","ErrorDescription":"Invalid scope","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLORH2C78911:00000001","TimeStamp":"2019-08-07T22:43:01.0000000Z","ProcessId":44860,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-08-07 15:51:54.279 -07:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:5001
+2019-08-07 15:51:54.348 -07:00 [DBG] Origin https://localhost:5001 is allowed: true
+2019-08-07 15:51:54.350 -07:00 [DBG] CorsPolicyService allowed origin: https://localhost:5001
+2019-08-07 15:51:54.352 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-08-07 15:51:54.355 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-08-07 15:51:54.358 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-08-07 15:51:54.361 -07:00 [DBG] Start discovery request
+2019-08-07 15:51:54.386 -07:00 [DBG] Found ["openid","chatapp"] as all scopes in database
+2019-08-07 15:51:54.599 -07:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-08-07 15:51:54.605 -07:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-08-07 15:51:54.607 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-08-07 15:51:54.610 -07:00 [DBG] Start authorize request
+2019-08-07 15:51:54.611 -07:00 [DBG] No user present in authorize request
+2019-08-07 15:51:54.612 -07:00 [DBG] Start authorize request protocol validation
+2019-08-07 15:51:54.642 -07:00 [DBG] chatappJS found in database: true
+2019-08-07 15:51:54.644 -07:00 [DBG] client configuration validation for client chatappJS succeeded.
+2019-08-07 15:51:54.646 -07:00 [DBG] Checking for PKCE parameters
+2019-08-07 15:51:54.654 -07:00 [DBG] Found ["openid"] identity scopes in database
+2019-08-07 15:51:54.674 -07:00 [DBG] Found ["chatapp"] API scopes in database
+2019-08-07 15:51:54.676 -07:00 [ERR] Invalid scope: profile
+2019-08-07 15:51:54.677 -07:00 [ERR] Request validation failed
+2019-08-07 15:51:54.678 -07:00 [INF] {"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":"https://localhost:5001/callback","AllowedRedirectUris":["https://localhost:5001/callback"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile chatapp","State":"069c0c8b74dd4a748377b8cc567ca2a9","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"chatappJS","redirect_uri":"https://localhost:5001/callback","response_type":"code","scope":"openid profile chatapp","state":"069c0c8b74dd4a748377b8cc567ca2a9","code_challenge":"K9YsNV0uJr4EYqfniW5ulaa205b9aadwXqarRJ7cB4Q","code_challenge_method":"S256"},"$type":"AuthorizeRequestValidationLog"}
+2019-08-07 15:51:54.687 -07:00 [INF] {"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":"https://localhost:5001/callback","Endpoint":"Authorize","SubjectId":null,"Scopes":"openid profile chatapp","GrantType":"authorization_code","Error":"invalid_scope","ErrorDescription":"Invalid scope","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLORH2C78914:00000001","TimeStamp":"2019-08-07T22:51:54.0000000Z","ProcessId":44860,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}
+2019-08-07 15:59:23.732 -07:00 [INF] Starting IdentityServer4 version 2.5.1.0
+2019-08-07 15:59:23.857 -07:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-08-07 15:59:23.858 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-08-07 15:59:23.859 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-08-07 15:59:23.860 -07:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-08-07 15:59:23.863 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-08-07 15:59:23.865 -07:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-08-07 15:59:24.174 -07:00 [DBG] Starting grant removal
+2019-08-07 16:01:18.593 -07:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: https://localhost:5001
+2019-08-07 16:01:18.733 -07:00 [DBG] Origin https://localhost:5001 is allowed: true
+2019-08-07 16:01:18.749 -07:00 [DBG] CorsPolicyService allowed origin: https://localhost:5001
+2019-08-07 16:01:18.781 -07:00 [DBG] Login Url: /Account/Login
+2019-08-07 16:01:18.782 -07:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-08-07 16:01:18.783 -07:00 [DBG] Logout Url: /Account/Logout
+2019-08-07 16:01:18.784 -07:00 [DBG] ConsentUrl Url: /consent
+2019-08-07 16:01:18.785 -07:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-08-07 16:01:18.788 -07:00 [DBG] Error Url: /home/error
+2019-08-07 16:01:18.789 -07:00 [DBG] Error Id Parameter: errorId
+2019-08-07 16:01:18.824 -07:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-08-07 16:01:18.849 -07:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-08-07 16:01:18.850 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-08-07 16:01:18.857 -07:00 [DBG] Start discovery request
+2019-08-07 16:01:20.097 -07:00 [DBG] Found ["openid","chatapp"] as all scopes in database
+2019-08-07 16:01:20.317 -07:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-08-07 16:01:20.345 -07:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-08-07 16:01:20.354 -07:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-08-07 16:01:20.361 -07:00 [DBG] Start authorize request
+2019-08-07 16:01:20.380 -07:00 [DBG] No user present in authorize request
+2019-08-07 16:01:20.407 -07:00 [DBG] Start authorize request protocol validation
+2019-08-07 16:01:20.930 -07:00 [DBG] chatappJS found in database: true
+2019-08-07 16:01:20.942 -07:00 [DBG] client configuration validation for client chatappJS succeeded.
+2019-08-07 16:01:20.961 -07:00 [DBG] Checking for PKCE parameters
+2019-08-07 16:01:21.058 -07:00 [DBG] Found ["openid"] identity scopes in database
+2019-08-07 16:01:21.203 -07:00 [DBG] Found ["chatapp"] API scopes in database
+2019-08-07 16:01:21.211 -07:00 [ERR] Invalid scope: profile
+2019-08-07 16:01:21.217 -07:00 [ERR] Request validation failed
+2019-08-07 16:01:21.251 -07:00 [INF] {"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":"https://localhost:5001/callback","AllowedRedirectUris":["https://localhost:5001/callback"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"query","GrantType":"authorization_code","RequestedScopes":"openid profile chatapp","State":"5f4725c6723f44948eaff53b9e8e4e32","UiLocales":null,"Nonce":null,"AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"chatappJS","redirect_uri":"https://localhost:5001/callback","response_type":"code","scope":"openid profile chatapp","state":"5f4725c6723f44948eaff53b9e8e4e32","code_challenge":"ObsLcHnAbs3npIsmiSx_HxRoqZfUkMsoy_Pzn-1Tmpg","code_challenge_method":"S256"},"$type":"AuthorizeRequestValidationLog"}
+2019-08-07 16:01:21.292 -07:00 [INF] {"ClientId":"chatappJS","ClientName":"Chat App Client","RedirectUri":"https://localhost:5001/callback","Endpoint":"Authorize","SubjectId":null,"Scopes":"openid profile chatapp","GrantType":"authorization_code","Error":"invalid_scope","ErrorDescription":"Invalid scope","Category":"Token","Name":"Token Issued Failure","EventType":"Failure","Id":2001,"Message":null,"ActivityId":"0HLORHCK1RL44:00000001","TimeStamp":"2019-08-07T23:01:21.0000000Z","ProcessId":36852,"LocalIpAddress":"::1:5000","RemoteIpAddress":"::1","$type":"TokenIssuedFailureEvent"}

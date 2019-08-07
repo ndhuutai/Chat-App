@@ -20,20 +20,22 @@ namespace IdentityServer
                     SubjectId = "1",
                     Username = "alice",
                     Password = "password",
-                    
-                    Claims = new []
+
+                    Claims = new[]
                     {
-                        new Claim("name", "Alice"), 
-                        new Claim("website", "website.com") 
+                        new Claim("name", "Alice"),
+                        new Claim("website", "website.com")
                     }
                 }
             };
         }
+
         public static IEnumerable<IdentityResource> GetIdentityResources()
         {
             return new IdentityResource[]
             {
-                new IdentityResources.OpenId()
+                new IdentityResources.OpenId(),
+                new IdentityResources.Profile()
             };
         }
 
@@ -41,7 +43,7 @@ namespace IdentityServer
         {
             return new ApiResource[]
             {
-                new ApiResource("chatapp", "Chat Application"), 
+                new ApiResource("chatapp", "Chat Application"),
             };
         }
 
@@ -56,10 +58,16 @@ namespace IdentityServer
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
                     RequireClientSecret = false,
-                    
+
                     RedirectUris = {"https://localhost:5001/callback"},
-                    PostLogoutRedirectUris = { "https://localhost:5001/"},
-                        
+                    PostLogoutRedirectUris = {"https://localhost:5001/"},
+//                    AllowedCorsOrigins = {"https://localhost:5001"},
+                    AllowedCorsOrigins = new List<string>
+                    {
+                        "https://localhost:5001"
+                    },
+
+
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,

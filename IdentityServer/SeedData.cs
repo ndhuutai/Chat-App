@@ -9,6 +9,7 @@ using System.Security.Claims;
 using Chat_App.Models;
 using IdentityModel;
 using IdentityServer;
+using IdentityServer.Data;
 using IdentityServer.Models;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
@@ -22,7 +23,7 @@ namespace Chat_App.IdentityServer
     {
         public static void EnsureSeedData(IServiceProvider provider)
         {
-            provider.GetRequiredService<RepositoryContext>().Database.Migrate();
+            provider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
             provider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
             provider.GetRequiredService<ConfigurationDbContext>().Database.Migrate();
 

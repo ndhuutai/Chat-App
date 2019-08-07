@@ -57,13 +57,21 @@ namespace Chat_App.Models.Hubs
             await base.OnDisconnectedAsync(exception);
         }
 
-        public async Task AddUserToDb(User newUser)
+        public async Task AddUserToDb(User newUser, string groupName)
         {
             newUser.ConnectionId = Context.ConnectionId;
             var id = _userRepository.Add(newUser);
 
             var returnUser = _userRepository.Get(id);
-            await Clients.Caller.SendAsync("OnAddedToDb", returnUser);
+            await Clients.Caller.SendAsync("OnAddedToDb", new
+            {
+                returnUser.Id,
+                returnUser.Gender,
+                returnUser.AvatarUrl,
+                returnUser.ConnectionId,
+                returnUser.UserName,
+                groupName
+            });
         }
 
         public async Task AddToGroup(AddUserToGroupRequest req)

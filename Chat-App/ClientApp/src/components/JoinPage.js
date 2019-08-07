@@ -23,6 +23,12 @@ class JoinPage extends React.Component {
     };
     onSubmit = (e) => {
         e.preventDefault();
+
+        if (this.props.comments.length > 0) {
+            this.props.wipeComments();
+        }
+
+        this.props.history.push('/chat');
     };
 
     onRoomChange = (e) => {
@@ -36,28 +42,28 @@ class JoinPage extends React.Component {
 
     render() {
         return (
-                <form className="m-auto w-50">
-                    <div className="form-group">
-                        <label htmlFor="roomName">Room Name</label>
-                        <input type="text"
-                               className="form-control"
-                               id="roomName"
-                               placeholder="name of room"
-                               autoComplete="off"
-                               onChange={this.onRoomChange}/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="gender">Gender</label>
-                        <select name="gender" id="gender" onChange={this.onGenderChange}
-                                className="form-control">
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                        </select>
-                    </div>
-                    <button onClick={this.onClick}
-                            className="btn btn-primary">Join
-                    </button>
-                </form>
+            <form className="m-auto w-50" onSubmit={this.onSubmit}>
+                <div className="form-group">
+                    <label htmlFor="roomName">Room Name</label>
+                    <input type="text"
+                           className="form-control"
+                           id="roomName"
+                           placeholder="name of room"
+                           autoComplete="off"
+                           onChange={this.onRoomChange}/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="gender">Gender</label>
+                    <select name="gender" id="gender" onChange={this.onGenderChange}
+                            className="form-control">
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                    </select>
+                </div>
+                <button
+                    className="btn btn-primary">Join
+                </button>
+            </form>
         )
     }
 }

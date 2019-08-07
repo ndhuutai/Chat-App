@@ -78,16 +78,17 @@ class Chat extends React.Component {
                 .build(),
             uniqueNamesGenerator(),
             generate_avatar(user.gender ? {gender: user.gender} : ''),
-            user.gender || 'not specified');
+            user.gender || 'not specified',
+            user.groupName || 'default');
     }
 
     render() {
 
-        const {group} = this.props;
+        const {user} = this.props;
 
         return (
             <Fragment>
-                {group.name === 'default' ? <h1>Public chat room</h1> : <h1>Group name: {group.name}</h1>}
+                {user.groupName === 'default' ? <h1>Public chat room</h1> : <h1>Group name: {user.groupName}</h1>}
 
                 {this.props.comments.length < 1 ? <Message info>
                     <Message.Header>Seeing nothing?</Message.Header>
