@@ -3,25 +3,26 @@ import {connect} from 'react-redux';
 import {UserManager} from '../oidc-client/config';
 
 class LoginPage extends React.Component {
-
+    
+    state = {
+        loggedIn : false
+    };
+    
     onSubmit = (e) => {
         e.preventDefault();
         UserManager.signinRedirect();
     };
+    
+    componentDidMount() {
+        UserManager.getUser().then(user => {
+            this.setState({loggedIn: !!user});
+        })
+    }
 
     render() {
-        {
-            UserManager.getUser().then(user => {
-                if (user) {
-                    console.log("user logged in", user.profile);
-                } else {
-                    console.log("user not logged in");
-                }
-            })
-        }
-
         return (
             <Fragment>
+                <div>{this.state.loggedIn}</div>
                 <form className="w-50 m-auto" onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label htmlFor="username"
