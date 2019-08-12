@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using Chat_App.Models;
 using Chat_App.Models.Hubs;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
 namespace Chat_App
@@ -39,7 +41,6 @@ namespace Chat_App
             services.AddScoped<IDataRepository<Group>, GroupManager>();
             services.AddScoped<IDataRepository<UserGroup>, UserGroupManager>();
 
-            
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(options =>
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
@@ -49,11 +50,24 @@ namespace Chat_App
                 .AddAuthorization()
                 .AddJsonFormatters();
 
-            services.AddAuthentication("Bearer")
+            services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "http://localhost:5000";
+                    options.Authority = "https://localhost:5000";
                     options.RequireHttpsMetadata = false;
+
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        LifetimeValidator = (before, expires, token, param) =>  expires > DateTime.UtcNow,
+                        ValidateAudience = false,
+                        ValidateIssuer = false,
+                        ValidateActor = false,
+                        ValidateLifetime = true
+                    };
 
                     options.Audience = "chatapp";
                 });

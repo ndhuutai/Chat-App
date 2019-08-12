@@ -23,10 +23,10 @@ export default class Callback extends React.Component {
     
     componentDidMount() {
        new Oidc.UserManager({
-           response_type: 'query'
-       }).signinRedirectCallback().then(() => {
+           response_mode: 'query'
+       }).signinRedirectCallback().then((user) => {
            this.setState({redirectUrl: '/'})
-       })
+       }).catch(e => console.log(e));
     }
     
     render() {
@@ -36,7 +36,7 @@ export default class Callback extends React.Component {
                 {setTimeout(() => {
                     
                 })}
-                {this.state.redirectUrl? '': <Redirect to={this.state.redirectUrl}/>}
+                {this.state.redirectUrl?<Redirect to={this.state.redirectUrl}/> : ''}
             </div>
         )
     }

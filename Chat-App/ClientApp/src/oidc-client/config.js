@@ -1,7 +1,7 @@
 import * as Oidc from "oidc-client";
 
 const config = {
-    authority: "http://localhost:5000",
+    authority: "https://localhost:5000",
     client_id: "chatappJS",
     redirect_uri: "https://localhost:5001/callback",
     response_type: "code",

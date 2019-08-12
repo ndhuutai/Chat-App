@@ -22,7 +22,7 @@ class LoginPage extends React.Component {
     render() {
         return (
             <Fragment>
-                <div>{this.state.loggedIn}</div>
+                <div>{`${this.state.loggedIn}`}</div>
                 <form className="w-50 m-auto" onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label htmlFor="username"

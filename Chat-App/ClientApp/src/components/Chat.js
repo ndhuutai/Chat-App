@@ -26,12 +26,15 @@ class Chat extends React.Component {
     };
     
     callApi =  async () => {
-        let user = UserManager.getUser();
+        let user = await UserManager.getUser();
         
         let response = await axios.get('https://localhost:5001/identity', {
-            'Authorization' : `Bearer ${user.access_token}`
-        })
+            headers: {
+                'Authorization' : `Bearer ${user.access_token}`
+            }
+        });
         
+        console.log({response});
     };
 
     onSubmit = (e) => {
@@ -73,7 +76,12 @@ class Chat extends React.Component {
             return;
         }
         this.props.startSetConnection(new signalR.HubConnectionBuilder()
-                .withUrl('/chatHub')
+                .withUrl('/chatHub', {
+                    accessTokenFactory: async () => {
+                        let user = await UserManager.getUser();
+                        return user.access_token;
+                    }
+                })
                 .configureLogging(signalR.LogLevel.Information)
                 .build(),
             uniqueNamesGenerator(),
@@ -89,7 +97,7 @@ class Chat extends React.Component {
         return (
             <Fragment>
                 {user.groupName === 'default' ? <h1>Public chat room</h1> : <h1>Group name: {user.groupName}</h1>}
-
+                <button onClick={this.callApi}>Call Api</button>
                 {this.props.comments.length < 1 ? <Message info>
                     <Message.Header>Seeing nothing?</Message.Header>
                     <p>Be the first to send message!</p>
