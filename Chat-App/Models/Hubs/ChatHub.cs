@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Chat_App.Models.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 
 namespace Chat_App.Models.Hubs
 {
+    [Authorize]
     public class ChatHub : Hub
     {
         private readonly IDataRepository<Comment> _commentRepository;
@@ -22,6 +24,11 @@ namespace Chat_App.Models.Hubs
             _userRepository = userRepository;
             _userGroupRepository = userGroupRepository;
             _groupRepository = groupRepository;
+        }
+
+        public async Task SendPrivateMessage(PrivateMessageRequest request)
+        {
+            await Clients.User(request.UserId).SendAsync(request.Message);
         }
 
         public async Task SendMessageToGroup(MessageToGroupRequest request)
