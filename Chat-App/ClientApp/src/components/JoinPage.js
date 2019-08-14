@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {setGender, setGroup} from '../actions/User';
 import {wipeComments} from '../actions/Comment';
+import {startSetConnection, addToGroup} from '../actions/Connection';
+
 
 //custom components
 import GroupList from './GroupList'
@@ -27,19 +29,22 @@ class JoinPage extends React.Component {
         if (this.props.comments.length > 0) {
             this.props.wipeComments();
         }
+        
+        this.props.addToGroup(this.props.user.groupName, this.props.user.id);
 
         this.props.history.push('/chat');
     };
 
     onRoomChange = (e) => {
+        //setting group of user state
         this.props.setGroup(e.target.value);
     };
 
     onGenderChange = (e) => {
-        console.log(e);
-        this.props.setGender(e.target.innerText);
+        console.log(e.target);
+        this.props.setGender(e.target.value);
     };
-    
+
     componentDidMount() {
         const {user, client} = this.props;
         //send a request to get chat from database for a specific groupName then populate the redux store
@@ -89,8 +94,8 @@ class JoinPage extends React.Component {
                                 <label htmlFor="gender">Gender</label>
                                 <select name="gender" id="gender" onChange={this.onGenderChange}
                                         className="form-control">
-                                    <option value="1">Male</option>
-                                    <option value="2">Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                 </select>
                             </div>
                             <button
@@ -106,9 +111,12 @@ class JoinPage extends React.Component {
 
 const mapStateToProps = state => ({
     user: state.user,
+    comments: state.comments,
     client: state.client
 });
 const mapDispatchToProps = dispatch => bindActionCreators({
+    startSetConnection,
+    addToGroup,
     wipeComments,
     setGender,
     setGroup

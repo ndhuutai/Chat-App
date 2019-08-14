@@ -47,7 +47,6 @@ function onServerToGroup({connection, dispatch}) {
 //when user connected to a group, data is sent back from server containing group info
 function onServerDataOnConnectedToGroup({connection, dispatch}) {
     connection.on('ServerDataOnConnectedToGroup', ({groupId, name, userId}) => {
-        console.log({groupId, name, userId});
         dispatch(setGroupId(groupId));
         dispatch(setGroupName(name));
         dispatch(startSetGroup({groupId}));
@@ -83,8 +82,8 @@ export const startSetConnection = (connection, userName, avatarURL, gender, grou
 
 //call server to add user to groupName
 export const addToGroup = (groupName, id) => {
-    return (dispatch, getState) => {
-        getState().client.connection.invoke('AddToGroup', {groupName, userId: id, gender: getState().user.gender}); //user state
+    return async (dispatch, getState) => {
+        await getState().client.connection.invoke('AddToGroup', {groupName, userId: id, gender: getState().user.gender}); //user state
     }
 };
 

@@ -15,9 +15,9 @@ export default (props) => {
 
     return (
         <ul className='mb-0 mr-3 p-0'>
-            <li>Current {props.users.length === 1? 'User': 'Users'}}</li>
+            <li className='list-group-item list-group-item-heading'>Current {props.users.length === 1? 'User': 'Users'}</li>
             {props.users.length > 0 ? props.users.map((user, index) => (
-                <li key={index} className="list-group-item d-none d-sm-none d-md-block"
+                <li key={index} className="list-group-item list-group-item-action d-none d-sm-none d-md-block"
                 >
                     <Link to={
                         {
