@@ -1,6 +1,6 @@
 import moment from 'moment'
 import {addComment} from './Comment';
-import {addUser} from './User';
+import {addUser, startSetJoinedGroups} from './User';
 import {setGroupName, setGroupId, startSetGroup} from "./Group";
 
 
@@ -11,7 +11,7 @@ export const setConnection = (connection) => ({
 
 //when a new message is sent to the current group
 function onMessageToGroup({connection, dispatch}) {
-    connection.on("MessageToGroup", (userName, message, avatarURL) => {
+    connection.on("MessageToGroup", ({userName, message, avatarURL}) => {
         dispatch(addComment(message, userName, avatarURL));
     });
 }
@@ -46,10 +46,12 @@ function onServerToGroup({connection, dispatch}) {
 
 //when user connected to a group, data is sent back from server containing group info
 function onServerDataOnConnectedToGroup({connection, dispatch}) {
-    connection.on('ServerDataOnConnectedToGroup', ({id, name}) => {
-        dispatch(setGroupId(id));
+    connection.on('ServerDataOnConnectedToGroup', ({groupId, name, userId}) => {
+        console.log({groupId, name, userId});
+        dispatch(setGroupId(groupId));
         dispatch(setGroupName(name));
-        dispatch(startSetGroup({id}));
+        dispatch(startSetGroup({groupId}));
+        dispatch(startSetJoinedGroups({userId}));
     })
 }
 

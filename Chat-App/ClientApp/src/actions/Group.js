@@ -29,9 +29,9 @@ export const removeUserFromGroup = (user) => ({
 });
 
 
-export const startSetGroup = ({id}) => {
+export const startSetGroup = ({groupId}) => {
     return async (dispatch, getState) => {
-        const {data} = await axios.get(`${url}/${id}`);
+        const {data} = await axios.get(`${url}/${groupId}`);
         dispatch(setUsersInGroup(data));
     }
 };

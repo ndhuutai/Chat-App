@@ -107,7 +107,7 @@ class Chat extends React.Component {
 
                 <div className='row'>
                     <div className='col-md-4 p-0'>
-                        <GroupList/>
+                        <GroupList groups={this.props.user.groups}/>
                         <UserList users={this.transformUsers(this.state.maxUsers)}
                                   onClick={this.onUserClick}
                                   onExpand={this.onExpandClick}

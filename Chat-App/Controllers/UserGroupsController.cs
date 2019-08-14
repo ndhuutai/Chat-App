@@ -12,11 +12,14 @@ namespace Chat_App.Controllers
     {
         private readonly IDataRepository<UserGroup> _userGroupsRepository;
         private readonly IDataRepository<User> _usersRepository;
+        private readonly IDataRepository<Group> _groupRepository;
 
-        public UserGroupsController(IDataRepository<UserGroup> userGroupsRepository, IDataRepository<User> usersRepository)
+        public UserGroupsController(IDataRepository<UserGroup> userGroupsRepository,
+            IDataRepository<User> usersRepository, IDataRepository<Group> groupRepository)
         {
             _userGroupsRepository = userGroupsRepository;
             _usersRepository = usersRepository;
+            _groupRepository = groupRepository;
         }
 
         [HttpGet("group/{id}")]
@@ -28,9 +31,12 @@ namespace Chat_App.Controllers
         }
 
         [HttpGet("user/{id}")]
-        public IEnumerable<UserGroup> GetAllGroupsOfUser(int id)
+        public IEnumerable<Group> GetAllGroupsOfUser(int id)
         {
-            return (_userGroupsRepository as UserGroupManager)?.GetGroupsOfUser(id);
+            var userGroups = (_userGroupsRepository as UserGroupManager)?.GetGroupsOfUser(id);
+            var groups = userGroups?.Select(userGroup => _groupRepository.Get(userGroup.GroupId)).ToList();
+            
+            return groups;
         }
     }
 }

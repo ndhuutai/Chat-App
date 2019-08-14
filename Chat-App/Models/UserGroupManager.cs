@@ -53,11 +53,11 @@ namespace Chat_App.Models
 
         public long Add(UserGroup entity)
         {
-            var UserGroupInDb = _repositoryContext.UserGroups.FirstOrDefault(ug => ug.UserId == entity.UserId
+            var userGroupInDb = _repositoryContext.UserGroups.FirstOrDefault(ug => ug.UserId == entity.UserId
                                                                                    && ug.GroupId == entity.GroupId);
             var userInDb = _repositoryContext.Users.FirstOrDefault(user => user.Id == entity.UserId);
             var groupInDb = _repositoryContext.Groups.FirstOrDefault(group => group.Id == entity.GroupId);
-            if (groupInDb == null || userInDb == null || UserGroupInDb != null)
+            if (groupInDb == null || userInDb == null || userGroupInDb != null)
             {
                 return 0;
             }

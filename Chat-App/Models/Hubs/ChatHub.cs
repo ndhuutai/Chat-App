@@ -35,7 +35,12 @@ namespace Chat_App.Models.Hubs
         {
             await Clients
                 .Group(request.GroupName)
-                .SendAsync("MessageToGroup", request.UserName, request.Text, request.AvatarUrl);
+                .SendAsync("MessageToGroup", new
+                {
+                    request.UserName,
+                    request.Text,
+                    request.AvatarUrl
+                });
 
             var groupInDb = (_groupRepository as GroupManager)?.FindByName(request.GroupName);
             var userInDb = _userRepository.Get(request.UserId);
@@ -54,7 +59,9 @@ namespace Chat_App.Models.Hubs
 
         public override async Task OnConnectedAsync()
         {
-            await Clients.Caller.SendAsync("ServerMessageOnConnected", Context.ConnectionId);
+            //adding user to single-user group for private messages
+            await Groups.AddToGroupAsync(Context.ConnectionId, Context.UserIdentifier);
+//            await Clients.Caller.SendAsync("ServerMessageOnConnected", Context.ConnectionId);
             await base.OnConnectedAsync();
         }
 
@@ -110,8 +117,9 @@ namespace Chat_App.Models.Hubs
                     $"Welcome to the group {userInDb.UserName}!");
                 await Clients.Caller.SendAsync("ServerDataOnConnectedToGroup", new
                 {
-                    id = groupInDb.Id,
-                    name = groupInDb.Name
+                    groupId = groupInDb.Id,
+                    name = groupInDb.Name,
+                    userId = userInDb.Id
                 });
             }
 
