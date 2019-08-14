@@ -1,3 +1,7 @@
+import axios from 'axios';
+
+const url = '/api/usergroups/users';
+
 export const addUser = (id, connectionId, userName , avatarURL, groupName, gender) => ({
     type: 'ADD_USER',
     connectionId,
@@ -32,3 +36,10 @@ export const setUID = (id) => ({
     type: 'SET_ID',
     id
 });
+
+export const startSetJoinedGroups = ({groupId}) => {
+    return (dispatch, getState) => {
+        let {data} = axios.get(`${url}/${groupId}`);
+        dispatch(setJoinedGroups(data));
+    }
+};

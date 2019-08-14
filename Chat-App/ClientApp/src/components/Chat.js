@@ -34,7 +34,6 @@ class Chat extends React.Component {
                 'Authorization' : `Bearer ${user.access_token}`
             }
         });
-        
         console.log({response});
     };
 
