@@ -18,6 +18,11 @@ export const setGroup = (groupName) => ({
     groupName
 });
 
+export const setJoinedGroups = (groups) => ({
+    type: 'SET_JOINED_GROUPS',
+    groups
+});
+
 export const setGender= (gender) => ({
     type: 'SET_GENDER',
     gender

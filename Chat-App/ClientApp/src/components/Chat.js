@@ -12,6 +12,7 @@ import {startSetGroup} from "../actions/Group";
 
 import {generate_avatar} from 'cartoon-avatar';
 import UserList from './UserList'
+import GroupList from './GroupList'
 import CommentList from './CommentList'
 import CommentForm from './CommentForm'
 
@@ -97,7 +98,9 @@ class Chat extends React.Component {
         return (
             <Fragment>
                 {user.groupName === 'default' ? <h1>Public chat room</h1> : <h1>Group name: {user.groupName}</h1>}
+                
                 <button onClick={this.callApi}>Call Api</button>
+                
                 {this.props.comments.length < 1 ? <Message info>
                     <Message.Header>Seeing nothing?</Message.Header>
                     <p>Be the first to send message!</p>
@@ -105,6 +108,7 @@ class Chat extends React.Component {
 
                 <div className='row'>
                     <div className='col-md-4 p-0'>
+                        <GroupList/>
                         <UserList users={this.transformUsers(this.state.maxUsers)}
                                   onClick={this.onUserClick}
                                   onExpand={this.onExpandClick}
@@ -115,7 +119,6 @@ class Chat extends React.Component {
                         <CommentForm onSubmit={this.onSubmit}/>
                     </div>
                 </div>
-                {/*<button onClick={this.callApi}>Call Api here :)</button>*/}
             </Fragment>
         )
     }
