@@ -1,18 +1,12 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 import {Message, Form, Grid, Comment, Button} from 'semantic-ui-react';
-import {Col, Container, ListGroup, ListGroupItem, Row} from 'reactstrap';
 import {bindActionCreators} from 'redux';
-import * as signalR from '@aspnet/signalr';
-import {uniqueNamesGenerator} from 'unique-names-generator';
-import uuidv4 from 'uuid/v4';
 import {addComment, wipeComments} from '../actions/Comment';
 import {startSetConnection, sendToHub, addToGroup} from '../actions/Connection';
 import {startSetGroup} from "../actions/Group";
 
-import {generate_avatar} from 'cartoon-avatar';
 import UserList from './UserList'
-import GroupList from './GroupList'
 import CommentList from './CommentList'
 import CommentForm from './CommentForm'
 
@@ -62,32 +56,32 @@ class Chat extends React.Component {
 
     componentDidMount() {
 
-        const {user, client} = this.props;
-        //send a request to get chat from database for a specific groupName then populate the redux store
-
-        //wipe comments when user connect to a different room
-        //if the connection is already set up, and user change room, only add the user to the new groupName
-        //and going through startSetConnection is not adding user to the new groupName
-        if (client.connection !== undefined) {
-            this.props.addToGroup(user.groupName, user.id, user.gender);
-        }
-        //if there's already an established connection, no need to set up again.
-        if (client.connection) {
-            return;
-        }
-        this.props.startSetConnection(new signalR.HubConnectionBuilder()
-                .withUrl('/chatHub', {
-                    accessTokenFactory: async () => {
-                        let user = await UserManager.getUser();
-                        return user.access_token;
-                    }
-                })
-                .configureLogging(signalR.LogLevel.Information)
-                .build(),
-            uniqueNamesGenerator(),
-            generate_avatar(user.gender ? {gender: user.gender} : ''),
-            user.gender || 'not specified',
-            user.groupName || 'default');
+        // const {user, client} = this.props;
+        // //send a request to get chat from database for a specific groupName then populate the redux store
+        //
+        // //wipe comments when user connect to a different room
+        // //if the connection is already set up, and user change room, only add the user to the new groupName
+        // //and going through startSetConnection is not adding user to the new groupName
+        // if (client.connection !== undefined) {
+        //     this.props.addToGroup(user.groupName, user.id, user.gender);
+        // }
+        // //if there's already an established connection, no need to set up again.
+        // if (client.connection) {
+        //     return;
+        // }
+        // this.props.startSetConnection(new signalR.HubConnectionBuilder()
+        //         .withUrl('/chatHub', {
+        //             accessTokenFactory: async () => {
+        //                 let user = await UserManager.getUser();
+        //                 return user.access_token;
+        //             }
+        //         })
+        //         .configureLogging(signalR.LogLevel.Information)
+        //         .build(),
+        //     uniqueNamesGenerator(),
+        //     generate_avatar(user.gender ? {gender: user.gender} : ''),
+        //     user.gender || 'not specified',
+        //     user.groupName || 'default');
     }
 
     render() {
@@ -107,7 +101,6 @@ class Chat extends React.Component {
 
                 <div className='row'>
                     <div className='col-md-4 p-0'>
-                        <GroupList groups={this.props.user.groups}/>
                         <UserList users={this.transformUsers(this.state.maxUsers)}
                                   onClick={this.onUserClick}
                                   onExpand={this.onExpandClick}
@@ -127,18 +120,15 @@ const mapStateToProps = (state) => {
     return {
         comments: state.comments,
         user: state.user,
-        client: state.client,
         group: state.group
     }
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    startSetConnection,
     addToGroup,
     sendToHub,
     addComment,
-    wipeComments,
-    startSetGroup
+    wipeComments
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);
