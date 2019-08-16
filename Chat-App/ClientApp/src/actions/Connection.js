@@ -11,8 +11,8 @@ export const setConnection = (connection) => ({
 
 //when a new message is sent to the current group
 function onMessageToGroup({connection, dispatch}) {
-    connection.on("MessageToGroup", ({userName, message, avatarURL}) => {
-        dispatch(addComment(message, userName, avatarURL));
+    connection.on("MessageToGroup", ({userName, text, avatarUrl}) => {
+        dispatch(addComment(text, userName, avatarUrl));
     });
 }
 

@@ -24,7 +24,7 @@ class JoinPage extends React.Component {
     state = {
         room: '',
         gender: ''
-    }
+    };
 
     onClick = (e) => {
         if (this.props.comments.length > 0) {
@@ -116,6 +116,7 @@ const mapStateToProps = state => ({
     comments: state.comments,
     client: state.client
 });
+
 const mapDispatchToProps = dispatch => bindActionCreators({
     startSetConnection,
     addToGroup,
