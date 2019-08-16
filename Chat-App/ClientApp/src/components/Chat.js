@@ -23,6 +23,8 @@ class Chat extends React.Component {
     callApi =  async () => {
         let user = await UserManager.getUser();
         
+        console.log(user);
+        
         let response = await axios.get('https://localhost:5001/identity', {
             headers: {
                 'Authorization' : `Bearer ${user.access_token}`
@@ -55,33 +57,6 @@ class Chat extends React.Component {
     };
 
     componentDidMount() {
-
-        // const {user, client} = this.props;
-        // //send a request to get chat from database for a specific groupName then populate the redux store
-        //
-        // //wipe comments when user connect to a different room
-        // //if the connection is already set up, and user change room, only add the user to the new groupName
-        // //and going through startSetConnection is not adding user to the new groupName
-        // if (client.connection !== undefined) {
-        //     this.props.addToGroup(user.groupName, user.id, user.gender);
-        // }
-        // //if there's already an established connection, no need to set up again.
-        // if (client.connection) {
-        //     return;
-        // }
-        // this.props.startSetConnection(new signalR.HubConnectionBuilder()
-        //         .withUrl('/chatHub', {
-        //             accessTokenFactory: async () => {
-        //                 let user = await UserManager.getUser();
-        //                 return user.access_token;
-        //             }
-        //         })
-        //         .configureLogging(signalR.LogLevel.Information)
-        //         .build(),
-        //     uniqueNamesGenerator(),
-        //     generate_avatar(user.gender ? {gender: user.gender} : ''),
-        //     user.gender || 'not specified',
-        //     user.groupName || 'default');
     }
 
     render() {

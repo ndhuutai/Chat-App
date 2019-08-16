@@ -48,19 +48,6 @@ class LoginPage extends React.Component {
     }
 }
 
-//
-// (<Form onSubmit={this.onLogin}>
-//     <Form.Field>
-//         <label>Username</label>
-//         <input placeholder='username'/>
-//     </Form.Field>
-//     <Form.Field>
-//         <label>Password</label>
-//         <input type='password' placeholder='Password'/>
-//     </Form.Field>
-//     <Button type='submit'>Submit</Button>
-// </Form>)
-
 export default connect()(LoginPage);
 
 

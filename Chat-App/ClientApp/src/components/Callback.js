@@ -26,6 +26,8 @@ export default class Callback extends React.Component {
            response_mode: 'query'
        }).signinRedirectCallback().then((user) => {
            this.setState({redirectUrl: '/'})
+           console.log('in here');
+           console.log(user);
        }).catch(e => console.log(e));
     }
     
