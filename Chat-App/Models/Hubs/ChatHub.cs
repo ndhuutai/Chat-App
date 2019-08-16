@@ -113,15 +113,16 @@ namespace Chat_App.Models.Hubs
                     Group = groupInDb
                 };
                 _userGroupRepository.Add(newUserGroup);
-                await Clients.Caller.SendAsync("ServerMessageOnConnectedToGroup",
-                    $"Welcome to the group {userInDb.UserName}!");
-                await Clients.Caller.SendAsync("ServerDataOnConnectedToGroup", new
-                {
-                    groupId = groupInDb.Id,
-                    name = groupInDb.Name,
-                    userId = userInDb.Id
-                });
             }
+
+            await Clients.Caller.SendAsync("ServerMessageOnConnectedToGroup",
+                $"Welcome to the group {userInDb.UserName}!");
+            await Clients.Caller.SendAsync("ServerDataOnConnectedToGroup", new
+            {
+                groupId = groupInDb.Id,
+                name = groupInDb.Name,
+                userId = userInDb.Id
+            });
 
             await Clients.OthersInGroup(req.GroupName).SendAsync("ServerToGroup", userInDb.UserName);
         }

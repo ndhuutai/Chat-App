@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {setGender, setGroup} from '../actions/User';
 import {wipeComments} from '../actions/Comment';
+import {setUsersInGroup} from '../actions/Group';
+
 import {startSetConnection, addToGroup} from '../actions/Connection';
 
 
@@ -18,6 +20,11 @@ import {generate_avatar} from "cartoon-avatar";
 
 class JoinPage extends React.Component {
 
+    state = {
+        room: '',
+        gender: ''
+    }
+
     onClick = (e) => {
         if (this.props.comments.length > 0) {
             this.props.wipeComments();
@@ -29,7 +36,7 @@ class JoinPage extends React.Component {
         if (this.props.comments.length > 0) {
             this.props.wipeComments();
         }
-        
+        this.props.setUsersInGroup([]);
         this.props.addToGroup(this.props.user.groupName, this.props.user.id);
 
         this.props.history.push('/chat');
@@ -41,8 +48,21 @@ class JoinPage extends React.Component {
     };
 
     onGenderChange = (e) => {
-        console.log(e.target);
         this.props.setGender(e.target.value);
+    };
+    
+    onGroupClick = (e) => {
+        
+        console.log(e.target.innerText);
+        if(this.props.comments.length > 0) {
+            this.props.wipeComments();
+        }
+
+        this.props.setUsersInGroup([]);
+        this.props.setGroup(e.target.innerText);
+        //using innerText here since dispatch above isn't finished and thus
+        //the following dispatch is accessing the old props.user.name (if used here)
+        this.props.addToGroup(e.target.innerText,this.props.user.id);
     };
 
     componentDidMount() {
@@ -78,7 +98,7 @@ class JoinPage extends React.Component {
         return (
             <Fragment>
                 <div className='row'>
-                    <GroupList groups={this.props.user.groups} className='col-3'/>
+                    <GroupList groups={this.props.user.groups} className='col-3' onGroupClick={this.onGroupClick}/>
                     <div className='col-9'>
                         <form className="m-auto w-50" onSubmit={this.onSubmit}>
                             <div className="form-group">
@@ -88,7 +108,8 @@ class JoinPage extends React.Component {
                                        id="roomName"
                                        placeholder="name of room"
                                        autoComplete="off"
-                                       onChange={this.onRoomChange}/>
+                                       onChange={this.onRoomChange}
+                                />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="gender">Gender</label>
@@ -117,6 +138,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
     startSetConnection,
     addToGroup,
+    setUsersInGroup,
     wipeComments,
     setGender,
     setGroup

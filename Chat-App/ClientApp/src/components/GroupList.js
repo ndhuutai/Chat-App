@@ -7,9 +7,11 @@ export default (props) => (
         {props.groups.map((group, index) => {
             return (
                 <li key={index}
-                    className='list-group-item list-group-item-action d-none d-sm-none d-md-block'
-                    onClick={props.onGroupClick}
-                ><Link to='/chat'>{group.name}</Link></li>
+                        className='list-group-item list-group-item-action d-none d-sm-none d-md-block text'
+                        onClick={props.onGroupClick}
+                >
+                    <Link to={'/chat'}>{group.name}</Link>
+                </li>
             )
         })}
     </ul>

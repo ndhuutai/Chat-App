@@ -82,8 +82,8 @@ export const startSetConnection = (connection, userName, avatarURL, gender, grou
 
 //call server to add user to groupName
 export const addToGroup = (groupName, id) => {
-    return async (dispatch, getState) => {
-        await getState().client.connection.invoke('AddToGroup', {groupName, userId: id, gender: getState().user.gender}); //user state
+    return (dispatch, getState) => {
+        getState().client.connection.invoke('AddToGroup', {groupName, userId: id, gender: getState().user.gender}); //user state
     }
 };
 
