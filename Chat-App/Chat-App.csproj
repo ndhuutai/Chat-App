@@ -29,6 +29,7 @@
     <Content Include="ClientApp\src\components\CommentList.js" />
     <Content Include="ClientApp\src\components\GroupList.js" />
     <Content Include="ClientApp\src\components\Home.js" />
+    <Content Include="ClientApp\src\components\JoinForm.js" />
     <Content Include="ClientApp\src\components\UserList.js" />
     <Content Include="ClientApp\src\oidc-client\config.js" />
     <Content Include="ClientApp\src\reducers\GroupReducer.js" />

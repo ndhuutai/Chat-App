@@ -1,5 +1,9 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
+import {generate_avatar} from "cartoon-avatar";
+import {UserManager} from "../oidc-client/config";
+import {uniqueNamesGenerator} from "unique-names-generator";
+import * as signalR from "@aspnet/signalr";
 
 //custom actions
 import {bindActionCreators} from 'redux';
@@ -12,10 +16,7 @@ import {startSetConnection, addToGroup} from '../actions/Connection';
 
 //custom components
 import GroupList from './GroupList'
-import * as signalR from "@aspnet/signalr";
-import {UserManager} from "../oidc-client/config";
-import {uniqueNamesGenerator} from "unique-names-generator";
-import {generate_avatar} from "cartoon-avatar";
+import JoinForm from './JoinForm'
 
 
 class JoinPage extends React.Component {
@@ -52,17 +53,16 @@ class JoinPage extends React.Component {
     };
     
     onGroupClick = (e) => {
-        
-        console.log(e.target.innerText);
+        let groupName = e.target.innerText;
         if(this.props.comments.length > 0) {
             this.props.wipeComments();
         }
 
         this.props.setUsersInGroup([]);
-        this.props.setGroup(e.target.innerText);
+        this.props.setGroup(groupName);
         //using innerText here since dispatch above isn't finished and thus
-        //the following dispatch is accessing the old props.user.name (if used here)
-        this.props.addToGroup(e.target.innerText,this.props.user.id);
+        //the following dispatch would be accessing the old props.user.groupName (if used here)
+        this.props.addToGroup(groupName,this.props.user.id);
     };
 
     componentDidMount() {
@@ -100,29 +100,10 @@ class JoinPage extends React.Component {
                 <div className='row'>
                     <GroupList groups={this.props.user.groups} className='col-3' onGroupClick={this.onGroupClick}/>
                     <div className='col-9'>
-                        <form className="m-auto w-50" onSubmit={this.onSubmit}>
-                            <div className="form-group">
-                                <label htmlFor="roomName">Room Name</label>
-                                <input type="text"
-                                       className="form-control"
-                                       id="roomName"
-                                       placeholder="name of room"
-                                       autoComplete="off"
-                                       onChange={this.onRoomChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="gender">Gender</label>
-                                <select name="gender" id="gender" onChange={this.onGenderChange}
-                                        className="form-control">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div>
-                            <button
-                                className="btn btn-primary">Join
-                            </button>
-                        </form>
+                        <JoinForm onSubmit={this.onSubmit}
+                        onRoomChange={this.onRoomChange}
+                        onGenderChange={this.onGenderChange}
+                        onClick={this.onClick}/>
                     </div>
                 </div>
             </Fragment>
