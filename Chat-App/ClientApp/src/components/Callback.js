@@ -1,55 +1,46 @@
 import React from 'react';
 import * as Oidc from 'oidc-client';
-import { Redirect } from "react-router-dom";
-
-//
-// const signinRedirectPromise = () => {
-//         console.log('sadfsadf');
-//         new Oidc.UserManager({
-//             response_mode : "query"
-//         }).signinRedirectCallback().then(() => {
-//             window.location = "/"
-//         }).catch( e => {
-//             return <div>{e}</div>
-// })
-// };
+import {Redirect} from "react-router-dom";
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {setAuthenticated} from '../actions/User';
 
 
-export default class Callback extends React.Component {
+class Callback extends React.Component {
     state = {
-        redirectUrl : '',
-        countdown : 5
+        redirectUrl: '',
+        countDown: 5
     };
-    
+
     componentDidMount() {
-       new Oidc.UserManager({
-           response_mode: 'query'
-       }).signinRedirectCallback().then((user) => {
-           this.setState({redirectUrl: '/'})
-           console.log('in here');
-           console.log(user);
-       }).catch(e => console.log(e));
+        new Oidc.UserManager({
+            response_mode: 'query'
+        }).signinRedirectCallback().then((user) => {
+            this.setState({redirectUrl: '/'});
+            this.props.setAuthenticated(!!user);
+        }).catch(e => console.log(e));
     }
-    
+
     render() {
+        
+        setTimeout(() => {
+            this.setState({countDown: this.state.countDown - 1});
+        }, 1000);
+        
         return (
             <div>
-                You were logged in.
-                {setTimeout(() => {
-                    
-                })}
-                {this.state.redirectUrl?<Redirect to={this.state.redirectUrl}/> : ''}
+                <p>You are logged in. Redirecting
+                    in {this.state.countDown > 1 ? `${this.state.countDown} seconds` : `${this.state.countDown} second`}</p>
+                {this.state.countDown === 0 ? <Redirect to={this.state.redirectUrl}/> : ''}
             </div>
         )
     }
 }
 
-// export default () => (
-//    
-//    
-//     <div>
-//         you were logged in.
-//         {signinRedirectPromise()}
-//         {/*<Redirect to={"/"}/>*/}
-//     </div>
-// )
+const mapDispatchToProps = dispatch => bindActionCreators({
+    setAuthenticated
+}, dispatch);
+
+
+export default connect(undefined, mapDispatchToProps)(Callback);
+

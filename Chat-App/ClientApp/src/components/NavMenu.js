@@ -36,9 +36,7 @@ class NavMenu extends React.Component {
     };
     
     componentDidMount() {
-        console.log('WTF');
         UserManager.getUser().then(user => {
-            console.log(!!user);
             this.setState({isLoggedIn: !!user})
         }).catch(e =>console.log(e));
     }
@@ -60,7 +58,7 @@ class NavMenu extends React.Component {
                                 </NavItem>
                                 <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/"
-                                             onClick={this.onClick}>{this.state.isLoggedIn ? 'Log Out' : 'Log In'}</NavLink>
+                                             onClick={this.onClick}>{this.props.user.isAuthenticated ? 'Log Out' : 'Log In'}</NavLink>
                                 </NavItem>
                             </ul>
                         </Collapse>

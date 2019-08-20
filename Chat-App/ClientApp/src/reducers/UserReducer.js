@@ -40,6 +40,11 @@ export default (state = defaultState, action) => {
                 ...state,
                 id: action.id
             };
+        case 'SET_AUTHENTICATED':
+            return {
+                ...state,
+                isAuthenticated: action.isAuthenticated
+            };
         default:
             return state;
     }

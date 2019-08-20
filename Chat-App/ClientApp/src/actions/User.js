@@ -37,6 +37,11 @@ export const setUID = (id) => ({
     id
 });
 
+export const setAuthenticated = (isAuthenticated) => ({
+    type: 'SET_AUTHENTICATED',
+    isAuthenticated
+})
+
 export const startSetJoinedGroups = ({userId}) => {
     return async (dispatch, getState) => {
         console.log(userId);
