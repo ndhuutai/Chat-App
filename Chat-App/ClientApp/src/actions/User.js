@@ -32,9 +32,9 @@ export const setGender= (gender) => ({
     gender
 });
 
-export const setUID = (id) => ({
-    type: 'SET_ID',
-    id
+export const setSub = (sub) => ({
+    type: 'SET_SUB',
+    sub
 });
 
 export const setAuthenticated = (isAuthenticated) => ({

@@ -101,8 +101,9 @@ namespace Chat_App.Models.Hubs
                 groupInDb = _groupRepository.Get(newGroupId);
             }
 
-            //check if there's an existing connection between user and group that's in db.
+            //check if there's an existing association between user and group that's in db.
             var userGroupInDb = (_userGroupRepository as UserGroupManager)?.Find(userInDb.Id, groupInDb.Id);
+            //if no association between user and group
             if (userGroupInDb == null)
             {
                 var newUserGroup = new UserGroup

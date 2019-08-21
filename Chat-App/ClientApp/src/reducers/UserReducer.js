@@ -35,10 +35,10 @@ export default (state = defaultState, action) => {
                 ...state,
                 gender: action.gender
             };
-        case 'SET_ID':
+        case 'SET_SUB':
             return {
                 ...state,
-                id: action.id
+                sub: action.sub
             };
         case 'SET_AUTHENTICATED':
             return {
