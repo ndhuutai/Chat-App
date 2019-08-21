@@ -43,9 +43,10 @@ namespace Chat_App.Models.Hubs
                 });
 
             var groupInDb = (_groupRepository as GroupManager)?.FindByName(request.GroupName);
-            var userInDb = _userRepository.Get(request.UserId);
+            var userInDb = _userRepository.Get(request.Id);
 
-
+            
+            
             // once sent, save message to comment's db
             _commentRepository.Add(new Comment
             {
@@ -84,6 +85,7 @@ namespace Chat_App.Models.Hubs
                 returnUser.AvatarUrl,
                 returnUser.ConnectionId,
                 returnUser.UserName,
+                returnUser.Sub,
                 groupName
             });
         }
@@ -92,10 +94,10 @@ namespace Chat_App.Models.Hubs
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, req.GroupName);
 
-            var userInDb = _userRepository.Get(req.UserId);
+            var userInDb = _userRepository.Get(req.Id);
             var groupInDb = (_groupRepository as GroupManager)?.FindByName(req.GroupName);
 
-            if (groupInDb == null)
+            if (groupInDb == null) 
             {
                 var newGroupId = _groupRepository.Add(new Group {Name = req.GroupName});
                 groupInDb = _groupRepository.Get(newGroupId);
@@ -122,7 +124,7 @@ namespace Chat_App.Models.Hubs
             {
                 groupId = groupInDb.Id,
                 name = groupInDb.Name,
-                userId = userInDb.Id
+                userInDb.Id
             });
 
             await Clients.OthersInGroup(req.GroupName).SendAsync("ServerToGroup", userInDb.UserName);

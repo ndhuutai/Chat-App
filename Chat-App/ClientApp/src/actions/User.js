@@ -2,14 +2,15 @@ import axios from 'axios';
 
 const url = '/api/usergroups/user';
 
-export const addUser = (id, connectionId, userName , avatarURL, groupName, gender) => ({
+export const addUser = (id, connectionId, userName , avatarURL, groupName, gender, sub) => ({
     type: 'ADD_USER',
     connectionId,
     userName,
     avatarURL,
     groupName,
     gender,
-    id
+    id,
+    sub
 });
 
 export const setConnectionId = (connectionId) => ({
@@ -42,10 +43,10 @@ export const setAuthenticated = (isAuthenticated) => ({
     isAuthenticated
 })
 
-export const startSetJoinedGroups = ({userId}) => {
+export const startSetJoinedGroups = ({id}) => {
     return async (dispatch, getState) => {
-        console.log(userId);
-        let {data} = await axios.get(`${url}/${userId}`);
+        console.log(id);
+        let {data} = await axios.get(`${url}/${id}`);
         console.log(data);
         dispatch(setJoinedGroups(data));
     }

@@ -18,9 +18,8 @@ function onMessageToGroup({connection, dispatch}) {
 
 //when user has been added to db
 function onAddedToDb({connection, dispatch}) {
-    connection.on('OnAddedToDb', ({id, connectionId, userName, avatarUrl, groupName = 'default', gender, userIdentifier}) => {
-        console.log(userIdentifier);
-        dispatch(addUser(id, connectionId, userName, avatarUrl, groupName, gender));
+    connection.on('OnAddedToDb', ({id, connectionId, userName, avatarUrl, groupName = 'default', gender, sub}) => {
+        dispatch(addUser(id, connectionId, userName, avatarUrl, groupName, gender, sub));
         dispatch(addToGroup(groupName, id))
     });
 }
@@ -47,15 +46,16 @@ function onServerToGroup({connection, dispatch}) {
 
 //when user connected to a group, data is sent back from server containing group info
 function onServerDataOnConnectedToGroup({connection, dispatch}) {
-    connection.on('ServerDataOnConnectedToGroup', ({groupId, name, userId}) => {
+    connection.on('ServerDataOnConnectedToGroup', ({groupId, name, id}) => {
         dispatch(setGroupId(groupId));
         dispatch(setGroupName(name));
         dispatch(startSetGroup({groupId}));
-        dispatch(startSetJoinedGroups({userId}));
+        console.log('here');
+        dispatch(startSetJoinedGroups({id}));
     })
 }
 
-export const startSetConnection = (connection, userName, avatarURL, gender, groupName) => {
+export const startSetConnection = (connection, userName, avatarURL, gender, groupName, sub) => {
 
     return (dispatch, getState) => {
 
@@ -74,7 +74,7 @@ export const startSetConnection = (connection, userName, avatarURL, gender, grou
         connection.start().then(() => {
             dispatch(setConnection(connection));
             //add user to groupName right away
-            connection.invoke('AddUserToDb', {userName, avatarURL, gender}, groupName);
+            connection.invoke('AddUserToDb', {userName, avatarURL, gender, sub}, groupName);
 
         }).catch(error => console.log(error));
 
@@ -84,7 +84,7 @@ export const startSetConnection = (connection, userName, avatarURL, gender, grou
 //call server to add user to groupName
 export const addToGroup = (groupName, id) => {
     return (dispatch, getState) => {
-        getState().client.connection.invoke('AddToGroup', {groupName, userId: id, gender: getState().user.gender}); //user state
+        getState().client.connection.invoke('AddToGroup', {groupName, id, gender: getState().user.gender}); //user state
     }
 };
 

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Chat_App.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp;
 
 namespace Chat_App.Controllers
 {

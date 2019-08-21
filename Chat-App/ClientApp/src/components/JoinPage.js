@@ -67,6 +67,7 @@ class JoinPage extends React.Component {
 
     componentDidMount() {
         const {user, client} = this.props;
+        
         //send a request to get chat from database for a specific groupName then populate the redux store
 
         //wipe comments when user connect to a different room
@@ -91,7 +92,8 @@ class JoinPage extends React.Component {
             uniqueNamesGenerator(),
             generate_avatar(user.gender ? {gender: user.gender} : ''),
             user.gender || 'not specified',
-            user.groupName || 'default');
+            user.groupName || 'default',
+            user.sub);
     }
 
     render() {

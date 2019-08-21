@@ -16,6 +16,11 @@ class Callback extends React.Component {
         new Oidc.UserManager({
             response_mode: 'query'
         }).signinRedirectCallback().then((user) => {
+
+            setTimeout(() => {
+                this.setState({countDown: this.state.countDown - 1});
+            }, 1000);
+            
             this.setState({redirectUrl: '/'});
             this.props.setAuthenticated(!!user);
             this.props.setSub(user.profile.sub);
@@ -23,9 +28,7 @@ class Callback extends React.Component {
     }
 
     render() {
-        setTimeout(() => {
-            this.setState({countDown: this.state.countDown - 1});
-        }, 1000);
+        
         return (
             <div>
                 <p>You are logged in. Redirecting

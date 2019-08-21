@@ -21,6 +21,8 @@ namespace Chat_App.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
+        public string Sub { get; set; }
+        [Required]
         public string UserName { get; set; }
 
         public String ConnectionId { get; set; }

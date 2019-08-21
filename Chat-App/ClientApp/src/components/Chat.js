@@ -44,7 +44,10 @@ class Chat extends React.Component {
 
     onUserClick = (userNameText) => {
         this.props.wipeComments();
-        this.props.addToGroup(userNameText, this.props.user.id);
+        
+        //find user in user array of group state
+        let clickedUser = this.props.group.users.find(user => user.userName === userNameText);
+        this.props.addToGroup(`${this.props.user.sub}.${clickedUser.sub}`, this.props.user.id);
     };
 
     onExpandClick = () => {
