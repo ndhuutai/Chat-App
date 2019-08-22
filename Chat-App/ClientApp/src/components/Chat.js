@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import {Message, Form, Grid, Comment, Button} from 'semantic-ui-react';
 import {bindActionCreators} from 'redux';
 import {addComment, wipeComments} from '../actions/Comment';
-import {startSetConnection, sendToHub, addToGroup} from '../actions/Connection';
+import { sendToHub, addToGroup} from '../actions/Connection';
+import {setGroup} from '../actions/User';
+
 import {startSetGroup} from "../actions/Group";
 
 import UserList from './UserList'
@@ -47,6 +49,7 @@ class Chat extends React.Component {
         
         //find user in user array of group state
         let clickedUser = this.props.group.users.find(user => user.userName === userNameText);
+        this.props.setGroup(userNameText);
         this.props.addToGroup(`${this.props.user.sub}.${clickedUser.sub}`, this.props.user.id);
     };
 
@@ -64,11 +67,11 @@ class Chat extends React.Component {
 
     render() {
 
-        const {user} = this.props;
+        const {user, group} = this.props;
 
         return (
             <Fragment>
-                {user.groupName === 'default' ? <h1>Public chat room</h1> : <h1>Group name: {user.groupName}</h1>}
+                {user.groupName === 'default' ? <h1>Public chat room</h1> : <h1>{user.groupName}</h1>}
                 
                 <button onClick={this.callApi}>Call Api</button>
                 
@@ -106,7 +109,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     addToGroup,
     sendToHub,
     addComment,
-    wipeComments
+    wipeComments,
+    setGroup
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);
