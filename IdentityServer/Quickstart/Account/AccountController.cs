@@ -377,9 +377,9 @@ namespace IdentityServer
         }
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult Register(string returnUrl)
         {
-            return View();
+            return View("Register", new RegisterViewModel{ReturnUrl = returnUrl});
         }
 
         [HttpPost]

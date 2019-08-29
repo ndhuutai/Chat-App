@@ -45,9 +45,11 @@
                                 </div>
                             </fieldset>
                         </form>
-                        <form asp-action = "Register" asp-controller = "Account" method = "get">
-                            <button class="btn btn-info">Register</button>
-                        </form>
+                        @* <form asp-action="Register" asp-controller="Account" asp-route-returnUrl="something" method="get" > *@
+                        @*     <button class="btn btn-info" >Register</button> *@
+                        @* </form> *@
+                        
+                        <a asp-action="Register" asp-controller="Account" asp-route-returnUrl=@Model.ReturnUrl>Register</a>
                     </div>
                 </div>
             </div>
