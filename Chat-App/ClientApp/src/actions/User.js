@@ -16,7 +16,12 @@ export const addUser = (id, connectionId, userName , avatarURL, groupName, gende
 export const setConnectionId = (connectionId) => ({
     type: 'SET_CONNECTION',
     connectionId
-})
+});
+
+export const setUserName = userName => ({
+    type: "SET_USER_NAME",
+    userName
+});
 
 export const setGroup = (groupName) => ({
     type:'SET_GROUP',
@@ -41,13 +46,11 @@ export const setSub = (sub) => ({
 export const setAuthenticated = (isAuthenticated) => ({
     type: 'SET_AUTHENTICATED',
     isAuthenticated
-})
+});
 
 export const startSetJoinedGroups = ({id}) => {
     return async (dispatch, getState) => {
-        console.log(id);
         let {data} = await axios.get(`${url}/${id}`);
-        console.log(data);
         dispatch(setJoinedGroups(data));
     }
 };

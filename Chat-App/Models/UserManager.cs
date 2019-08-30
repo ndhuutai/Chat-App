@@ -25,6 +25,11 @@ namespace Chat_App.Models
             return _repositoryContext.Users.FirstOrDefault(user => user.Id == id);
         }
 
+        public User FindBySub(string sub)
+        {
+            return _repositoryContext.Users.FirstOrDefault(user => user.Sub == sub);
+        }
+
         public long Add(User user)
         {
             _repositoryContext.Users.Add(user);

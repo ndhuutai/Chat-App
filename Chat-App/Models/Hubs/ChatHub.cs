@@ -74,10 +74,28 @@ namespace Chat_App.Models.Hubs
 
         public async Task AddUserToDb(User newUser, string groupName)
         {
-            newUser.ConnectionId = Context.ConnectionId;
-            var id = _userRepository.Add(newUser);
+            
+            var existingUserInDb = ((UserManager) _userRepository).FindBySub(newUser.Sub);
 
-            var returnUser = _userRepository.Get(id);
+            User returnUser = null;
+            
+            //checking if user already exists in the db 
+            if (existingUserInDb == null)
+            {
+                //add new user along with the new connectionId
+                newUser.ConnectionId = Context.ConnectionId;
+                var id = _userRepository.Add(newUser);
+
+                returnUser = _userRepository.Get(id);
+            }
+            else
+            {
+                //using the existing user but adding new connectionId
+                returnUser = existingUserInDb;
+                returnUser.ConnectionId = newUser.ConnectionId;
+            }
+            
+            //either returning a new user that isn't in db or one that is.
             await Clients.Caller.SendAsync("OnAddedToDb", new
             {
                 returnUser.Id,

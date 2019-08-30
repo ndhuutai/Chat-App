@@ -3,7 +3,7 @@ import * as Oidc from 'oidc-client';
 import {Redirect} from "react-router-dom";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {setAuthenticated, setSub} from '../actions/User';
+import {setAuthenticated, setSub, setUserName} from '../actions/User';
 
 
 class Callback extends React.Component {
@@ -16,19 +16,17 @@ class Callback extends React.Component {
         new Oidc.UserManager({
             response_mode: 'query'
         }).signinRedirectCallback().then((user) => {
-
-            setTimeout(() => {
-                this.setState({countDown: this.state.countDown - 1});
-            }, 1000);
-            
             this.setState({redirectUrl: '/'});
             this.props.setAuthenticated(!!user);
             this.props.setSub(user.profile.sub);
+            this.props.setUserName(user.profile.name);
         }).catch(e => console.log(e));
     }
 
     render() {
-        
+        setTimeout(() => {
+            this.setState({countDown: this.state.countDown - 1});
+        }, 1000);
         return (
             <div>
                 <p>You are logged in. Redirecting
@@ -41,7 +39,8 @@ class Callback extends React.Component {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     setAuthenticated,
-    setSub
+    setSub,
+    setUserName
 }, dispatch);
 
 

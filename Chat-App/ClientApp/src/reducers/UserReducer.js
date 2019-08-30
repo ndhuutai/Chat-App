@@ -20,6 +20,11 @@ export default (state = defaultState, action) => {
                 gender: action.gender,
                 id: action.id
             };
+        case 'SET_USER_NAME':
+            return {
+                ...state,
+                userName: action.userName
+            };
         case 'SET_GROUP':
             return {
                 ...state,

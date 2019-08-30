@@ -89,7 +89,7 @@ class JoinPage extends React.Component {
                 })
                 .configureLogging(signalR.LogLevel.Information)
                 .build(),
-            uniqueNamesGenerator(),
+            user.userName,
             generate_avatar(user.gender ? {gender: user.gender} : ''),
             user.gender || 'not specified',
             user.groupName || 'default',
