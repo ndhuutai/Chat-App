@@ -12,6 +12,7 @@
     <h4>Create a new account</h4>
     <hr/>
     <div asp-validation-summary="All" class="text-info"></div>
+    <input type="text" asp-for="ReturnUrl">
     <div class="form-group">
         <label asp-for="UserName"></label>
         <div>
@@ -39,4 +40,5 @@
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
     </div>
+    <button >Submit</button>
 </form>

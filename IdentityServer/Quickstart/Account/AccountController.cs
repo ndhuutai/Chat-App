@@ -395,7 +395,7 @@ namespace IdentityServer
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Login", "Account");
+                    return RedirectToAction("Login", "Account", new {model.ReturnUrl});
                 }
                 else
                 {
