@@ -38,5 +38,6 @@ namespace Chat_App.Models
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<UserGroup> UserGroups { get; set; }
+        public DbSet<Connection> Connections { get; set; }
     }
 }

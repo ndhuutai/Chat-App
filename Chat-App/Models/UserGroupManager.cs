@@ -34,7 +34,7 @@ namespace Chat_App.Models
             return _repositoryContext.UserGroups.Where(userGroup => userGroup.UserId == userId);
         }
 
-        public UserGroup Find(int userId, int groupId)
+        public UserGroup Find(int userId, int groupId)    
         {
             var returnUg = new UserGroup();
             try
