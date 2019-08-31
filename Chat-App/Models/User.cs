@@ -24,8 +24,6 @@ namespace Chat_App.Models
         public string Sub { get; set; }
         [Required]
         public string UserName { get; set; }
-
-        public String ConnectionId { get; set; }
         public String AvatarUrl { get; set; }
         public String Gender { get; set; }
         

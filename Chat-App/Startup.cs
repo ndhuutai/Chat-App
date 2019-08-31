@@ -42,6 +42,7 @@ namespace Chat_App
             services.AddScoped<IDataRepository<User>, UserManager>();
             services.AddScoped<IDataRepository<Group>, GroupManager>();
             services.AddScoped<IDataRepository<UserGroup>, UserGroupManager>();
+            services.AddScoped<IDataRepository<Connection>, ConnectionManager>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(options =>
