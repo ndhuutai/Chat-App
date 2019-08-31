@@ -18,8 +18,8 @@ function onMessageToGroup({connection, dispatch}) {
 
 //when user has been added to db
 function onAddedToDb({connection, dispatch}) {
-    connection.on('OnAddedToDb', ({id, connectionId, userName, avatarUrl, groupName = 'default', gender, sub}) => {
-        dispatch(addUser(id, connectionId, userName, avatarUrl, groupName, gender, sub));
+    connection.on('OnAddedToDb', ({id, userName, avatarUrl, groupName = 'default', gender, sub}) => {
+        dispatch(addUser(id, userName, avatarUrl, groupName, gender, sub));
         dispatch(addToGroup(groupName, id))
     });
 }

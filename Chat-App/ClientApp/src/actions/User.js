@@ -2,9 +2,8 @@ import axios from 'axios';
 
 const url = '/api/usergroups/user';
 
-export const addUser = (id, connectionId, userName , avatarURL, groupName, gender, sub) => ({
+export const addUser = (id, userName , avatarURL, groupName, gender, sub) => ({
     type: 'ADD_USER',
-    connectionId,
     userName,
     avatarURL,
     groupName,

@@ -16,14 +16,16 @@ namespace Chat_App.Models.Hubs
         private readonly IDataRepository<User> _userRepository;
         private readonly IDataRepository<UserGroup> _userGroupRepository;
         private readonly IDataRepository<Group> _groupRepository;
+        private readonly IDataRepository<Connection> _connectionRepository;
 
         public ChatHub(IDataRepository<Comment> commentRepository, IDataRepository<User> userRepository,
-            IDataRepository<UserGroup> userGroupRepository, IDataRepository<Group> groupRepository)
+            IDataRepository<UserGroup> userGroupRepository, IDataRepository<Group> groupRepository, IDataRepository<Connection> connectionRepository)
         {
             _commentRepository = commentRepository;
             _userRepository = userRepository;
             _userGroupRepository = userGroupRepository;
             _groupRepository = groupRepository;
+            _connectionRepository = connectionRepository;
         }
 
         public async Task SendPrivateMessage(PrivateMessageRequest request)
@@ -82,18 +84,19 @@ namespace Chat_App.Models.Hubs
             //checking if user already exists in the db 
             if (existingUserInDb == null)
             {
-                //add new user along with the new connectionId
-                newUser.ConnectionId = Context.ConnectionId;
+                //add new user
                 var id = _userRepository.Add(newUser);
 
                 returnUser = _userRepository.Get(id);
             }
             else
             {
-                //using the existing user but adding new connectionId
+                //using the existing user
                 returnUser = existingUserInDb;
-                returnUser.ConnectionId = newUser.ConnectionId;
             }
+
+            //associate connectionId with the user (either new or existing user). 
+            _connectionRepository.Add(new Connection {ConnectionId = Context.ConnectionId, User = returnUser});
             
             //either returning a new user that isn't in db or one that is.
             await Clients.Caller.SendAsync("OnAddedToDb", new
@@ -101,7 +104,6 @@ namespace Chat_App.Models.Hubs
                 returnUser.Id,
                 returnUser.Gender,
                 returnUser.AvatarUrl,
-                returnUser.ConnectionId,
                 returnUser.UserName,
                 returnUser.Sub,
                 groupName

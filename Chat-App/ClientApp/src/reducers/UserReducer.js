@@ -1,6 +1,5 @@
 const defaultState = {
     userName: '',
-    connectionId: '',
     avatarURL: '',
     groupName: '',
     groups: [],
@@ -15,7 +14,6 @@ export default (state = defaultState, action) => {
                 ...state,
                 userName: action.userName,
                 avatarURL: action.avatarURL,
-                connectionId: action.connectionId,
                 groupName: action.groupName,
                 gender: action.gender,
                 id: action.id
