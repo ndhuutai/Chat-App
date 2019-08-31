@@ -50,7 +50,6 @@ function onServerDataOnConnectedToGroup({connection, dispatch}) {
         dispatch(setGroupId(groupId));
         dispatch(setGroupName(name));
         dispatch(startSetGroup({groupId}));
-        console.log('here');
         dispatch(startSetJoinedGroups({id}));
     })
 }
