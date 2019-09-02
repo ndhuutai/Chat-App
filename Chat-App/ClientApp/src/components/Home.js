@@ -1,8 +1,11 @@
 import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
+import * as Oidc from 'oidc-client'
 
-export default () => (
-    <Fragment>
+export default () => {
+    
+    return (
+        <Fragment>
         <div className='jumbotron'>
             <h1 className='display-4'>Real-time Chat Application</h1>
             <p>This app was built using ASP.NET Core, SignalR, Web API, Entity Framework combining with IdentityServer4
@@ -17,5 +20,7 @@ export default () => (
                 </button>
             </Link>
         </div>
-    </Fragment>
-)
+        </Fragment>
+    )
+}
+    

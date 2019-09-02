@@ -1,7 +1,6 @@
 import React from 'react';
-import { Container, ListGroup, ListGroupItem, Row, Col } from 'reactstrap';
+import { Container} from 'reactstrap';
 import NavMenu from './NavMenu';
-import { Rail, List } from 'semantic-ui-react'
 
 
 export default props => (

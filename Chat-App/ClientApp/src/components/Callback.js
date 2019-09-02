@@ -21,12 +21,19 @@ class Callback extends React.Component {
             this.props.setSub(user.profile.sub);
             this.props.setUserName(user.profile.name);
         }).catch(e => console.log(e));
+        
+        new Oidc.UserManager({response_mode: 'query'}).signoutRedirectCallback().then(user => {
+            console.log('in HERE', user);
+            this.props.setAuthenticated(!!user);
+        }).catch(e => console.log({e}))
+        
+        
     }
 
     render() {
-        setTimeout(() => {
-            this.setState({countDown: this.state.countDown - 1});
-        }, 1000);
+        // setTimeout(() => {
+        //     this.setState({countDown: this.state.countDown - 1});
+        // }, 1000);
         return (
             <div>
                 <p>You are logged in. Redirecting

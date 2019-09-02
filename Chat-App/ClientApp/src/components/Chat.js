@@ -1,12 +1,11 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
-import {Message, Form, Grid, Comment, Button} from 'semantic-ui-react';
+import {Message} from 'semantic-ui-react';
 import {bindActionCreators} from 'redux';
 import {addComment, wipeComments} from '../actions/Comment';
 import { sendToHub, addToGroup} from '../actions/Connection';
 import {setGroup} from '../actions/User';
 
-import {startSetGroup} from "../actions/Group";
 
 import UserList from './UserList'
 import CommentList from './CommentList'

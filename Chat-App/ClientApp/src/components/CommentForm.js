@@ -1,5 +1,4 @@
 import React from 'react'
-import {Button, Form, Grid} from "semantic-ui-react";
 
 export default (props) => (
     <form onSubmit={props.onSubmit}>

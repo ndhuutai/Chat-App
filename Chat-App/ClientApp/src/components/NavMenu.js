@@ -25,21 +25,17 @@ class NavMenu extends React.Component {
 
     onClick = async (e) => {
         try {
-            if(!this.state.isLoggedIn) {
+            if(!this.props.user.isAuthenticated) {
                 UserManager.signinRedirect().then(response => console.log(response)).catch(e => console.log(e));
+                console.log('log in');
             } else {
                 UserManager.signoutRedirect().then(response => console.log(response)).catch(e => console.log(e));
+                console.log('log out');
             }
         } catch (e) {
             console.log(e)
         }
     };
-    
-    componentDidMount() {
-        UserManager.getUser().then(user => {
-            this.setState({isLoggedIn: !!user})
-        }).catch(e =>console.log(e));
-    }
 
     render() {
         return (
