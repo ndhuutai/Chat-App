@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import 'semantic-ui-css/components/comment.min.css';
 
-const CommentContainer = (props) => (
+const Comment = (props) => (
     <li className='ui comments'>
         <div className='comment bg-light'>
             <a className='avatar'>
@@ -18,4 +18,4 @@ const CommentContainer = (props) => (
         </div>
     </li>
 );
-export default CommentContainer;
+export default Comment;

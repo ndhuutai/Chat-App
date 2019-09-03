@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const url = '/api/usergroups/group';
 
+// ---------synchronous action creators ------------//
 export const setGroupId = (id) => ({
     type: 'SET_GROUP_ID',
     id
@@ -28,11 +29,13 @@ export const removeUserFromGroup = (user) => ({
     user
 });
 
+// ----------- asynchronous action creators---------------//
 
+
+//querying data from web api to get all users for a given groupId
 export const startSetGroup = ({groupId}) => {
     return async (dispatch, getState) => {
         const {data} = await axios.get(`${url}/${groupId}`);
-        console.log('getting called here');
         dispatch(setUsersInGroup(data));
     }
 };

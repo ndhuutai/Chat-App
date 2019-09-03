@@ -3,11 +3,7 @@ import {addComment} from './Comment';
 import {addUser, startSetJoinedGroups} from './User';
 import {setGroupName, setGroupId, startSetGroup} from "./Group";
 
-
-export const setConnection = (connection) => ({
-    type: 'SET_CONNECTION',
-    connection
-});
+//-------------Listeners for events raised by chat hub server. -------------//
 
 //when a new message is sent to the current group
 function onMessageToGroup({connection, dispatch}) {
@@ -47,17 +43,35 @@ function onServerToGroup({connection, dispatch}) {
 //when user connected to a group, data is sent back from server containing group info
 function onServerDataOnConnectedToGroup({connection, dispatch}) {
     connection.on('ServerDataOnConnectedToGroup', ({groupId, name, id}) => {
+        //setting group state (redux)
         dispatch(setGroupId(groupId));
         dispatch(setGroupName(name));
         dispatch(startSetGroup({groupId}));
+        
+        //setting user state (redux)
         dispatch(startSetJoinedGroups({id}));
     })
 }
 
+//-------------synchronous action creators------------------//
+
+//setting connection for the redux state
+export const setConnection = (connection) => ({
+    type: 'SET_CONNECTION',
+    connection
+});
+
+
+//-------------asynchronous action creators------------------//
+
+
+//starting the built connection and registering event listeners
 export const startSetConnection = (connection, userName, avatarURL, gender, groupName, sub) => {
 
     return (dispatch, getState) => {
 
+        //composing function that passes the started connection and dispatch, through all functions in the arguments
+        //the listeners for the client doesn't need the connection state to be "on" in order to register them.
         const eventListeners = composeListeners(
             onMessageToGroup,
             onAddedToDb,
@@ -69,8 +83,10 @@ export const startSetConnection = (connection, userName, avatarURL, gender, grou
 
         eventListeners({connection, dispatch});
 
-
+        //starting the connection to connect with chat hub server
         connection.start().then(() => {
+            //setting the started connection to its corresponding state
+            //connection state has to be "on" in order to invoke functions on chat hub
             dispatch(setConnection(connection));
             //add user to groupName right away
             connection.invoke('AddUserToDb', {userName, avatarURL, gender, sub}, groupName);
@@ -87,6 +103,7 @@ export const addToGroup = (groupName, id) => {
     }
 };
 
+//send a message to hub
 export const sendToHub = (text, userName, avatarURL, groupName) => {
     return (dispatch, getState) => {
         getState().client.connection.invoke('SendMessageToGroup', {
@@ -100,6 +117,7 @@ export const sendToHub = (text, userName, avatarURL, groupName) => {
     }
 };
 
+//reducer function to help with managing complexity and readability of registering chat hub's event listeners.
 const composeListeners = (...functions) =>
     (arg) =>
         functions.reduce((composed, f) => {

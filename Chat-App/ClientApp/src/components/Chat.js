@@ -44,11 +44,15 @@ class Chat extends React.Component {
     };
 
     onUserClick = (userNameText) => {
+        //wipe comments when changing to a different room
         this.props.wipeComments();
         
-        //find user in user array of group state
+        //find user in user array property of group state (redux)
         let clickedUser = this.props.group.users.find(user => user.userName === userNameText);
+        //set the groupName for user state (redux)
         this.props.setGroup(userNameText);
+        
+        //creating a unique room with both users' subs.
         this.props.addToGroup(`${this.props.user.sub}.${clickedUser.sub}`, this.props.user.id);
     };
 
