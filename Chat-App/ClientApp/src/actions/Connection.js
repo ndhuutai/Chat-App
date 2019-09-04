@@ -53,6 +53,13 @@ function onServerDataOnConnectedToGroup({connection, dispatch}) {
     })
 }
 
+const onPrivateGroupData = ({connection, dispatch}) => {
+    connection.on('PrivateGroupData',({privateGroupName, id}) => {
+        //dispatch a request to add to group
+        connection.invoke("AddToPrivateGroup", {privateGroupName})
+    })    
+};
+
 //-------------synchronous action creators------------------//
 
 //setting connection for the redux state

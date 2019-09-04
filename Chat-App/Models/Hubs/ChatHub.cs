@@ -30,10 +30,26 @@ namespace Chat_App.Models.Hubs
 
         public async Task SendPrivateMessage(PrivateMessageRequest request)
         {
-            await Clients.User(request.UserId).SendAsync(request.Message);
+            //getting private group and receiver's data to check for existing association between them
+            var privateGroup = (_groupRepository as GroupManager)?.FindByName(request.PrivateGroupName);
+            var receiver = (_userRepository as UserManager)?.FindBySub(request.UserId);
+            UserGroup userGroupInDb = null;
+            if (privateGroup != null && receiver != null)
+            {
+                userGroupInDb = (_userGroupRepository as UserGroupManager)?.Find(receiver.Id, privateGroup.Id);
+            }
+
+            //if the receiver hasn't been aware of the private group then let it know so that receiver can add itself to the private group
+            if (userGroupInDb == null)
+            {
+                await Clients.User(request.UserId).SendAsync("PrivateGroupData", new {request.PrivateGroupName, privateGroup?.Id});
+            }
+            
+            //send the private message
+            await Clients.User(request.UserId).SendAsync("PrivateMessage",new{request.Message});
         }
 
-        public async Task AddToPrivateGroup(string groupName, int id, string userName)
+        public async Task AddToPrivateGroup(string groupName, int senderId, string receiverUserName)
         {
             var groupInDb = (_groupRepository as GroupManager)?.FindByName(groupName);
             if (groupInDb == null)
@@ -45,7 +61,7 @@ namespace Chat_App.Models.Hubs
 
             }
 
-            var userInDb = _userRepository.Get(id);
+            var userInDb = _userRepository.Get(senderId);
 
             var userGroupInDb = (_userGroupRepository as UserGroupManager)?.Find(userInDb.Id, groupInDb.Id);
 
@@ -60,7 +76,13 @@ namespace Chat_App.Models.Hubs
                 });
             }
 
-            await Clients.Caller.SendAsync("ServerMessageOnConnectedToGroup", $"You are now private messaging {userName}");
+            await Clients.Caller.SendAsync("ServerMessageOnConnectedToGroup", $"You are now private messaging {receiverUserName}");
+            await Clients.Caller.SendAsync("ServerDataOnConnectedToGroup", new
+            {
+                groupId = groupInDb.Id,
+                name = receiverUserName,
+                id = userInDb.Id
+            });
         }
 
         public async Task SendMessageToGroup(MessageToGroupRequest request)
