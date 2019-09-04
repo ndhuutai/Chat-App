@@ -9,9 +9,16 @@ namespace Chat_App.Controllers
     [Authorize]
     public class IdentityController : ControllerBase
     {
+        [HttpGet("claims")]
         public IActionResult Get()
         {
             return new JsonResult(from c in User.Claims select new {c.Type, c.Value});
+        }
+
+        [HttpGet("id")]
+        public IActionResult GetUserId()
+        {
+            return new JsonResult(new {User.Identity});
         }
     }
 }

@@ -14,6 +14,7 @@ export const setGroupName = (groupName) => ({
     groupName
 });
 
+//to be called by async action startSetGroup once data comes back
 export const setUsersInGroup = (users) => ({
     type: 'SET_USERS',
     users

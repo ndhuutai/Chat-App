@@ -12,7 +12,7 @@
     <h4>Create a new account</h4>
     <hr/>
     <div asp-validation-summary="All" class="text-info"></div>
-    <input type="text" asp-for="ReturnUrl">
+    <input type="hidden" asp-for="ReturnUrl">
     <div class="form-group">
         <label asp-for="UserName"></label>
         <div>

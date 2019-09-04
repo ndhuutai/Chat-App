@@ -103,6 +103,12 @@ export const addToGroup = (groupName, id) => {
     }
 };
 
+export const addToPrivateGroup = (groupName, id) => {
+    return (dispatch, getState) => {
+        getState().client.connection.invoke('AddToPrivateGroup', {groupName,id});
+    }
+};
+
 //send a message to hub
 export const sendToHub = (text, userName, avatarURL, groupName) => {
     return (dispatch, getState) => {

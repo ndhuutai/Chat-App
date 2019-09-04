@@ -26,12 +26,17 @@ class Chat extends React.Component {
         
         console.log(user);
         
-        let response = await axios.get('https://localhost:5001/identity', {
+        let config = {
             headers: {
                 'Authorization' : `Bearer ${user.access_token}`
             }
-        });
+        };
+        
+        let response = await axios.get('https://localhost:5001/identity/id', config);
+        
+        // let userIdResponse = await axios.get('https://localhost:5001/identity/id', config);
         console.log({response});
+        // console.log({userIdResponse})
     };
 
     onSubmit = (e) => {

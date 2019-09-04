@@ -33,6 +33,36 @@ namespace Chat_App.Models.Hubs
             await Clients.User(request.UserId).SendAsync(request.Message);
         }
 
+        public async Task AddToPrivateGroup(string groupName, int id, string userName)
+        {
+            var groupInDb = (_groupRepository as GroupManager)?.FindByName(groupName);
+            if (groupInDb == null)
+            {
+                await Groups.AddToGroupAsync(Context.ConnectionId,groupName);
+
+                var groupId = _groupRepository.Add(new Group {Name = groupName});
+                groupInDb = _groupRepository.Get(groupId);
+
+            }
+
+            var userInDb = _userRepository.Get(id);
+
+            var userGroupInDb = (_userGroupRepository as UserGroupManager)?.Find(userInDb.Id, groupInDb.Id);
+
+            if (userGroupInDb == null)
+            {
+                _userGroupRepository.Add(new UserGroup
+                {
+                    Group = groupInDb,
+                    GroupId = groupInDb.Id,
+                    User = userInDb,
+                    UserId = userInDb.Id
+                });
+            }
+
+            await Clients.Caller.SendAsync("ServerMessageOnConnectedToGroup", $"You are now private messaging {userName}");
+        }
+
         public async Task SendMessageToGroup(MessageToGroupRequest request)
         {
             await Clients
@@ -126,6 +156,7 @@ namespace Chat_App.Models.Hubs
             //check if there's an existing association between user and group that's in db.
             var userGroupInDb = (_userGroupRepository as UserGroupManager)?.Find(userInDb.Id, groupInDb.Id);
             //if no association between user and group
+            //then create a new one 
             if (userGroupInDb == null)
             {
                 var newUserGroup = new UserGroup
