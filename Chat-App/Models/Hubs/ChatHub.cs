@@ -32,8 +32,11 @@ namespace Chat_App.Models.Hubs
         {
             //getting private group and receiver's data to check for existing association between them
             var privateGroup = (_groupRepository as GroupManager)?.FindByName(request.PrivateGroupName);
-            var receiver = (_userRepository as UserManager)?.FindBySub(request.UserId);
+            var receiver = (_userRepository as UserManager)?.FindBySub(request.ReceiverSub);
+            var sender = (_userRepository as UserManager)?.FindBySub(request.SenderSub);
+            
             UserGroup userGroupInDb = null;
+            
             if (privateGroup != null && receiver != null)
             {
                 userGroupInDb = (_userGroupRepository as UserGroupManager)?.Find(receiver.Id, privateGroup.Id);
@@ -42,14 +45,20 @@ namespace Chat_App.Models.Hubs
             //if the receiver hasn't been aware of the private group then let it know so that receiver can add itself to the private group
             if (userGroupInDb == null)
             {
-                await Clients.User(request.UserId).SendAsync("PrivateGroupData", new {request.PrivateGroupName, privateGroup?.Id});
+                await Clients.User(request.ReceiverSub).SendAsync("PrivateGroupData", new
+                {
+                    request.PrivateGroupName, 
+                    privateGroupId = privateGroup?.Id, 
+                    receiverId = receiver?.Id,
+                    senderId = sender?.Id
+                });
             }
             
             //send the private message
-            await Clients.User(request.UserId).SendAsync("PrivateMessage",new{request.Message});
+            await Clients.User(request.ReceiverSub).SendAsync("PrivateMessage",new{request.Message});
         }
 
-        public async Task AddToPrivateGroup(string groupName, int senderId, string receiverUserName)
+        public async Task AddToPrivateGroup(string groupName, int senderId, int receiverId)
         {
             var groupInDb = (_groupRepository as GroupManager)?.FindByName(groupName);
             if (groupInDb == null)
@@ -61,9 +70,10 @@ namespace Chat_App.Models.Hubs
 
             }
 
-            var userInDb = _userRepository.Get(senderId);
+            var senderInDb = _userRepository.Get(senderId);
+            var receiverInDb = _userRepository.Get(receiverId);
 
-            var userGroupInDb = (_userGroupRepository as UserGroupManager)?.Find(userInDb.Id, groupInDb.Id);
+            var userGroupInDb = (_userGroupRepository as UserGroupManager)?.Find(senderInDb.Id, groupInDb.Id);
 
             if (userGroupInDb == null)
             {
@@ -71,17 +81,17 @@ namespace Chat_App.Models.Hubs
                 {
                     Group = groupInDb,
                     GroupId = groupInDb.Id,
-                    User = userInDb,
-                    UserId = userInDb.Id
+                    User = senderInDb,
+                    UserId = senderInDb.Id
                 });
             }
 
-            await Clients.Caller.SendAsync("ServerMessageOnConnectedToGroup", $"You are now private messaging {receiverUserName}");
+            await Clients.Caller.SendAsync("ServerMessageOnConnectedToGroup", $"You are now private messaging {receiverInDb.UserName}");
             await Clients.Caller.SendAsync("ServerDataOnConnectedToGroup", new
             {
                 groupId = groupInDb.Id,
-                name = receiverUserName,
-                id = userInDb.Id
+                name = receiverInDb.UserName,
+                id = senderInDb.Id
             });
         }
 

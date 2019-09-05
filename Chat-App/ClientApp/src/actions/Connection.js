@@ -54,9 +54,9 @@ function onServerDataOnConnectedToGroup({connection, dispatch}) {
 }
 
 const onPrivateGroupData = ({connection, dispatch}) => {
-    connection.on('PrivateGroupData',({privateGroupName, id}) => {
+    connection.on('PrivateGroupData',({privateGroupName, privateGroupId, senderId, receiverId}) => {
         //dispatch a request to add to group
-        connection.invoke("AddToPrivateGroup", {privateGroupName})
+        connection.invoke("AddToPrivateGroup", {privateGroupName, senderId: receiverId, receiverId: senderId})
     })    
 };
 
