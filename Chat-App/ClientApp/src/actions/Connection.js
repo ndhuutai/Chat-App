@@ -1,7 +1,7 @@
 import moment from 'moment'
 import {addComment} from './Comment';
 import {addUser, startSetJoinedGroups} from './User';
-import {setGroupName, setGroupId, startSetGroup} from "./Group";
+import {setGroupName, setGroupId, startSetUsersInGroup} from "./Group";
 
 //-------------Listeners for events raised by chat hub server. -------------//
 
@@ -46,7 +46,7 @@ function onServerDataOnConnectedToGroup({connection, dispatch}) {
         //setting group state (redux)
         dispatch(setGroupId(groupId));
         dispatch(setGroupName(name));
-        dispatch(startSetGroup({groupId}));
+        dispatch(startSetUsersInGroup({groupId}));
         
         //setting user state (redux)
         dispatch(startSetJoinedGroups({id}));
@@ -56,6 +56,7 @@ function onServerDataOnConnectedToGroup({connection, dispatch}) {
 const onPrivateGroupData = ({connection, dispatch}) => {
     connection.on('PrivateGroupData',({privateGroupName, privateGroupId, senderId, receiverId}) => {
         //dispatch a request to add to group
+        //the receiver is now the sender on this end, and vice versa
         connection.invoke("AddToPrivateGroup", {privateGroupName, senderId: receiverId, receiverId: senderId})
     })    
 };
@@ -110,11 +111,17 @@ export const addToGroup = (groupName, id) => {
     }
 };
 
-export const addToPrivateGroup = (groupName, id) => {
+export const addToPrivateGroup = (groupName, senderId, receiverId) => {
     return (dispatch, getState) => {
-        getState().client.connection.invoke('AddToPrivateGroup', {groupName,id});
+        getState().client.connection.invoke('AddToPrivateGroup', {groupName,senderId, receiverId});
     }
 };
+
+export const sendPrivateMessage = (text, receiverSub, senderSub, privateGroupName) => {
+    return (dispatch, getState) => {
+        getState.client.connection.invoke("SendPrivateMessage", {message: text, receiverSub, senderSub, privateGroupName})
+    }
+}
 
 //send a message to hub
 export const sendToHub = (text, userName, avatarURL, groupName) => {

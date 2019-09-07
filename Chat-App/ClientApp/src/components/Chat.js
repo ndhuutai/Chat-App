@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Message} from 'semantic-ui-react';
 import {bindActionCreators} from 'redux';
 import {addComment, wipeComments} from '../actions/Comment';
-import { sendToHub, addToGroup} from '../actions/Connection';
+import { sendToHub, sendPrivateMessage,addToPrivateGroup, addToGroup} from '../actions/Connection';
 import {setGroup} from '../actions/User';
 
 
@@ -58,7 +58,7 @@ class Chat extends React.Component {
         this.props.setGroup(userNameText);
         
         //creating a unique room with both users' subs.
-        this.props.addToGroup(`${this.props.user.sub}.${clickedUser.sub}`, this.props.user.id);
+        this.props.addToPrivateGroup(`${this.props.user.sub}.${clickedUser.sub}`, this.props.user.id, clickedUser.id);
     };
 
     onExpandClick = () => {
@@ -115,6 +115,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     addToGroup,
+    addToPrivateGroup,
     sendToHub,
     addComment,
     wipeComments,

@@ -9,9 +9,9 @@ import * as signalR from "@aspnet/signalr";
 import {bindActionCreators} from 'redux';
 import {setGender, setGroup} from '../actions/User';
 import {wipeComments} from '../actions/Comment';
-import {setUsersInGroup} from '../actions/Group';
+import {setUsersInGroup,setGroupName, setGroupId, startSetUsersInGroup} from '../actions/Group';
 
-import {startSetConnection, addToGroup} from '../actions/Connection';
+import {startSetConnection, addToGroup, addToPrivateGroup} from '../actions/Connection';
 
 
 //custom components
@@ -59,10 +59,19 @@ class JoinPage extends React.Component {
         }
 
         this.props.setUsersInGroup([]);
+        //for user state
         this.props.setGroup(groupName);
+        
         //using innerText here since dispatch above isn't finished and thus
         //the following dispatch would be accessing the old props.user.groupName (if used here)
-        this.props.addToGroup(groupName,this.props.user.id);
+        let group = this.props.user.groups.find(group => group.name === groupName);
+
+        if(group.isPrivate) {
+            this.props.addToPrivateGroup(group.name,this.props.user.id, 0)
+        } else {
+            this.props.addToGroup(groupName,this.props.user.id);
+        }
+        
     };
 
     componentDidMount() {
@@ -116,15 +125,20 @@ class JoinPage extends React.Component {
 const mapStateToProps = state => ({
     user: state.user,
     comments: state.comments,
-    client: state.client
+    client: state.client,
+    group: state.group
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     startSetConnection,
     addToGroup,
+    addToPrivateGroup,
     setUsersInGroup,
     wipeComments,
     setGender,
-    setGroup
+    setGroup,
+    setGroupId,
+    setGroupName,
+    startSetUsersInGroup
 }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(JoinPage);

@@ -10,7 +10,7 @@ export default (props) => (
                         className='list-group-item list-group-item-action d-none d-sm-none d-md-block text'
                         onClick={props.onGroupClick}
                 >
-                    <Link to={'/chat'}>{group.name}</Link>
+                    <Link to={'/chat'}>{group.isPrivate? group.alternativeName : group.name}</Link>
                 </li>
             )
         })}

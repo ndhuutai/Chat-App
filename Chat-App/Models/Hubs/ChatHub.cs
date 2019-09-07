@@ -55,23 +55,31 @@ namespace Chat_App.Models.Hubs
             }
             
             //send the private message
+            //probably need to add more info when sending the anonymous object.
             await Clients.User(request.ReceiverSub).SendAsync("PrivateMessage",new{request.Message});
         }
 
-        public async Task AddToPrivateGroup(string groupName, int senderId, int receiverId)
+        public async Task AddToPrivateGroup(AddToPrivateGroupRequest request)
         {
-            var groupInDb = (_groupRepository as GroupManager)?.FindByName(groupName);
+            var groupInDb = (_groupRepository as GroupManager)?.FindByName(request.GroupName);
+            var senderInDb = _userRepository.Get(request.SenderId);
+            var receiverInDb = _userRepository.Get(request.ReceiverId);
+            
+            //if receiverId doesn't have a value then it is a private room
+            //and is being called from
+            if (receiverInDb == null && groupInDb != null)
+            {
+                receiverInDb = (_userGroupRepository as UserGroupManager)?.GetUsersInGroup(groupInDb.Id)
+                    .FirstOrDefault(ug => ug.UserId != senderInDb.Id)?.User;
+            }
             if (groupInDb == null)
             {
-                await Groups.AddToGroupAsync(Context.ConnectionId,groupName);
+                await Groups.AddToGroupAsync(Context.ConnectionId, request.GroupName);
 
-                var groupId = _groupRepository.Add(new Group {Name = groupName});
+                var groupId = _groupRepository.Add(new Group {Name = request.GroupName, AlternativeName = receiverInDb.UserName, IsPrivate = true});
                 groupInDb = _groupRepository.Get(groupId);
-
             }
 
-            var senderInDb = _userRepository.Get(senderId);
-            var receiverInDb = _userRepository.Get(receiverId);
 
             var userGroupInDb = (_userGroupRepository as UserGroupManager)?.Find(senderInDb.Id, groupInDb.Id);
 

@@ -34,7 +34,7 @@ export const removeUserFromGroup = (user) => ({
 
 
 //querying data from web api to get all users for a given groupId
-export const startSetGroup = ({groupId}) => {
+export const startSetUsersInGroup = ({groupId}) => {
     return async (dispatch, getState) => {
         const {data} = await axios.get(`${url}/${groupId}`);
         dispatch(setUsersInGroup(data));
