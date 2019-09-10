@@ -1,7 +1,8 @@
 const initialState = {
     id: '',
     name: '',
-    users: ''
+    users: '',
+    isPrivate: false
 };
 
 
@@ -16,6 +17,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 name: action.groupName
+            };
+        case 'SET_PRIVATE':
+            return {
+                ...state,
+                isPrivate: action.isPrivate
             };
         case 'SET_USERS':
             return {

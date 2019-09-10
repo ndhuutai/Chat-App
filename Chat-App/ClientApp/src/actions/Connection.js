@@ -1,7 +1,7 @@
 import moment from 'moment'
 import {addComment} from './Comment';
 import {addUser, startSetJoinedGroups} from './User';
-import {setGroupName, setGroupId, startSetUsersInGroup} from "./Group";
+import {setGroupName, setGroupId, startSetUsersInGroup, setPrivate} from "./Group";
 
 //-------------Listeners for events raised by chat hub server. -------------//
 
@@ -42,10 +42,11 @@ function onServerToGroup({connection, dispatch}) {
 
 //when user connected to a group, data is sent back from server containing group info
 function onServerDataOnConnectedToGroup({connection, dispatch}) {
-    connection.on('ServerDataOnConnectedToGroup', ({groupId, name, id}) => {
+    connection.on('ServerDataOnConnectedToGroup', ({groupId, name, id, isPrivate}) => {
         //setting group state (redux)
         dispatch(setGroupId(groupId));
         dispatch(setGroupName(name));
+        dispatch(setPrivate(isPrivate));
         dispatch(startSetUsersInGroup({groupId}));
         
         //setting user state (redux)
@@ -119,7 +120,7 @@ export const addToPrivateGroup = (groupName, senderId, receiverId) => {
 
 export const sendPrivateMessage = (text, receiverSub, senderSub, privateGroupName) => {
     return (dispatch, getState) => {
-        getState.client.connection.invoke("SendPrivateMessage", {message: text, receiverSub, senderSub, privateGroupName})
+        getState().client.connection.invoke("SendPrivateMessage", {message: text, receiverSub, senderSub, privateGroupName})
     }
 }
 

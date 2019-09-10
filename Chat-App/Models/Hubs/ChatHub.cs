@@ -69,8 +69,8 @@ namespace Chat_App.Models.Hubs
             //and is being called from
             if (receiverInDb == null && groupInDb != null)
             {
-                receiverInDb = (_userGroupRepository as UserGroupManager)?.GetUsersInGroup(groupInDb.Id)
-                    .FirstOrDefault(ug => ug.UserId != senderInDb.Id)?.User;
+                var receiverSub = request.GroupName.Split('.').FirstOrDefault(sub => !sub.Equals(senderInDb.Sub));
+                receiverInDb = (_userRepository as UserManager)?.FindBySub(receiverSub);
             }
             if (groupInDb == null)
             {
@@ -99,7 +99,8 @@ namespace Chat_App.Models.Hubs
             {
                 groupId = groupInDb.Id,
                 name = receiverInDb.UserName,
-                id = senderInDb.Id
+                id = senderInDb.Id,
+                isPrivate= groupInDb.IsPrivate
             });
         }
 

@@ -42,7 +42,13 @@ class Chat extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         const {user} = this.props;
+        const group = user.groups.find(group => group.name === user.groupName || group.alternativeName === user.groupName);
+        console.log('im in here')
         if (e.target.input.value.trim() !== '') {
+            if(group.isPrivate) {
+                console.log('im being sent privately');
+                this.props.sendPrivateMessage(e.target.input.value, 0 , user.sub, user.groupName);
+            }
             this.props.sendToHub(e.target.input.value, user.userName, user.avatarURL, user.groupName);
         }
         e.target.input.value = '';
@@ -117,6 +123,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     addToGroup,
     addToPrivateGroup,
     sendToHub,
+    sendPrivateMessage,
     addComment,
     wipeComments,
     setGroup

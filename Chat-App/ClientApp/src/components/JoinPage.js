@@ -61,13 +61,16 @@ class JoinPage extends React.Component {
         this.props.setUsersInGroup([]);
         //for user state
         this.props.setGroup(groupName);
-        
         //using innerText here since dispatch above isn't finished and thus
         //the following dispatch would be accessing the old props.user.groupName (if used here)
-        let group = this.props.user.groups.find(group => group.name === groupName);
+        let group = this.props.user.groups.find(group => {
+            console.log(group);
+            console.log(groupName, group.alternativeName)
+            return group.name === groupName || group.alternativeName === groupName
+        });
 
         if(group.isPrivate) {
-            this.props.addToPrivateGroup(group.name,this.props.user.id, 0)
+            this.props.addToPrivateGroup(group.name,this.props.user.id, 0) // the method on chat hub will find by sub
         } else {
             this.props.addToGroup(groupName,this.props.user.id);
         }
@@ -75,7 +78,7 @@ class JoinPage extends React.Component {
     };
 
     componentDidMount() {
-        const {user, client} = this.props;
+        const {user, client, group} = this.props;
         
         //send a request to get chat from database for a specific groupName then populate the redux store
 
@@ -83,7 +86,13 @@ class JoinPage extends React.Component {
         //if the connection is already set up, and user change room, only add the user to the new groupName
         //and going through startSetConnection is not adding user to the new groupName
         if (client.connection !== undefined) {
-            this.props.addToGroup(user.groupName, user.id, user.gender);
+            console.log(user);
+            console.log(group);
+            if(group.isPrivate) {
+                this.props.addToPrivateGroup(group.name,user.id, 0);
+            } else {
+                this.props.addToGroup(user.groupName, user.id, user.gender);
+            }
         }
         //if there's already an established connection, no need to set up again.
         if (client.connection) {

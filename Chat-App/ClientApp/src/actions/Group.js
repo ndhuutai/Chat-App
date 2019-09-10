@@ -8,6 +8,11 @@ export const setGroupId = (id) => ({
     id
 });
 
+export const setPrivate = (isPrivate) => ({
+    type: 'SET_PRIVATE',
+    isPrivate
+})
+
 
 export const setGroupName = (groupName) => ({
     type: 'SET_GROUP_NAME',
