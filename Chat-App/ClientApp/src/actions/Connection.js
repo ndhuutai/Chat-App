@@ -58,7 +58,8 @@ const onPrivateGroupData = ({connection, dispatch}) => {
     connection.on('PrivateGroupData',({privateGroupName, privateGroupId, senderId, receiverId}) => {
         //dispatch a request to add to group
         //the receiver is now the sender on this end, and vice versa
-        connection.invoke("AddToPrivateGroup", {privateGroupName, senderId: receiverId, receiverId: senderId})
+        console.log('private group data being called');
+        connection.invoke("AddToPrivateGroup", {groupName: privateGroupName, senderId: receiverId, receiverId: senderId})
     })    
 };
 
@@ -87,7 +88,8 @@ export const startSetConnection = (connection, userName, avatarURL, gender, grou
             onServerMessageOnConnectedToGroup,
             onServerMessageOnDisconnected,
             onServerToGroup,
-            onServerDataOnConnectedToGroup
+            onServerDataOnConnectedToGroup,
+            onPrivateGroupData
         );
 
         eventListeners({connection, dispatch});

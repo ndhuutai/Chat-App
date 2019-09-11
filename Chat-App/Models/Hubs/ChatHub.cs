@@ -36,6 +36,13 @@ namespace Chat_App.Models.Hubs
             var sender = (_userRepository as UserManager)?.FindBySub(request.SenderSub);
             
             UserGroup userGroupInDb = null;
+
+            if (receiver == null)
+            {
+                var receiverSub = request.PrivateGroupName.Split('.').FirstOrDefault(sub => !sub.Equals(sender.Sub));
+
+                receiver = (_userRepository as UserManager)?.FindBySub(receiverSub);
+            }
             
             if (privateGroup != null && receiver != null)
             {
@@ -43,9 +50,9 @@ namespace Chat_App.Models.Hubs
             }
 
             //if the receiver hasn't been aware of the private group then let it know so that receiver can add itself to the private group
-            if (userGroupInDb == null)
+            if (userGroupInDb == null && receiver != null)
             {
-                await Clients.User(request.ReceiverSub).SendAsync("PrivateGroupData", new
+                await Clients.User(receiver.Sub).SendAsync("PrivateGroupData", new
                 {
                     request.PrivateGroupName, 
                     privateGroupId = privateGroup?.Id, 
@@ -56,7 +63,7 @@ namespace Chat_App.Models.Hubs
             
             //send the private message
             //probably need to add more info when sending the anonymous object.
-            await Clients.User(request.ReceiverSub).SendAsync("PrivateMessage",new{request.Message});
+            await Clients.User(receiver.Sub).SendAsync("PrivateMessage",new{request.Message});
         }
 
         public async Task AddToPrivateGroup(AddToPrivateGroupRequest request)
@@ -71,7 +78,7 @@ namespace Chat_App.Models.Hubs
             {
                 var receiverSub = request.GroupName.Split('.').FirstOrDefault(sub => !sub.Equals(senderInDb.Sub));
                 receiverInDb = (_userRepository as UserManager)?.FindBySub(receiverSub);
-            }
+            } 
             if (groupInDb == null)
             {
                 await Groups.AddToGroupAsync(Context.ConnectionId, request.GroupName);

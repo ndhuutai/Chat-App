@@ -47,7 +47,7 @@ class Chat extends React.Component {
         if (e.target.input.value.trim() !== '') {
             if(group.isPrivate) {
                 console.log('im being sent privately');
-                this.props.sendPrivateMessage(e.target.input.value, 0 , user.sub, user.groupName);
+                this.props.sendPrivateMessage(e.target.input.value, 0 , user.sub, group.name);
             }
             this.props.sendToHub(e.target.input.value, user.userName, user.avatarURL, user.groupName);
         }
