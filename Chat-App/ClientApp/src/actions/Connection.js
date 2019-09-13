@@ -63,6 +63,10 @@ const onPrivateGroupData = ({connection, dispatch}) => {
     })    
 };
 
+const onPrivateMessage = ({connection, dispatch}) => {
+    connection.on("PrivateMessage", ({}))
+}
+
 //-------------synchronous action creators------------------//
 
 //setting connection for the redux state
@@ -122,7 +126,11 @@ export const addToPrivateGroup = (groupName, senderId, receiverId) => {
 
 export const sendPrivateMessage = (text, receiverSub, senderSub, privateGroupName) => {
     return (dispatch, getState) => {
-        getState().client.connection.invoke("SendPrivateMessage", {message: text, receiverSub, senderSub, privateGroupName})
+        const {client, user} = getState();
+        client.connection.invoke("SendPrivateMessage", {message: text, receiverSub, senderSub, privateGroupName});
+        //dispatching to add a comment here since sending private message only send to the receiver and doesn't
+        //add a comment to show on the sender's end
+        dispatch(addComment(text, user.userName,user.avatarURL, moment().utc()));
     }
 }
 

@@ -63,7 +63,21 @@ namespace Chat_App.Models.Hubs
             
             //send the private message
             //probably need to add more info when sending the anonymous object.
-            await Clients.User(receiver.Sub).SendAsync("PrivateMessage",new{request.Message});
+            await Clients.User(receiver.Sub).SendAsync("MessageToGroup",new
+            {
+                text = request.Message,
+                userName = sender.UserName,
+                avatarUrl = sender.AvatarUrl
+            });
+
+            _commentRepository.Add(new Comment
+            {
+                AvatarUrl = sender.AvatarUrl,
+                CreatedAt = request.CreatedAt,
+                Group = privateGroup,
+                Text = request.Message,
+                User = sender
+            });
         }
 
         public async Task AddToPrivateGroup(AddToPrivateGroupRequest request)
