@@ -41,15 +41,16 @@ class Chat extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        const {user} = this.props;
-        const group = user.groups.find(group => group.name === user.groupName || group.alternativeName === user.groupName);
-        console.log('im in here')
+        const {user, group} = this.props;
+        debugger;
+        const groupToSend = user.groups.find(g => g.name === group.name);
+        console.log(user);
         if (e.target.input.value.trim() !== '') {
-            if(group.isPrivate) {
+            if(groupToSend.isPrivate) {
                 console.log('im being sent privately');
-                this.props.sendPrivateMessage(e.target.input.value, 0 , user.sub, group.name);
+                this.props.sendPrivateMessage(e.target.input.value, 0 , user.sub, groupToSend.name);
             }
-            this.props.sendToHub(e.target.input.value, user.userName, user.avatarURL, user.groupName);
+            this.props.sendToHub(e.target.input.value, user.userName, user.avatarURL, groupToSend.name);
         }
         e.target.input.value = '';
     };
@@ -60,8 +61,6 @@ class Chat extends React.Component {
         
         //find user in user array property of group state (redux)
         let clickedUser = this.props.group.users.find(user => user.userName === userNameText);
-        //set the groupName for user state (redux)
-        this.props.setGroup(userNameText);
         
         //creating a unique room with both users' subs.
         this.props.addToPrivateGroup(`${this.props.user.sub}.${clickedUser.sub}`, this.props.user.id, clickedUser.id);
@@ -85,7 +84,7 @@ class Chat extends React.Component {
 
         return (
             <Fragment>
-                {user.groupName === 'default' ? <h1>Public chat room</h1> : <h1>{user.groupName}</h1>}
+                {group.name === 'default' ? <h1>Public chat room</h1> : <h1>{group.name}</h1>}
                 
                 <button onClick={this.callApi}>Call Api</button>
                 
@@ -126,7 +125,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     sendPrivateMessage,
     addComment,
     wipeComments,
-    setGroup
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);

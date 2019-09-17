@@ -2,12 +2,11 @@ import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 import {generate_avatar} from "cartoon-avatar";
 import {UserManager} from "../oidc-client/config";
-import {uniqueNamesGenerator} from "unique-names-generator";
 import * as signalR from "@aspnet/signalr";
 
 //custom actions
 import {bindActionCreators} from 'redux';
-import {setGender, setGroup} from '../actions/User';
+import {setGender} from '../actions/User';
 import {wipeComments} from '../actions/Comment';
 import {setUsersInGroup,setGroupName, setGroupId, startSetUsersInGroup} from '../actions/Group';
 
@@ -38,14 +37,14 @@ class JoinPage extends React.Component {
             this.props.wipeComments();
         }
         this.props.setUsersInGroup([]);
-        this.props.addToGroup(this.props.user.groupName, this.props.user.id);
+        this.props.addToGroup(this.props.group.name, this.props.user.id);
 
         this.props.history.push('/chat');
     };
 
     onRoomChange = (e) => {
         //setting group of user state
-        this.props.setGroup(e.target.value);
+        this.props.setGroupName(e.target.value);
     };
 
     onGenderChange = (e) => {
@@ -59,8 +58,7 @@ class JoinPage extends React.Component {
         }
 
         this.props.setUsersInGroup([]);
-        //for user state
-        this.props.setGroup(groupName);
+        
         //using innerText here since dispatch above isn't finished and thus
         //the following dispatch would be accessing the old props.user.groupName (if used here)
         let group = this.props.user.groups.find(group => {
@@ -86,12 +84,10 @@ class JoinPage extends React.Component {
         //if the connection is already set up, and user change room, only add the user to the new groupName
         //and going through startSetConnection is not adding user to the new groupName
         if (client.connection !== undefined) {
-            console.log(user);
-            console.log(group);
             if(group.isPrivate) {
                 this.props.addToPrivateGroup(group.name,user.id, 0);
             } else {
-                this.props.addToGroup(user.groupName, user.id, user.gender);
+                this.props.addToGroup(group.name, user.id, user.gender);
             }
         }
         //if there's already an established connection, no need to set up again.
@@ -110,7 +106,7 @@ class JoinPage extends React.Component {
             user.userName,
             generate_avatar(user.gender ? {gender: user.gender} : ''),
             user.gender || 'not specified',
-            user.groupName || 'default',
+            group.name || 'default',
             user.sub);
     }
 
@@ -145,7 +141,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     setUsersInGroup,
     wipeComments,
     setGender,
-    setGroup,
     setGroupId,
     setGroupName,
     startSetUsersInGroup

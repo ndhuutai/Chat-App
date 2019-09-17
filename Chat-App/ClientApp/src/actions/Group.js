@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 const url = '/api/usergroups/group';
+const url2 = '/api/users';
+
 
 // ---------synchronous action creators ------------//
 export const setGroupId = (id) => ({
@@ -17,6 +19,11 @@ export const setPrivate = (isPrivate) => ({
 export const setGroupName = (groupName) => ({
     type: 'SET_GROUP_NAME',
     groupName
+});
+
+export const setAlternativeName = (alternativeName) => ({
+    type: 'SET_ALTERNATIVE_NAME',
+    alternativeName
 });
 
 //to be called by async action startSetGroup once data comes back
@@ -43,5 +50,12 @@ export const startSetUsersInGroup = ({groupId}) => {
     return async (dispatch, getState) => {
         const {data} = await axios.get(`${url}/${groupId}`);
         dispatch(setUsersInGroup(data));
+    }
+};
+
+
+export const startSetAlternativeName = (alternativeName) => {
+    return async (dispatch, getState) => {
+        
     }
 };

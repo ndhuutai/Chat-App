@@ -97,7 +97,7 @@ namespace Chat_App.Models.Hubs
             {
                 await Groups.AddToGroupAsync(Context.ConnectionId, request.GroupName);
 
-                var groupId = _groupRepository.Add(new Group {Name = request.GroupName, AlternativeName = receiverInDb.UserName, IsPrivate = true});
+                var groupId = _groupRepository.Add(new Group {Name = request.GroupName, IsPrivate = true});
                 groupInDb = _groupRepository.Get(groupId);
             }
 
@@ -119,7 +119,7 @@ namespace Chat_App.Models.Hubs
             await Clients.Caller.SendAsync("ServerDataOnConnectedToGroup", new
             {
                 groupId = groupInDb.Id,
-                name = receiverInDb.UserName,
+                name = groupInDb.Name,
                 id = senderInDb.Id,
                 isPrivate= groupInDb.IsPrivate
             });
@@ -135,6 +135,7 @@ namespace Chat_App.Models.Hubs
                     request.Text,
                     request.AvatarUrl
                 });
+            
 
             var groupInDb = (_groupRepository as GroupManager)?.FindByName(request.GroupName);
             var userInDb = _userRepository.Get(request.Id);
@@ -242,5 +243,13 @@ namespace Chat_App.Models.Hubs
 
             await Clients.OthersInGroup(req.GroupName).SendAsync("ServerToGroup", userInDb.UserName);
         }
+
+        public async Task RemoveFromGroup(RemoveFromGroupRequest request)
+        {
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, request.GroupName);
+            
+            
+        }
+        
     }
 }

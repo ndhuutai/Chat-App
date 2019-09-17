@@ -9,7 +9,6 @@ namespace Chat_App.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public String Name { get; set; }
-        public String AlternativeName { get; set; }
         public bool IsPrivate { get; set; }
         public List<UserGroup> UserGroups { get; set; }
     }

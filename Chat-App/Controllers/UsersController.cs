@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Chat_App.Controllers
 {
-    
+    [ApiController]
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
@@ -26,13 +26,18 @@ namespace Chat_App.Controllers
             IEnumerable<User> users = _usersRepository.GetAll();
             return Ok(users);
         }
-
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(long id)
+        [HttpGet("{sub}")]
+        public User GetBySub(string sub)
         {
-            return Ok(_usersRepository.Get(id));
+            return (_usersRepository as UserManager)?.FindBySub(sub);
         }
+
+//        // GET api/<controller>/5
+//        [HttpGet("{id}")]
+//        public async Task<IActionResult> Get(long id)
+//        {
+//            return Ok(_usersRepository.Get(id));
+//        }
 
         // POST api/<controller>
         [HttpPost]

@@ -14,9 +14,9 @@ function onMessageToGroup({connection, dispatch}) {
 
 //when user has been added to db
 function onAddedToDb({connection, dispatch}) {
-    connection.on('OnAddedToDb', ({id, userName, avatarUrl, groupName = 'default', gender, sub}) => {
-        dispatch(addUser(id, userName, avatarUrl, groupName, gender, sub));
-        dispatch(addToGroup(groupName, id))
+    connection.on('OnAddedToDb', ({id, userName, avatarUrl, gender, sub}) => {
+        dispatch(addUser(id, userName, avatarUrl, gender, sub));
+        dispatch(addToGroup('default', id))
     });
 }
 
@@ -44,6 +44,7 @@ function onServerToGroup({connection, dispatch}) {
 function onServerDataOnConnectedToGroup({connection, dispatch}) {
     connection.on('ServerDataOnConnectedToGroup', ({groupId, name, id, isPrivate}) => {
         //setting group state (redux)
+        console.log(name);
         dispatch(setGroupId(groupId));
         dispatch(setGroupName(name));
         dispatch(setPrivate(isPrivate));
@@ -59,7 +60,7 @@ const onPrivateGroupData = ({connection, dispatch}) => {
         //dispatch a request to add to group
         //the receiver is now the sender on this end, and vice versa
         console.log('private group data being called');
-        connection.invoke("AddToPrivateGroup", {groupName: privateGroupName, senderId: receiverId, receiverId: senderId})
+        connection.invoke("AddToPrivateGroup", {groupName: privateGroupName, senderId : receiverId, receiverId : senderId})
     })    
 };
 
@@ -104,7 +105,7 @@ export const startSetConnection = (connection, userName, avatarURL, gender, grou
             //connection state has to be "on" in order to invoke functions on chat hub
             dispatch(setConnection(connection));
             //add user to groupName right away
-            connection.invoke('AddUserToDb', {userName, avatarURL, gender, sub}, groupName);
+            connection.invoke('AddUserToDb', {userName, avatarURL, gender, sub}, 'default');
 
         }).catch(error => console.log(error));
 

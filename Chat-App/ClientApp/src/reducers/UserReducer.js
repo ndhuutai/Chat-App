@@ -1,7 +1,6 @@
 const defaultState = {
     userName: '',
     avatarURL: '',
-    groupName: '',
     groups: [],
     gender: '',
     id: ''
@@ -14,7 +13,6 @@ export default (state = defaultState, action) => {
                 ...state,
                 userName: action.userName,
                 avatarURL: action.avatarURL,
-                groupName: action.groupName,
                 gender: action.gender,
                 id: action.id
             };
@@ -22,11 +20,6 @@ export default (state = defaultState, action) => {
             return {
                 ...state,
                 userName: action.userName
-            };
-        case 'SET_GROUP':
-            return {
-                ...state,
-                groupName: action.groupName
             };
         case 'SET_JOINED_GROUPS':
             return {

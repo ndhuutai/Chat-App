@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const url = '/api/usergroups/user';
+const url2 = '/api/users';
 
-export const addUser = (id, userName , avatarURL, groupName, gender, sub) => ({
+export const addUser = (id, userName , avatarURL, gender, sub) => ({
     type: 'ADD_USER',
     userName,
     avatarURL,
-    groupName,
     gender,
     id,
     sub
@@ -20,11 +20,6 @@ export const setConnectionId = (connectionId) => ({
 export const setUserName = userName => ({
     type: "SET_USER_NAME",
     userName
-});
-
-export const setGroup = (groupName) => ({
-    type:'SET_GROUP',
-    groupName
 });
 
 export const setJoinedGroups = (groups) => ({
