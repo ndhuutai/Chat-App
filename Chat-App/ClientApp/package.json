@@ -9,7 +9,7 @@
     "cartoon-avatar": "^1.0.2",
     "jquery": "3.3.1",
     "moment": "^2.24.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "oidc-client": "^1.8.2",
     "popper.js": "^1.15.0",
     "random-avatar": "^1.0.1",
